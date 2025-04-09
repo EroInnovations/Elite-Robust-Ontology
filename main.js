@@ -156,11 +156,11 @@ const ANDROIDHOMEPAGE=()=>{
 
         <div class='FooterDiv'>
 
-            <img src="${WHITEPHONEICON}">
+            <img src="${WHITEPHONEICON}" onclick='PHONEUS()'>
 
-            <img src="${WHITEINSTAGRAMICON}">
+            <img src="${WHITEINSTAGRAMICON}" onclick='INSTAGRAMUS()'>
 
-            <img src="${WHITEGMAILICON}">
+            <img src="${WHITEGMAILICON}" onclick='MAILUS()' >
 
         </div>
         
@@ -258,6 +258,24 @@ const ANDROIDCONTACTUSPAGE=()=>{
     DISPLAY('',`
         
     `)
+
+};
+
+const MAILUS=()=>{
+
+    GMAIL('eroinnovations9@gmail.com');
+
+};
+
+const INSTAGRAMUS=()=>{
+
+    INSTAGRAM('elite_robust_ontology');
+    
+};
+
+const PHONEUS=()=>{
+
+    CALL('+256768058124');
 
 };
 
