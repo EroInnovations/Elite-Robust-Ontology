@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video to Base64</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        video {
+            max-width: 100%;
+            margin-top: 10px;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <input type="file" accept="video/*" id="fileInput">
+    <video id="videoPreview" controls></video>
+    <button id="copyButton" style="display: none;">Copy Base64</button>
+
+    <script>
+        document.getElementById('fileInput').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const chunkSize = 100 * 1024 * 1024; // 100MB chunks
+                const reader = new FileReader();
+                let offset = 0;
+                let base64String = '';
+
+                function readChunk() {
+                    const chunk = file.slice(offset, offset + chunkSize);
+                    reader.readAsDataURL(chunk);
+                }
+
+                reader.onload = function(event) {
+                    base64String += event.target.result.split(",")[1]; // Append chunk without prefix
+                    offset += chunkSize;
+
+                    if (offset < file.size) {
+                        readChunk(); // Read next chunk
+                    } else {
+                        base64String = `data:video/mp4;base64,${base64String}`; // Add base64 prefix
+                        document.getElementById('videoPreview').src = base64String;
+                        document.getElementById('copyButton').style.display = 'block';
+                        document.getElementById('copyButton').onclick = function() {
+                            navigator.clipboard.writeText(base64String).then(() => {
+                                alert("Base64 copied to clipboard!");
+                            }).catch(err => alert("Error copying base64:", err));
+                        };
+                    }
+                };
+                readChunk();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+const AUTOSTART=()=>{
+const DATA=`OPERATINGSYSTEM();AUTORUN();
+BODY();ZOOM();HOSTINGUPDATER();INSPECTION();
+`;
+localStorage.setItem('AUTOSTART',DATA);
+};
+export{AUTOSTART};

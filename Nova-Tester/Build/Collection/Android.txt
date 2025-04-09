@@ -1,0 +1,23 @@
+const NOVASTART=()=>{
+
+    ROUTE('',HOMEPAGE,'HOMEPAGE');
+
+};
+
+const HOMEPAGE=()=>{
+
+    HOMESCROLLHEADERTEMPLATE('',' ',' ',(ELEMENT)=>{
+
+        LEFTTEXT(ELEMENT,'','Collection','','20px','','',()=>{
+
+        });
+
+        RIGHTIMAGE(ELEMENT,WHITEMENUICON,'25px','23px','1rem','',()=>{
+
+        });
+
+    },(ELEMENT)=>{
+
+    });
+
+};

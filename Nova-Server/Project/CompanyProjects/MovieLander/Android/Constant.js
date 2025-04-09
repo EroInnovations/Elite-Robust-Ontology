@@ -1,0 +1,3 @@
+const DATABASEINK=`https://docs.google.com/spreadsheets/d/1nUPpLO_Q_LDzIlA4AnaAu2Y87nZ3MbPN14xQD6jBHR0/edit?usp=sharing`;
+const MOVIEUSERSHEADER=["UserName","UserEmail","UserPassword","UserCode","CreatedOn","Device","UserPhoto","MyDetails","MyLikedMovies","MySavedMovies","AppLockPin","ParentalControlPin","PremiumAccount","ConnectionCode","ConnectedDevice","AndroidActivity","DesktopActivity","AndroidOpenedOn","DesktopOpenedOn","Notifications","AndroidShare","DesktopShare","CommunitiesJoined","AppSpent","PremiumTime"];
+const YOUTUBELINK='https://www.youtube.com/embed/';

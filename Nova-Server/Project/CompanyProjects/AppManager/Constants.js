@@ -1,0 +1,2 @@
+const CONNECTORLINK=`https://docs.google.com/spreadsheets/d/1kd15tCp1cX6TIUSsm3GcrfxDvOrmqlTNxAaseR8LBhw/edit?usp=sharing`;
+const PROJECTHEADER=['ID','ProjectName','Functions','FunctionsOne','FunctionTwo','FunctionThree','FunctionFour','FunctionFive','Styles','StylesOne','StylesTwo','StylesThree','StylesFour','StylesFive','Jsoni','JsonOne','JsonTwo','JsonThree','JsonFour','JsonFive','AppVersion','AppJson','AppCredits','AppDetails','AppIcons','CreatedOn','Owner'];

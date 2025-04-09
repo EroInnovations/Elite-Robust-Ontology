@@ -1,0 +1,100 @@
+    CLEAR("");
+
+    FULLSCROLLVIEW('','transparent',(ELEMENT)=>{
+
+        CLEAR(ELEMENT);
+
+        HEADER(ELEMENT,'transparent',(ELEMENTS)=>{
+
+            ICON(ELEMENTS,WHITEBACKICON,'25px','25px','',(ELE)=>{
+
+                ROUTE('',HOMEPAGE,'HOMEPAGE');
+
+            });
+
+            TEXT(ELEMENTS,'h3','Updates','#000000','20px',(ELE)=>{
+
+                ROUTE(' ',NEWSPAGE,'HOMEPAGE');
+
+            });
+
+        });
+
+        BREAK(ELEMENT);BREAK(ELEMENT);BREAK(ELEMENT);BREAK(ELEMENT);
+
+        GETINDEXED ('CommunityRise', 'CommunityRise', (data)=>{
+
+            REDUX(data,(Element)=>{
+
+                REDUX(Element.Data,(Elements)=>{
+
+                    console.log(Elements)
+
+                    VIEW(ELEMENT,'','98%','auto','',(ELEMENTS)=>{
+
+                        STYLED(ELEMENTS,'margin','auto');
+                        STYLED(ELEMENTS,'border-radius','10px');
+                        STYLED(ELEMENTS,'margin-top','10px');
+                        STYLED(ELEMENTS,'margin-bottom','10px');
+                        STYLED(ELEMENTS,'overflow','hidden');
+
+                        IMAGE(ELEMENTS,Elements.ImageOne,'100%','50%','',(ELEMENTSS)=>{
+
+                           
+
+                        });
+
+                        TEXT(ELEMENTS,'p',Elements.Story,'#000000','20px','',(ELE)=>{
+
+                            ROUTE(' ',NEWSPAGE,'HOMEPAGE');
+            
+                        });
+
+                        VIEW(ELEMENTS,'blue','100%','90%','',(ELEMENTSES)=>{
+
+                            STYLED(ELEMENTSES,'margin','auto');
+                            STYLED(ELEMENTSES,'border-radius','0px');
+                            STYLED(ELEMENTSES,'margin-top','10px');
+                            STYLED(ELEMENTSES,'margin-bottom','10px');
+                            STYLED(ELEMENTSES,'overflow','hidden');
+                            STYLED(ELEMENTSES,'overflowX','auto');
+                            STYLED(ELEMENTSES,'display','inline-flex');
+                           
+                            IMAGE(ELEMENTSES,Elements.ImageOne||COMMUNITYRISELOGO,'90%','50%','',(ELEMENTSS)=>{
+
+                               
+                            });
+
+                            IMAGE(ELEMENTSES,Elements.ImageTwo||COMMUNITYRISELOGO,'90%','50%','',(ELEMENTSS)=>{
+
+                            });
+
+                            IMAGE(ELEMENTSES,Elements.ImageThree||COMMUNITYRISELOGO,'90%','50%','',(ELEMENTSS)=>{
+
+                            });
+
+                            IMAGE(ELEMENTSES,Elements.ImageFour||COMMUNITYRISELOGO,'90%','50%','',(ELEMENTSS)=>{
+    
+                            });
+
+                        });
+
+                    });
+
+                });
+
+            });
+
+        });
+
+    });
+
+    FLOATFIXEDBUTTON('','black',(ELEMENT)=>{
+    
+        IMAGE(ELEMENT,WHITEADDICON,'25px','25px','',(IMAGER)=>{
+
+            ROUTE('',UPDATENEWSPAGE,'NEWSPAGE');
+
+        });
+
+    });

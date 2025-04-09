@@ -1,0 +1,75 @@
+body{
+    background: #04143c;
+    color: white;
+    overflow-y: auto;
+    font-family: Cambria;
+}
+
+.AppLogo{
+    width: 90%;
+    height: 50%;
+    margin: 5%;
+}
+
+header{
+    position: relative;
+    border: none;
+}
+
+h1{
+    font-size: 20px;
+}
+
+p{
+    font-size: 18px;
+    font-family: Cambria;
+    text-align: justify;
+}
+
+.FooterDiv{
+    position: relative;
+    background:transparent;
+    height: 50px;
+    display: inline-flex;
+    margin-top: 5%;
+}
+
+.SectionHolders{
+    position: relative;
+    height: auto;
+    background: transparent;
+    margin-top: 5%;
+}
+
+.SectionLogo{
+    width: 80%;
+    height: 400px;
+    margin: 2%;
+    margin-left: 10%;
+}
+
+.DataDiv{
+    position: relative;
+    background: transparent;
+    height: auto;
+    text-align: center;
+
+}
+
+.Servicename{
+    text-align: center;
+    background: forestgreen;
+    width: 40%;
+    padding: 1%;
+    border-radius: 50px;
+    font-size: 23px;
+}
+
+.OrderButton{
+    width: 50%;
+    height: 50px;
+    border-radius: 50px;
+    background: forestgreen;
+    border: none;
+    color: white;
+}
