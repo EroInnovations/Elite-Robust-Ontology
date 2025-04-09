@@ -22,7 +22,7 @@ const ANDROIDHOMEPAGE=()=>{
 
         <header>
 
-            <h1 onclick='DeveloperNav()' >Developers</h1>
+            <h1 onclick='DeveloperNav()' >Products</h1>
 
             <h1 onclick='AboutUsNav()'>About Us</h1>
 
@@ -189,8 +189,24 @@ const ContactUsNav=()=>{
 const ANDROIDDEVELOPERPAGE=()=>{
 
     DISPLAY('',`
+
+        <img class='AppLogo' src='logo.png'>
+
+        <h1>Elite App </h1>
+
+        <p>
+            Get Updates From Our Company App and Never Miss Out on the New Trend coming From Elite Robust Ontology and Keep Informed .
+        </p>
+
+        <button class='OrderButton' onclick='DownloadEliteApp()'>Download App</button>
         
     `)
+
+};
+
+const DownloadEliteApp=()=>{
+
+    WEBSITE('https://eroinnovations.site/apps/elite.apk');
 
 };
 
@@ -218,7 +234,17 @@ const ANDROIDABOUTUSPAGE=()=>{
 
             <br><br>
 
-            We have Worked With Mult
+            We have Worked With Multiple Companies.
+
+            <br><br>
+
+            Lets Us Build Your Dream with You.
+
+            <br><br>
+
+            Elite Robust Ontology lets You Imagine and Then We Innovate it and Inspire the Rest since we Set a trend In Cloud Native Technology in Uganda.
+
+
 
 
         </p>
