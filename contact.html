@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Robust Ontology Contact</title>
+</head>
+<link rel="stylesheet" href="/Nova/Nova.css">
+<link rel="stylesheet" href="style.css">
+<script src="/Nova/Icons.js"></script>
+<script src="/Nova/Plugins.js"></script>
+<script src="/Nova/Nova.js"></script>
+<script src="/Nova/Start.js"></script>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="contact.css">
+<body>
+
+    <script>
+
+        DISPLAY('',`
+
+            <img class='AppLogo' src='logo2.png'>
+
+            <h1>Contact Us Below</h1>
+            
+            <p>Please Fill Out the Contact Form to get In touch</p>
+
+            <input type="text" placeholder="Enter Your Name">
+
+            <input type="email" placeholder="Enter Your Email">
+
+            <input type="text" placeholder="Enter Your Subject">
+
+            <textarea placeholder="Enter Your Message"></textarea>
+
+            <button>Sumbit</button>
+        
+        `);
+
+        if (localStorage.getItem('OperatingSystem') === 'Android' ) {
+
+            const inputs = document.querySelectorAll('input');
+
+            inputs.forEach(input => {
+            input.style.width = '95%';
+            });
+
+            const Button = document.querySelectorAll('Button');
+
+            Button.forEach(Button => {
+                Button.style.width = '95%';
+            });
+
+            
+            const textarea = document.querySelectorAll('textarea');
+
+            textarea.forEach(textarea => {
+                textarea.style.width = '95%';
+            });
+
+            
+        } else {
+
+            const img = document.querySelectorAll('img');
+
+            img.forEach(img => {
+                img.style.width = '200px';
+            });
+            
+        }
+
+    </script>
+
+</body>
+</html>

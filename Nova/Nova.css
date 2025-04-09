@@ -59,3 +59,25 @@ button{
     color: white;
     background: transparent;
 }
+
+input{
+    position: relative;
+    width: 95%;
+    height: 32px;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #cdcdcd;
+    margin: 2% auto;
+}
+
+textarea{
+    position: relative;
+    width: 95%;
+    height: 200px;
+    background: transparent;
+    border: 1px solid #ccc;
+    outline: none;
+    color: #cdcdcd;
+    margin: 2% auto;
+}
