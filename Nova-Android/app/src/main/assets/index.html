@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nova</title>
+    <title></title>
 </head>
 <style>
     body {
@@ -139,9 +139,9 @@
         STARTAPP('https://eroinnovations.site/Nova/Nova.js','NovaFunctions');
         STARTAPP('https://eroinnovations.site/Nova/Nova.css','NovaStyles');
         STARTAPP('https://eroinnovations.site/Nova/Plugins.js','NovaPlugIns');
-        STARTAPP('https://eroinnovations.github.io/Nova-Design/App/Start.js','NovaAutoStart');
+        STARTAPP('https://eroinnovations.site/Nova/Start.js','NovaAutoStart');
         STARTAPP('https://eroinnovations.site/Nova/Icons.js','NovaIcons');
-        import('https://eroinnovations.github.io/Nova-Design/Connection/CloudConnections.js')
+        import('https://eroinnovations.site/Nova/Cloud.js')
         .then(module =>{
             if (typeof module.START === 'function') {
                 module.START();
