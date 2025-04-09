@@ -2,8 +2,6 @@ const START=()=>{
 
     ROUTEJS(localStorage.setItem('NovaProjectClouds',''));
 
-    const PROJECTPATH='https://eroinnovations.github.io/Nova-Design/Projects/';
-
     const DATA={
         "spreadsheetUrl":"https://docs.google.com/spreadsheets/d/1Utfr1wkoZSRvM9TOKaTxOX6orYE8AuN2mu4dDtQmhFQ/edit?gid=0#gid=0",
         "sheetName":"APPMANAGER"
@@ -23,7 +21,7 @@ const START=()=>{
 
             if (element.ID === NAME){
 
-                fetch(PROJECTPATH+element.AndroidFunctions)
+                fetch(element.AndroidFunctions)
                 .then(res =>res.text())
                 .then(datata =>{
                     localStorage.setItem('NovaProjectStyles',datata);
@@ -32,7 +30,7 @@ const START=()=>{
                     console.log(error);
                 });
 
-                fetch(PROJECTPATH+element.AndroidDesign)
+                fetch(element.AndroidDesign)
                 .then(res =>res.text())
                 .then(datata =>{
                     localStorage.setItem('NovaProjectFunctions',datata);
