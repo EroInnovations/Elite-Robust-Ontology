@@ -256,6 +256,12 @@ const ANDROIDABOUTUSPAGE=()=>{
 const ANDROIDCONTACTUSPAGE=()=>{
 
     DISPLAY('',`
+
+        <img class='AppLogo' src='logo2.png'>
+
+        <br><br>
+
+        <h1>Fill The Form Below </h1>
         
     `)
 
