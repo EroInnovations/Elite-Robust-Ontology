@@ -289,7 +289,19 @@ const DESKTOPHOMEPAGE=()=>{
 
     DISPLAY('',`
 
-        Under Development
+       <img class='AppLogo' id='DesktopLogo' src='logo.png'> 
+
+       <h1>ELITE ROBUST ONTOLOGY</h1>
+
+       <p>
+
+       Elite Robust Ontology is a Software Developer Company Located In Mbale City In Uganda that Handles In Software Development,Mobile App Development,Website Development and System Development.
+
+       <br><br>
+
+       We Use a Cloud Native System that powers all our Technology.
+
+       </p>
         
     `);
 

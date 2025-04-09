@@ -3,6 +3,7 @@ body{
     color: white;
     overflow-y: auto;
     font-family: Cambria;
+    text-align: center;
 }
 
 .AppLogo{
@@ -44,8 +45,7 @@ p{
 .SectionLogo{
     width: 80%;
     height: 400px;
-    margin: 2%;
-    margin-left: 10%;
+    object-fit: contain;
 }
 
 .DataDiv{
@@ -72,4 +72,12 @@ p{
     background: forestgreen;
     border: none;
     color: white;
+}
+
+/*== DESKTOP===*/
+
+#DesktopLogo{
+    width: 50%;
+    height: 50%;
+    margin: auto;
 }

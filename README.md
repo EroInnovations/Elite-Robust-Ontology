@@ -1,2 +1,2 @@
 # Elite Robust Ontology
- Main Company Manager
+Main Company Manager
