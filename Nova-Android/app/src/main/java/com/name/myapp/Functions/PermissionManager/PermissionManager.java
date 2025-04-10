@@ -1,4 +1,4 @@
-package com.eroinnovations.qelmedistore;
+package com.eroinnovations.app;
 
 import android.app.Activity;
 import android.content.Intent;

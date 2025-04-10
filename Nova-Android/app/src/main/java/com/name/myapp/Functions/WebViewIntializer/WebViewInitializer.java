@@ -1,4 +1,4 @@
-package com.eroinnovations.qelmedistore;
+package com.eroinnovations.app;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;

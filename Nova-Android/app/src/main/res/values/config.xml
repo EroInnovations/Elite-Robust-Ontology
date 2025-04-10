@@ -1,6 +1,6 @@
 <resources>
 
     <!-- Define your app's package name -->
-    <string name="package_name">com.eroinnovations.qelmedistore</string>
+    <string name="package_name">com.eroinnovations.app</string>
 
 </resources>

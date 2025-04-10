@@ -1,4 +1,4 @@
-package com.eroinnovations.qelmedistore;
+package com.eroinnovations.app;
 
 import android.content.Context;
 import android.webkit.JavascriptInterface;
