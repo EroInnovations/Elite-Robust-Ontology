@@ -6,6 +6,11 @@ body{
     text-align: center;
 }
 
+div{
+    overflow-y: auto;
+    background-color: transparent;
+}
+
 .AppLogo{
     width: 90%;
     height: 50%;
