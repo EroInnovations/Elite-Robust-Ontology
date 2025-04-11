@@ -87,7 +87,11 @@ const HOMEPAGE=()=>{
 
             <br>
 
-            <div class='CatergorySection' id='HomeCatergories'></div>
+            <div class='CatergorySection' id='HomeCatergories'>
+            
+                <img  class='LoadingIcon' src='${WHITELOADINGICON}'/>
+            
+            </div>
 
             <br><br>
 
@@ -188,7 +192,11 @@ const ALLPRODUCTSPAGE=()=>{
     
     </header>
 
-    <div class='TopDiv'></div>
+    <div class='TopDiv'>
+
+        <img id='Loader' class='LoadingIcon' src='${WHITELOADINGICON}'/>
+    
+    </div>
         
     `);
 
