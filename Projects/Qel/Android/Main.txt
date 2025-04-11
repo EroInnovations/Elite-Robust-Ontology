@@ -147,7 +147,7 @@ const CATEGORIESDATA=()=>{
 
                         </div>
 
-                        <p class='Catergor'>${element.ProductName}</p>
+                        <p class='CatergoryName'>${element.ProductName}</p>
 
                     `);
 

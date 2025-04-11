@@ -50,7 +50,7 @@
 
 .SectionImageHolder{
     position: relative;
-    width: 30%;
+    width: 50px;
     height: auto;
     border-radius: 50px;
     
