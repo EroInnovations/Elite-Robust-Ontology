@@ -83,6 +83,8 @@ const HOMEPAGE=()=>{
 
             <h1 class='SectionName'>Categories </h1>
 
+            <h1 class='SectionName' id='AllProducts' onclick='AllProductsNav()'>All Products</h1>
+
             <br>
 
             <div class='CatergorySection' id='HomeCatergories'></div>
@@ -125,6 +127,18 @@ const HOMEPAGE=()=>{
 
 };
 
+const AllProductsNav=()=>{
+
+    ROUTE(' ',ALLPRODUCTSPAGE,'HOMEPAGE');
+
+};
+
+const HomeNav=()=>{
+
+    ROUTE('',HOMEPAGE,'HOMEPAGE');
+
+}
+
 const CATEGORIESDATA=()=>{
 
     const HomeCatergories=document.querySelector('#HomeCatergories');
@@ -148,6 +162,59 @@ const CATEGORIESDATA=()=>{
                         </div>
 
                         <p class='CatergoryName'>${element.ProductName}</p>
+
+                    `);
+
+                });
+
+                console.log(element);
+
+            });
+
+        });
+
+    });
+
+};
+
+const ALLPRODUCTSPAGE=()=>{
+
+    DISPLAY('',`
+    <header>
+
+        <img class='LeftIcon' src='${WHITEBACKICON}' onclick='HomeNav()' />
+
+        <h1 class='RightText'>All Products</h1>
+    
+    </header>
+
+    <div class='TopDiv'></div>
+        
+    `);
+
+    const HomeCatergories=document.querySelector('.TopDiv');
+
+    GETINDEXED('QelProducts','QelProducts',(data)=>{
+
+        DISPLAY(HomeCatergories,'');
+
+        REDUX(data,(Element)=>{
+
+            REDUX(Element.data,(element)=>{
+
+                CREATEELEMENT(HomeCatergories,'div','AllProductsDiv',(ELEMENT)=>{
+
+                    DISPLAY(ELEMENT,`
+
+                        <img class='AllProductsImage' src='${element.ProductImage}'/>
+
+                        <div class='AllProductsDivBottom'>
+
+                            <p class='AllProductName'>${element.ProductName}</p>
+
+                            <h1 class='AllProductPrice'>Ugx${element.ProductPrice}</h1>
+                        
+                        </div>
 
                     `);
 

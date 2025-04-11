@@ -26,6 +26,13 @@
     color: #228b22;
 }
 
+#AllProducts{
+    position: absolute;
+    top: 50px;
+    color: orange;
+    right: 15px;
+}
+
 .DataDiv{
     position: relative;
     background: teal;
@@ -66,4 +73,70 @@
     width: 90%;
     color: #ffa500;
     margin: auto;
+}
+
+.LeftIcon{
+    margin-left: 0.2rem;
+    margin-bottom: 0.2rem;
+}
+
+header{
+    height: 100px;
+}
+
+.RightText{
+    margin-right: 0.5rem;
+    font-size: 18px;
+    margin-bottom: 0.2rem;
+}
+
+.TopDiv{
+    top: 100px;
+    overflow-y: auto;
+    background: transparent;
+}
+
+.AllProductsDiv{
+    position: relative;
+    width: 30%;
+    height: 200px;
+    margin: 1%;
+    display: inline-table;
+    border-radius: 5px;
+}
+
+.AllProductsImage{
+    position: absolute;
+    width: 100%;
+    height: 70%;
+    left: 0;
+}
+
+.AllProductsDivBottom{
+    height: 60px;
+    bottom: 0;
+    top: auto;
+    background: forestgreen;
+    display: inline-flex;
+    left: 0;
+}
+
+.AllProductName{
+    position: absolute;
+    font-size: 14px;
+    text-align: left;
+    margin-left: 0.2rem;
+    margin-top: 0.2rem;
+}
+
+.AllProductPrice{
+    position: absolute;
+    font-size:16px;
+    bottom:5%;
+    margin-left: 0.2rem;
+    color: whitesmoke;
+    background: orange;
+    padding: 1%;
+    width: 90%;
+    border-radius: 5px;
 }
