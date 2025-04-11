@@ -2,138 +2,11 @@ const API='https://docs.google.com/spreadsheets/d/18BUoCg4yVUrxWv8RG885ZIn2fjkUR
 
 const NOVASTART=()=>{
 
-    const body=document.querySelector('body');
-
     APPDATA();
 
     APPMODE(localStorage.getItem('Color')||'#333333');
 
     ROUTE('',HOMEPAGE,'HOMEPAGE');
-
-    if (localStorage.getItem('Color')) {
-
-        body.style.color='#000000'
-        
-    }else{
-
-        body.style.color='#ffffff'
-
-    }
-};
-
-const HOMEPAGE=()=>{
-
-    DISPLAY('',`
-
-        <header class='TopHeader'>
-
-            <h1 class='AppName'>Qel Medistore</h1>
-
-            <img class='ModeIcon' src='${WHITESEARCHICON}' >
-
-            <img class='ModeIcon' id='ModeIcon' src='${WHITESUNICON}' onclick='ChangeAppColor()' >
-
-        </header>
-
-        <div class='HomeDiv'>
-
-            <img class='LoadingIcon' src='${WHITELOADINGICON}'/>
-        
-        </div>
-
-        <footer>
-
-            <img class='CatergoryIcon' src='${WHITEMENUICON}' onclick='UserCatergoryNav()' >
-
-            <img src='${WHITESAVEICON}' onclick='SavedItemsNav()' >
-
-            <img src='${WHITENOTIFICATIONICON}' onclick='NotificationsNav()' >
-
-            <img src='${WHITEUSERICON}' onclick='UserAccountNav()' >
-        
-        </footer>
-
-    `);
-
-    ModeIcon();
-
-    GETAPPDATA();
-
-};
-
-const ChangeAppColor=()=>{
-
-    if (localStorage.getItem('Color')) {
-
-        localStorage.removeItem('Color');
-
-        NOVASTART();
-        
-    } else {
-
-        localStorage.setItem('Color','#cdcdcd');
-
-        NOVASTART();
-        
-    }
-
-};
-
-const ModeIcon=()=>{
-
-    const ModeIcon=document.querySelector('#ModeIcon');
-
-    if (localStorage.getItem('Color')) {
-
-        ModeIcon.src=WHITEMOONICON;
-        
-    }
-
-};
-
-const UserPageNav=()=>{
-
-    ROUTE(' ',USERPAGE,'HOMEPAGE');
-
-};
-
-const UserCatergoryNav=()=>{
-
-    ROUTE(' ',CATERGORYPAGE,'HOMEPAGE');
-
-};
-
-const SavedItemsNav=()=>{
-
-    ROUTE(' ',SAVEDITEMSPAGE,'HOMEPAGE');
-
-};
-
-const NotificationsNav=()=>{
-
-    ROUTE(' ',NOTIFICATIONSPAGE,'HOMEPAGE');
-
-};
-
-const UserAccountNav=()=>{
-
-    ROUTE(' ',USERACCOUNTPAGE,'HOMEPAGE');
-
-};
-
-const CatergoriesNav=()=>{
-
-    ROUTE('',CATERGORYPAGE,'CATERGORYPAGE');
-
-}
-
-const USERPAGE=()=>{
-
-    DISPLAY('',`
-
-        Testing
-        
-    `);
 
 };
 
@@ -200,368 +73,92 @@ const APPDATA=()=>{
 
 };
 
-const GETAPPDATA=()=>{
-
-    const HomeDiv=document.querySelector('.HomeDiv');
-
-    GETINDEXED('QelProducts','QelProducts',(data)=>{
-
-        DISPLAY(HomeDiv,'');
-
-        REDUX(data,(element)=>{
-
-            REDUX(element.data,(elements)=>{
-
-                CREATEELEMENT(HomeDiv,'div','ProductsDiv',(ELEMENT)=>{
-
-                    DISPLAY(ELEMENT,`
-
-                        <img class='ProductImages' src='${elements.ProductImage}'/>
-
-                        <p class='ProductName'>${elements.ProductName}</p>
-                        
-                        <p class='ProductPrice'> Ush:${elements.ProductPrice}</p>
-
-                        <p class='ProductNumber'> Stocked:<b>${elements.ProductNumber}</b></p>
-
-                    `);
-
-                });
-
-            });
-
-        });
-
-    });
-
-};
-
-const HomeBackPageNav=()=>{
-
-    ROUTE('',HOMEPAGE,'HOMEPAGE');
-
-};
-
-const CATERGORYPAGE=()=>{
-
-    BACKPAGE('HOMEPAGE');
+const HOMEPAGE=()=>{
 
     DISPLAY('',`
 
-        <header class='TopHeader'>
-
-            <img class='BackIcon' src='${WHITEBACKICON}' onclick='HomeBackPageNav()'/>
-
-            <h1 class='AppName' id='SectionName'>Catergories</h1>
-
-        </header>
-
-        <div class='HomeDiv' id='BottomDiv'>
-
-            <img class='LoadingIcon' src='${WHITELOADINGICON}'/>
-        
-        </div>
-    
-    `);
-
-    const HomeDiv=document.querySelector('.HomeDiv');
-
-    GETINDEXED('Catergory','Catergory',(data)=>{
-
-        DISPLAY(HomeDiv,'');
-
-        REDUX(data,(element)=>{
-
-            REDUX(element.data,(elements)=>{
-
-                CREATEELEMENT(HomeDiv,'div','ProductDiv',(ELEMENT)=>{
-
-                    DISPLAY(ELEMENT,`
-
-                        <img class='ProductImage' src='${elements.ProductImage}'/>
-
-                        <p class='ProductNamer'>${elements.ProductName}</p>
-
-                        <img class='MoreIcon' src='${WHITENEXTICON}'/>
-                    
-                    `);
-
-                    CLICK(ELEMENT,()=>{
-
-                        STOREDATA('','MyProductsID',elements.ID);
-
-                        STOREDATA('','MyProductsName',elements.ProductName);
-
-                        ROUTE(' ',PRODUCTCATERGORYPAGE,'CATERGORYPAGE');
-
-                    });
-
-                });
-
-            });
-
-        })
-
-    });
-
-};
-
-const PRODUCTCATERGORYPAGE=()=>{
-
-    DISPLAY('',`
-
-        <header class='TopHeader'>
-
-            <img class='BackIcon' src='${WHITEBACKICON}' onclick='CatergoriesNav()'/>
-
-            <h1 class='AppName' id='SectionName'>${sessionStorage.getItem('MyProductsName')}</h1>
-
-        </header>
-
-        <div class='HomeDiv' id='BottomDiv'></div>
-    
-    
-    `);
-
-    const HomeDiv=document.querySelector('.HomeDiv');
-
-    GETINDEXED('QelProducts','QelProducts',(data)=>{
-
-        DISPLAY(HomeDiv,'');
-
-        REDUX(data,(element)=>{
-
-            REDUX(element.data,(elements)=>{
-
-                console.log(elements)
-
-                CHECKER(elements.ProductCatergory === sessionStorage.getItem('MyProductsID'),()=>{
-
-                    CREATEELEMENT(HomeDiv,'div','ProductsDiv',(ELEMENT)=>{
-
-                        DISPLAY(ELEMENT,`
-    
-                            <img class='ProductImages' src='${elements.ProductImage}'/>
-    
-                            <p class='ProductName'>${elements.ProductName}</p>
-                            
-                            <p class='ProductPrice'> Ush:${elements.ProductPrice}</p>
-    
-                            <p class='ProductNumber'> Stocked:<b>${elements.ProductNumber}</b></p>
-    
-                        `);
-    
-                    });
-
-                });
-
-            });
-
-        });
-
-    });
-
-};
-
-const SAVEDITEMSPAGE=()=>{
-
-    DISPLAY('',`
-
-        <header class='TopHeader'>
-
-            <img class='BackIcon' src='${WHITEBACKICON}' onclick='HomeBackPageNav()'/>
-
-            <h1 class='AppName' id='SectionName'>Saved Items</h1>
-
-        </header>
-
-        <div class='HomeDiv' id='BottomDiv'></div>
-    
-    
-    `);
-
-    const HomeDiv=document.querySelector('.HomeDiv');
-
-    if (localStorage.getItem('User')) {
-
-        DISPLAY(HomeDiv,`
-            
-        `);
-        
-    } else {
-
-        DISPLAY(HomeDiv,`
+        <div class='HomeDiv'>
 
             <br><br>
 
-            <h1>No User Account Found</h1>
+            <h1 class='SectionName'>Categories </h1>
 
             <br>
 
-            <p>
-                Dear User You Don't have any Account Added
-
-                 <br><br>
-                Please LogIn to Get Access to Your Saved Products.
-
-                <br><br>
-            
-            </p>
-
-            <button class='AccessButton'>Log In</button>
-
-            <button class='AccessButton' >Create Account</button>
-
-        `);
-        
-    };
-
-};
-
-const NOTIFICATIONSPAGE=()=>{
-
-    DISPLAY('',`
-
-        <header class='TopHeader'>
-
-            <img class='BackIcon' src='${WHITEBACKICON}' onclick='HomeBackPageNav()'/>
-
-            <h1 class='AppName' id='SectionName'>Notifications</h1>
-
-        </header>
-
-        <div class='HomeDiv' id='BottomDiv'></div>
-    
-    `);
-
-    const HomeDiv=document.querySelector('.HomeDiv');
-
-    if (localStorage.getItem('User')) {
-
-        DISPLAY(HomeDiv,`
-            
-        `);
-        
-    } else {
-
-        DISPLAY(HomeDiv,`
+            <div class='CatergorySection' id='HomeCatergories'></div>
 
             <br><br>
 
-            <h1>No User Account Found</h1>
+            <h1 class='SectionName'>New Stock </h1>
+
+            <div class='DataDiv' ></diV>
 
             <br><br>
 
-            <p>
-                Dear User You Don't have any Account Added
+            <h1 class='SectionName'>Top Selling Products </h1>
 
-                 <br><br>
-
-                Please LogIn to Get Access to Your Messages and Updates
-
-                <br><br>
-            
-            </p>
-
-            <button class='AccessButton'>Log In</button>
-
-            <button class='AccessButton' >Create Account</button>
-            
-        `);
-        
-    };
-
-};
-
-const USERACCOUNTPAGE=()=>{
-
-    DISPLAY('',`
-
-        <header class='TopHeader'>
-
-            <img class='BackIcon' src='${WHITEBACKICON}' onclick='HomeBackPageNav()'/>
-
-            <h1 class='AppName' id='SectionName'>User Profile</h1>
-
-        </header>
-
-        <div class='HomeDiv' id='BottomDiv'></div>
-    
-    `);
-
-    const HomeDiv=document.querySelector('.HomeDiv');
-
-    if (localStorage.getItem('User')) {
-
-        DISPLAY(HomeDiv,`
-            
-        `);
-        
-    } else {
-
-        DISPLAY(HomeDiv,`
+            <div class='DataDiv' ></diV>
 
             <br><br>
 
-            <h1>No User Account Found</h1>
+            <h1 class='SectionName'>Most Liked  Products </h1>
 
-            <br><br>
+            <div class='DataDiv' ></diV>
 
-            <p>
-                Dear User You Don't have any Account Added
-
-                 <br><br>
-
-                Please Choose From Below to Continue To Your Profile and Access More Features
-
-                <br><br>
-            
-            </p>
-
-            <button class='AccessButton' onclick='UserLogInNav()'>Log In</button>
-
-            <button class='AccessButton' >Create Account</button>
-           
-        `);
-        
-    };
-
-};
-
-const UserLogInNav=()=>{
-
-    ROUTE(' ',LOGINPAGE,'HOMEPAGE');
-
-}
-
-const LOGINPAGE=()=>{
-
-    DISPLAY('',`
-
-        <header class='TopHeader'>
-
-            <img class='BackIcon' src='${WHITEBACKICON}' onclick='HomeBackPageNav()'/>
-
-            <h1 class='AppName' id='SectionName'>Authenatication</h1>
-
-        </header>
-
-        <div class='HomeDiv' id='BottomDiv'>
-
-            <br><br>
-
-            <input type="email" placeholder="Enter User Email">
-
-            <input type="password" placeholder="*******" >
-
-            <button class="forestgreen">Sign In</button>
-
-            <p class="ForgotPassword" >Forgot Password!</p>
-
-            <button class="blue">Create Account</button>
+            <br><br><br><br>
         
         </div>
+
+        <footer class='RoundFooter'>
+
+            <img src='${WHITETRENDINGTOPICSICON}'/>
+
+            <img src='${WHITESHOPPINGCART}'/>
+
+            <img src='${WHITESETTINGSICON}'/>
+
+        </footer>
         
     `);
+
+    CATEGORIESDATA();
+
+};
+
+const CATEGORIESDATA=()=>{
+
+    const HomeCatergories=document.querySelector('#HomeCatergories');
+
+    GETINDEXED('Catergory','Catergory',(data)=>{
+
+        DISPLAY(HomeCatergories,'');
+
+        REDUX(data,(Element)=>{
+
+            REDUX(Element.data,(element)=>{
+
+                CREATEELEMENT(HomeCatergories,'div','CatergoriesDisplay',(ELEMENT)=>{
+
+                    DISPLAY(ELEMENT,`
+
+                        <div class='SectionImageHolder'>
+
+                            <img class='SectionImage' src='${element.ProductImage}'/>
+
+                        </div>
+
+                        <p class='Catergor'>${element.ProductName}</p>
+
+                    `);
+
+                });
+
+                console.log(element);
+
+            });
+
+        });
+
+    });
 
 };

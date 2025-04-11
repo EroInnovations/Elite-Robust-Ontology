@@ -74,11 +74,27 @@ div{
     box-shadow: 0px 0px 10px 1px #ffa50020;
 }
 
-
 .PostShortStory{
     font-size: 16px;
     margin: auto;
     margin-left: 1rem;
     text-align: left;
     font-family: Cambria;
+}
+
+.PostName{
+    font-size: 18px;
+    margin-right: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.LeftIcon{
+    margin-left: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.ContentHolder{
+    background: transparent;
+    top: 100px;
+    overflow-y: auto;
 }

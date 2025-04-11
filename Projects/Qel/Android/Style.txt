@@ -1,155 +1,69 @@
-body{
-    text-align: center;
-}
-
-.TopHeader{
-    height: 100px;
-    background: forestgreen;
-}
-
-.AppName{
-    font-size: 20px;
-    margin-left: 0.5rem;
-    font-weight: bolder;
-    margin-bottom: 3%;
-}
-
-.ModeIcon{
-    margin-right: 1rem;
-    margin-bottom: 3%;
-}
-
-.CatergoryIcon{
-    transform: rotate(90deg);
-}
-
-footer{
-    background: forestgreen;
-}
-
-footer img:hover{
-    background: forestgreen;
-    padding: 1%;
-    border-radius: 5px;
-    width: 30px;
-    height: 30px;
+.RoundFooter{
+    background: #228b22;
+    border: none;
+    border-radius: 10px;
 }
 
 .HomeDiv{
-   top: 100px;
-   bottom: 50px;
-   overflow-y: auto;
-   background: transparent;
+    background: transparent;
+    overflow-y: auto;
 }
 
-.ProductsDiv{
+.CatergorySection{
     position: relative;
     background: transparent;
-    border: 1px solid forestgreen;
-    width: 45%;
-    height: 50%;
-    display: inline-table;
-    margin: 1% 2% 2% 2%;
-}
-
-.ProductImages{
-    position: absolute;
-    width: 100%;
-    height: 70%;
-    left: 0;
-}
-
-.ProductName{
-    position: absolute;
-    bottom: 2%;
-    color: yellow;
-    font-size: 15px;
-    text-align: left;
-    margin-left: 0.4rem;
-    width: 90%;
-    background: forestgreen;
-    padding: 2%;
-    border-radius: 5px;
-}
-
-.ProductPrice{
-    position: absolute;
-    color: orange;
-    bottom: 20%;
-    text-align: center;
-    margin-left: 0.5rem;
-}
-
-.ProductNumber{
-    position: absolute;
-    color: teal;
-    bottom: 19%;
-    text-align: center;
-    margin-right: 0.3rem;
-    right: 0;
-    background: #cdcdcd;
-    padding: 2%;
-    border-radius: 10px;
-}
-
-#SectionName{
-    position: absolute;
-    right: 1rem;
-    bottom: 0;
-}
-
-.BackIcon{
-    position: absolute;
-    left: 0.5rem;
-    bottom: 10%;
-}
-
-.ProductDiv{
-    position: relative;
-    background: forestgreen;
+    height: 50px;
+    margin: 2%;
     width: 95%;
-    height: 80px;
     display: inline-flex;
-    margin: 1% 2% 2% 2%;
-    border-radius: 8px;
+    overflow-x: auto;
 }
 
-.ProductImage{
-    position: absolute;
-    width: 100px;
-    object-fit: cover;
-    height: 100%;
-}
-
-.MoreIcon{
-    position: absolute;
-    margin-right: 1rem;
-    right: 0;
-    bottom: 30px;
-}
-
-.ProductNamer{
-    position: absolute;
-    left: 120px;
-    color: teal;
-    margin-top: 1rem;
-    background: #cdcdcd;
-    padding: 2%;
-    border-radius: 10px;
-    width: 55%;
-    height: 40px;
-}
-
-#BottomDiv{
-    bottom: 0;
-}
-
-.AccessButton{
-    background: forestgreen;
-}
-
-.ForgotPassword{
-    text-align: right;
-    margin-right: 1rem;
+.SectionName{
+    text-align: left;
+    margin-left: 2%;
     font-size: 20px;
+    color: #228b22;
+}
+
+.DataDiv{
+    position: relative;
+    background: teal;
+    height: 200px;
+    margin: 2%;
+    width: 95%;
+    border-radius: 10px;
+    display: inline-flex;   
+}
+
+.CatergoriesDisplay{
+    background: forestgreen;
+    position: relative;
+    flex-shrink: 0;
+    width: 70%;
+    height: 48px;
+    margin: auto;
+    margin-left: 2%;
+    display: inline-flex;
+    border-radius: 50px;
+}
+
+.SectionImageHolder{
+    position: relative;
+    width: 30%;
+    height: auto;
+    border-radius: 50px;
+    
+}
+
+.SectionImage{
+    width: 100%;
+    object-fit: contain;
+}
+
+.CatergoryName{
+    font-size: 14px;
+    width: 90%;
+    color: #ffa500;
+    margin: auto;
 }

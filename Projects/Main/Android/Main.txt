@@ -75,10 +75,19 @@ const HOMEPAGE=()=>{
                             <p class='PostShortStory'>${element.PostShortStory}</p>
 
                         </div>
-
-
-
                     `);
+
+                    CLICK(ELEMENT,()=>{
+
+                        JSONIFICATION(element,(MyData)=>{
+
+                            STOREDATA('','Story',MyData);
+
+                            ROUTE(' ',HOMEPAGENEWS,'HOMEPAGE');
+
+                        });
+
+                    });
 
                 });
 
@@ -103,7 +112,6 @@ const APPDATA=()=>{
                 'data':data
             }
 
-            
             STOREINDEXED('HomePosts','HomePosts',MYDATA,(resback)=>{
 
                 CONDITION(resback  === true,()=>{
@@ -121,6 +129,36 @@ const APPDATA=()=>{
             });
 
         });
+
+    });
+
+};
+
+const HomeNav=()=>{
+
+    ROUTE('',HOMEPAGE,'HOMEPAGE');
+}
+
+const HOMEPAGENEWS=()=>{
+
+    DEJSON(sessionStorage.getItem('Story'),(data)=>{
+
+        DISPLAY('',`
+
+            <div class='HomeHeader'>
+
+                <img class='LeftIcon' src='${WHITEBACKICON}' onclick='HomeNav()'/>
+
+                <h1 class='PostName'>${data.PostName}</h1>
+
+            </div>
+
+            <div class='ContentHolder'>
+            
+            </div>
+
+            
+        `);
 
     });
 

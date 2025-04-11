@@ -1,0 +1,69 @@
+.RoundFooter{
+    background: #228b22;
+    border: none;
+    border-radius: 10px;
+}
+
+.HomeDiv{
+    background: transparent;
+    overflow-y: auto;
+}
+
+.CatergorySection{
+    position: relative;
+    background: transparent;
+    height: 50px;
+    margin: 2%;
+    width: 95%;
+    display: inline-flex;
+    overflow-x: auto;
+}
+
+.SectionName{
+    text-align: left;
+    margin-left: 2%;
+    font-size: 20px;
+    color: #228b22;
+}
+
+.DataDiv{
+    position: relative;
+    background: teal;
+    height: 200px;
+    margin: 2%;
+    width: 95%;
+    border-radius: 10px;
+    display: inline-flex;   
+}
+
+.CatergoriesDisplay{
+    background: forestgreen;
+    position: relative;
+    flex-shrink: 0;
+    width: 70%;
+    height: 48px;
+    margin: auto;
+    margin-left: 2%;
+    display: inline-flex;
+    border-radius: 50px;
+}
+
+.SectionImageHolder{
+    position: relative;
+    width: 30%;
+    height: auto;
+    border-radius: 50px;
+    
+}
+
+.SectionImage{
+    width: 100%;
+    object-fit: contain;
+}
+
+.CatergoryName{
+    font-size: 14px;
+    width: 90%;
+    color: #ffa500;
+    margin: auto;
+}

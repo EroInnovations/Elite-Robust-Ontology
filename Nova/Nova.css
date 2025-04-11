@@ -746,11 +746,13 @@ hr{
     color:  #fff;
     text-align:  center;
 }
-.RoundFooter  {
+.RoundFooter {
     width:  95%;
     left:  2%;
     border-radius:  50px;
     bottom:  1%;
+    height: 50px;
+    border: 1px solid #cdcdcd50;
 }
 #HomeLoader  {
     margin:  70% 45%;
