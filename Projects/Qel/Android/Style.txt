@@ -147,3 +147,9 @@ footer img:hover{
 .AccessButton{
     background: forestgreen;
 }
+
+.ForgotPassword{
+    text-align: right;
+    margin-right: 1rem;
+    font-size: 20px;
+}

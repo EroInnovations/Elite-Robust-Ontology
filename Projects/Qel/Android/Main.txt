@@ -35,7 +35,11 @@ const HOMEPAGE=()=>{
 
         </header>
 
-        <div class='HomeDiv'></div>
+        <div class='HomeDiv'>
+
+            <img class='LoadingIcon' src='${WHITELOADINGICON}'/>
+        
+        </div>
 
         <footer>
 
@@ -252,14 +256,19 @@ const CATERGORYPAGE=()=>{
 
         </header>
 
-        <div class='HomeDiv' id='BottomDiv'></div>
-    
+        <div class='HomeDiv' id='BottomDiv'>
+
+            <img class='LoadingIcon' src='${WHITELOADINGICON}'/>
+        
+        </div>
     
     `);
 
     const HomeDiv=document.querySelector('.HomeDiv');
 
     GETINDEXED('Catergory','Catergory',(data)=>{
+
+        DISPLAY(HomeDiv,'');
 
         REDUX(data,(element)=>{
 
@@ -509,12 +518,50 @@ const USERACCOUNTPAGE=()=>{
             
             </p>
 
-            <button class='AccessButton'>Log In</button>
+            <button class='AccessButton' onclick='UserLogInNav()'>Log In</button>
 
             <button class='AccessButton' >Create Account</button>
            
         `);
         
     };
+
+};
+
+const UserLogInNav=()=>{
+
+    ROUTE(' ',LOGINPAGE,'HOMEPAGE');
+
+}
+
+const LOGINPAGE=()=>{
+
+    DISPLAY('',`
+
+        <header class='TopHeader'>
+
+            <img class='BackIcon' src='${WHITEBACKICON}' onclick='HomeBackPageNav()'/>
+
+            <h1 class='AppName' id='SectionName'>Authenatication</h1>
+
+        </header>
+
+        <div class='HomeDiv' id='BottomDiv'>
+
+            <br><br>
+
+            <input type="email" placeholder="Enter User Email">
+
+            <input type="password" placeholder="*******" >
+
+            <button class="forestgreen">Sign In</button>
+
+            <p class="ForgotPassword" >Forgot Password!</p>
+
+            <button class="blue">Create Account</button>
+        
+        </div>
+        
+    `);
 
 };
