@@ -81,7 +81,7 @@
 }
 
 header{
-    height: 100px;
+    height: 70px;
 }
 
 .RightText{
@@ -91,7 +91,7 @@ header{
 }
 
 .TopDiv{
-    top: 100px;
+    top: 70px;
     overflow-y: auto;
     background: transparent;
 }
@@ -143,4 +143,57 @@ header{
 
 #Loader{
     margin-top: 50%;
+}
+
+.ProfileHolder{
+    position: relative;
+    width:95%;
+    background: transparent;
+    height: 250px;
+    margin: 2%;
+}
+
+.ProfileIcon{
+    position: absolute;
+    left: 0;
+    width: 30%;
+    height: 50%;
+    margin-left: 0.5rem;
+}
+
+.DetailsHolder{
+    width: 50%;
+    right: 0;
+    background: transparent;
+    border-left: 1px solid #228b22;
+}
+
+.inlineButton{
+    display: inline-flex;
+    background: forestgreen;
+    left: 0;
+    margin: 1% auto;
+}
+
+.LeftImage{
+    margin-left: 1rem;
+}
+
+.RightTexter{
+    margin: auto;
+    margin-right: 0.5rem;
+}
+
+.MyDetailsHolder{
+    bottom: 0;
+    height: 100px;
+    top: auto;
+    width: 48%;
+    left: 0.5%;
+    background: transparent;
+}
+
+.UserName{
+    font-size: 20px;
+    margin-top: 0.5rem;
 }

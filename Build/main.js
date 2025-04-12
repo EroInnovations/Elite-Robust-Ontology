@@ -75,11 +75,15 @@ const APPDATA=()=>{
 
 const HOMEPAGE=()=>{
 
+    APPDATA();
+
     DISPLAY('',`
 
         <div class='HomeDiv'>
 
             <br><br>
+
+            <img  class='LoadingIcon' src='${WHITELOADINGICON}'/>
 
             <h1 class='SectionName'>Categories </h1>
 
@@ -87,11 +91,7 @@ const HOMEPAGE=()=>{
 
             <br>
 
-            <div class='CatergorySection' id='HomeCatergories'>
-            
-                <img  class='LoadingIcon' src='${WHITELOADINGICON}'/>
-            
-            </div>
+            <div class='CatergorySection' id='HomeCatergories'></div>
 
             <br><br>
 
@@ -117,11 +117,13 @@ const HOMEPAGE=()=>{
 
         <footer class='RoundFooter'>
 
-            <img src='${WHITETRENDINGTOPICSICON}'/>
+            <img src='${WHITESHOPPINGCART}' onclick='ShoppingPageNav()' />
 
-            <img src='${WHITESHOPPINGCART}'/>
+            <img src='${WHITEHEARTICON}' onclick='HeartPageNav()'/>
 
-            <img src='${WHITESETTINGSICON}'/>
+            <img src='${WHITENOTIFICATIONICON}' onclick='NotificationsPageNav()' />
+
+            <img src='${WHITESETTINGSICON}' onclick='SettingsPageNav()' />
 
         </footer>
         
@@ -169,9 +171,17 @@ const CATEGORIESDATA=()=>{
 
                     `);
 
-                });
+                    CLICK(ELEMENT,()=>{
 
-                console.log(element);
+                        STOREDATA('','CatergoryName',element.ProductName);
+
+                        STOREDATA('','CatergoryID',element.ID);
+
+                        CatergoryProductsNav();
+
+                    });
+
+                });
 
             });
 
@@ -235,5 +245,318 @@ const ALLPRODUCTSPAGE=()=>{
         });
 
     });
+
+};
+
+const CatergoryProductsNav=()=>{
+
+    ROUTE(' ',CATERGORYPRODUCTSPAGE,'HOMEPAGE');
+
+};
+
+const CATERGORYPRODUCTSPAGE=()=>{
+
+    DISPLAY('',`
+    <header>
+
+        <img class='LeftIcon' src='${WHITEBACKICON}' onclick='HomeNav()' />
+
+        <h1 class='RightText'>${sessionStorage.getItem('CatergoryName')}</h1>
+    
+    </header>
+
+    <div class='TopDiv'>
+
+        <img id='Loader' class='LoadingIcon' src='${WHITELOADINGICON}'/>
+    
+    </div>
+        
+    `);
+
+    const HomeCatergories=document.querySelector('.TopDiv');
+
+    GETINDEXED('QelProducts','QelProducts',(data)=>{
+
+        DISPLAY(HomeCatergories,'');
+
+        REDUX(data,(Element)=>{
+
+            REDUX(Element.data,(element)=>{
+
+                CHECKER(sessionStorage.getItem('CatergoryID') === element.ProductCatergory,()=>{
+
+                    CREATEELEMENT(HomeCatergories,'div','AllProductsDiv',(ELEMENT)=>{
+
+                        DISPLAY(ELEMENT,`
+    
+                            <img class='AllProductsImage' src='${element.ProductImage}'/>
+    
+                            <div class='AllProductsDivBottom'>
+    
+                                <p class='AllProductName'>${element.ProductName}</p>
+    
+                                <h1 class='AllProductPrice'>Ugx${element.ProductPrice}</h1>
+                            
+                            </div>
+    
+                        `);
+    
+                    });
+
+                });
+
+            });
+
+        });
+
+    });
+
+};
+
+const SettingsPageNav=()=>{
+
+    ROUTE(' ',SETTINGSPRODUCTSPAGE,'HOMEPAGE');
+
+};
+
+const SETTINGSPRODUCTSPAGE=()=>{
+
+    DISPLAY('',`
+    <header>
+
+        <img class='LeftIcon' src='${WHITEBACKICON}' onclick='HomeNav()' />
+
+        <h1 class='RightText'>Settings</h1>
+    
+    </header>
+
+    <div class='TopDiv'>
+
+        <div class='ProfileHolder'>
+
+            <img class='ProfileIcon' src='${WHITEPROFILEICON}'/>
+
+            <div class='MyDetailsHolder'>
+
+                <p class='UserName'>Qel Medi User</p>
+
+                <p>user@gmail.com</p>
+
+                <p></p>
+            
+            </div>
+
+            <div class='DetailsHolder'>
+
+                <button class='inlineButton'>
+
+                    <img class='LeftImage' src='${WHITEGROUPICON}'/>
+
+                    <p class='RightTexter'>Followers</p>
+                
+                </button>
+
+                <button class='inlineButton'>
+
+                    <img class='LeftImage' src='${WHITELOCATIONICON}'/>
+
+                    <p class='RightTexter'>Mbale</p>
+                
+                </button>
+
+                <button class='inlineButton'>
+
+                    <img class='LeftImage' src='${WHITEPENCILICON}'/>
+
+                    <p class='RightTexter'>Profile Update</p>
+                
+                </button>
+
+                <button class='inlineButton' id='AccountMonitoring'></button>
+            
+            </div>
+        
+        </div>
+
+        <button class='inlineButton'>
+
+            <img class='LeftImage' src='${WHITEGROUPICON}'/>
+
+            <p class='RightTexter'>Qel Medistore Community</p>
+        
+        </button>
+
+        <button class='inlineButton'>
+
+            <img class='LeftImage' src='${WHITECREATEDONICON}'/>
+
+            <p class='RightTexter'>Sell With Us</p>
+        
+        </button>
+
+        <button class='inlineButton'>
+
+            <img class='LeftImage' src='${WHITECONTRASTICON}'/>
+
+            <p class='RightTexter'>App Mode</p>
+        
+        </button>
+
+        <button class='inlineButton'>
+
+            <img class='LeftImage' src='${WHITENOTIFICATIONICON}'/>
+
+            <p class='RightTexter'>App Notifications</p>
+        
+        </button>
+
+        <button class='inlineButton'>
+
+            <img class='LeftImage' src='${WHITEPRIVACYPOLICYICON}'/>
+
+            <p class='RightTexter'>Terms and Conditions</p>
+        
+        </button>
+
+        <button class='inlineButton'>
+
+            <img class='LeftImage' src='${WHITEPHONEICON}'/>
+
+            <p class='RightTexter'>Contact Us</p>
+        
+        </button>
+
+        <button class='inlineButton'>
+
+            <img class='LeftImage' src='${WHITEHELPICON}'/>
+
+            <p class='RightTexter'>Help</p>
+        
+        </button>
+
+        <button class='inlineButton'>
+
+            <img class='LeftImage' src='${WHITEMOBILEDEVELOPMENTICON}'/>
+
+            <p class='RightTexter'>App Updates</p>
+        
+        </button>
+
+        <button class='inlineButton' onclick='RELOAD()'>
+
+            <img class='LeftImage' src='${WHITERETRYICON}'/>
+
+            <p class='RightTexter'>App Sync</p>
+        
+        </button>
+
+    </div>
+        
+    `);
+
+    const AccountMonitoring = document.querySelector('#AccountMonitoring');
+
+    if (localStorage.getItem('UserData')) {
+
+        DISPLAY(AccountMonitoring,`
+        
+            <img class='LeftImage' src='${WHITELOGOUTICON}'/>
+
+            <p class='RightTexter'>Log Out</p>
+            
+        `);
+   
+    } else {
+
+        DISPLAY(AccountMonitoring,`
+        
+            <img class='LeftImage' src='${WHITEENTERICON}'/>
+
+            <p class='RightTexter'>Log In</p>
+            
+        `);
+        
+    };
+
+};
+
+const ShoppingPageNav=()=>{
+
+    ROUTE(' ',SHOPPINGCARTPRODUCTSPAGE,'HOMEPAGE');
+
+};
+
+const SHOPPINGCARTPRODUCTSPAGE=()=>{
+
+    DISPLAY('',`
+    <header>
+
+        <img class='LeftIcon' src='${WHITEBACKICON}' onclick='HomeNav()' />
+
+        <h1 class='RightText'>My Items</h1>
+    
+    </header>
+
+    <div class='TopDiv'>
+
+        
+    
+    </div>
+        
+    `);
+
+};
+
+const HeartPageNav=()=>{
+
+    ROUTE(' ',HEARTEDPRODUCTSPAGE,'HOMEPAGE');
+
+};
+
+const HEARTEDPRODUCTSPAGE=()=>{
+
+    DISPLAY('',`
+    <header>
+
+        <img class='LeftIcon' src='${WHITEBACKICON}' onclick='HomeNav()' />
+
+        <h1 class='RightText'>Favourite Items</h1>
+    
+    </header>
+
+    <div class='TopDiv'>
+
+        
+    
+    </div>
+        
+    `);
+
+};
+
+const NotificationsPageNav=()=>{
+
+    ROUTE(' ',NOTIFICATIONSPAGE,'HOMEPAGE');
+
+};
+
+const NOTIFICATIONSPAGE=()=>{
+
+    DISPLAY('',`
+    <header>
+
+        <img class='LeftIcon' src='${WHITEBACKICON}' onclick='HomeNav()' />
+
+        <h1 class='RightText'>Notifications</h1>
+    
+    </header>
+
+    <div class='TopDiv'>
+
+        
+    
+    </div>
+        
+    `);
 
 };
