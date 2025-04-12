@@ -203,3 +203,30 @@ header{
     margin-top: 2rem;
    
 }
+.AccountSection{
+    width: 98%;
+    display: inline-flex;
+    position: relative;
+    height: 50px;
+    margin: 1%;
+    margin-top: 2%;
+    background: transparent;
+}
+
+.AccountSections{
+    top: 50px;
+    background: transparent;
+    overflow-y: auto;
+}
+
+.RoundInput{
+    border-radius: 10px;
+    border: 1px solid #cdcdcd50;
+    padding: 1%;
+    text-align: left;
+}
+
+.AccountSection p:hover{
+    color: teal;
+    font-size: 20px;
+}

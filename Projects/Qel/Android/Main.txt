@@ -143,7 +143,7 @@ const HomeNav=()=>{
 
     ROUTE('',HOMEPAGE,'HOMEPAGE');
 
-}
+};
 
 const CATEGORIESDATA=()=>{
 
@@ -352,7 +352,7 @@ const SETTINGSPRODUCTSPAGE=()=>{
 
             <div class='DetailsHolder'>
 
-                <button class='inlineButton'>
+                <button class='inlineButton' onclick='FollowerPageNav()'>
 
                     <img class='LeftImage' src='${WHITEGROUPICON}'/>
 
@@ -360,7 +360,7 @@ const SETTINGSPRODUCTSPAGE=()=>{
                 
                 </button>
 
-                <button class='inlineButton'>
+                <button class='inlineButton' onclick='LocationUserNav()'>
 
                     <img class='LeftImage' src='${WHITELOCATIONICON}'/>
 
@@ -368,7 +368,7 @@ const SETTINGSPRODUCTSPAGE=()=>{
                 
                 </button>
 
-                <button class='inlineButton'>
+                <button class='inlineButton' onclick='UpdateProfileNav()'>
 
                     <img class='LeftImage' src='${WHITEPENCILICON}'/>
 
@@ -382,7 +382,7 @@ const SETTINGSPRODUCTSPAGE=()=>{
         
         </div>
 
-        <button class='inlineButton'>
+        <button class='inlineButton' onclick='CommunityPageNav()'>
 
             <img class='LeftImage' src='${WHITEGROUPICON}'/>
 
@@ -390,7 +390,7 @@ const SETTINGSPRODUCTSPAGE=()=>{
         
         </button>
 
-        <button class='inlineButton'>
+        <button class='inlineButton' onclick='SellwithUsPageNav()'>
 
             <img class='LeftImage' src='${WHITECREATEDONICON}'/>
 
@@ -406,7 +406,7 @@ const SETTINGSPRODUCTSPAGE=()=>{
         
         </button>
 
-        <button class='inlineButton'>
+        <button class='inlineButton' onclick='AppNotificationsNav()'>
 
             <img class='LeftImage' src='${WHITENOTIFICATIONICON}'/>
 
@@ -414,7 +414,7 @@ const SETTINGSPRODUCTSPAGE=()=>{
         
         </button>
 
-        <button class='inlineButton'>
+        <button class='inlineButton' onclick='AppTermsNav()'>
 
             <img class='LeftImage' src='${WHITEPRIVACYPOLICYICON}'/>
 
@@ -422,7 +422,7 @@ const SETTINGSPRODUCTSPAGE=()=>{
         
         </button>
 
-        <button class='inlineButton'>
+        <button class='inlineButton' onclick='ContactNav()'>
 
             <img class='LeftImage' src='${WHITEPHONEICON}'/>
 
@@ -430,7 +430,7 @@ const SETTINGSPRODUCTSPAGE=()=>{
         
         </button>
 
-        <button class='inlineButton'>
+        <button class='inlineButton' onclick='HelpNav()'>
 
             <img class='LeftImage' src='${WHITEHELPICON}'/>
 
@@ -438,7 +438,7 @@ const SETTINGSPRODUCTSPAGE=()=>{
         
         </button>
 
-        <button class='inlineButton'>
+        <button class='inlineButton' onclick='AppVersionNav()'>
 
             <img class='LeftImage' src='${WHITEMOBILEDEVELOPMENTICON}'/>
 
@@ -469,6 +469,12 @@ const SETTINGSPRODUCTSPAGE=()=>{
             <p class='RightTexter'>Log Out</p>
             
         `);
+
+        CLICK(AccountMonitoring,()=>{
+
+            SETTINGSPRODUCTSPAGE();
+
+        });
    
     } else {
 
@@ -479,6 +485,12 @@ const SETTINGSPRODUCTSPAGE=()=>{
             <p class='RightTexter'>Log In</p>
             
         `);
+
+        CLICK(AccountMonitoring,()=>{
+
+            AccountNav();
+
+        });
         
     };
 
@@ -559,6 +571,443 @@ const NOTIFICATIONSPAGE=()=>{
 
         
     
+    </div>
+        
+    `);
+
+};
+
+const AccountNav=()=>{
+
+    ROUTE(' ',ACCOUNTPAGE,'SETTINGSPRODUCTSPAGE');
+}
+
+const ACCOUNTPAGE=()=>{
+
+    DISPLAY('',`
+        <header>
+    
+            <img class='LeftIcon' src='${WHITEBACKICON}' onclick='SettingsPageNav()' />
+    
+            <h1 class='RightText'>My Account</h1>
+        
+        </header>
+    
+        <div class='TopDiv'>
+
+            <div class='AccountSection'>
+
+                <p id='CreateAccount'>Create Account</p>
+
+                <p id='LogIn'>Log In</p>
+
+                <p id='ForgotPassword'>Forgot Password?</p>
+            
+            </div>
+
+            <div class='AccountSections'>
+
+                <br><br>
+
+                <h1>SIGN IN</h1>
+
+                <br>
+
+                <p>Log In to Access Your Account</p>
+
+                <input type='email' placeholder='Enter User Email' class='RoundInput' />
+
+                <input type='password' placeholder='*******' class='RoundInput' />
+
+                <button class='inlineButton'>
+
+                    <img class='LeftImage' src='${WHITEENTERICON}'/>
+
+                    <p class='RightTexter'>Log In</p>
+            
+                </button>
+            
+            </div>
+
+        </div>
+            
+    `);
+
+    const AccountSections=document.querySelector('.AccountSections');
+    const CreateAccount=document.querySelector('#CreateAccount');
+    const LogIn=document.querySelector('#LogIn');
+    const ForgotPassword=document.querySelector('#ForgotPassword');
+
+    CLICK(CreateAccount,()=>{
+
+        DISPLAY(AccountSections,`
+
+            <br><br>
+
+            <h1>REGISTER</h1>
+
+            <br>
+
+            <p>Create Password To Access Your Account</p>
+
+            <input type='text' placeholder='Enter User Name' class='RoundInput' />
+
+            <input type='email' placeholder='Enter User Email' class='RoundInput' />
+
+            <input type='password' placeholder='*******' class='RoundInput' />
+
+            <button class='inlineButton'>
+
+                <img class='LeftImage' src='${WHITEENTERICON}'/>
+
+                <p class='RightTexter'>Create Account</p>
+            
+            </button>
+            
+        `);
+
+    });
+
+    CLICK(LogIn,()=>{
+
+        ACCOUNTPAGE();
+
+    });
+
+    CLICK(ForgotPassword,()=>{
+
+        DISPLAY(AccountSections,`
+
+            <br><br>
+
+            <h1>RECOVER ACCOUNT</h1>
+
+            <br>
+
+            <p>Recover Account To Access Your Account</p>
+
+            <input type='email' placeholder='Enter User Email' class='RoundInput' />
+
+            <button class='inlineButton'>
+
+                <img class='LeftImage' src='${WHITEENTERICON}'/>
+
+                <p class='RightTexter'>Recover Password</p>
+            
+            </button>
+            
+        `);
+
+    });
+
+};
+
+const UpdateProfileNav=()=>{
+
+    if (localStorage.getItem('UserData')) {
+
+        ROUTE(' ',UPDATEPROFILESPAGE,'SETTINGSPRODUCTSPAGE');
+        
+    } else {
+
+        ROUTE(' ',ACCOUNTPAGE,'SETTINGSPRODUCTSPAGE');
+        
+    }
+
+};
+
+const UPDATEPROFILESPAGE=()=>{
+
+    DISPLAY('',`
+    <header>
+
+        <img class='LeftIcon' src='${WHITEBACKICON}' onclick='HomeNav()' />
+
+        <h1 class='RightText'>Qel</h1>
+    
+    </header>
+
+    <div class='TopDiv'>
+
+        
+    
+    </div>
+        
+    `);
+
+};
+
+const LocationUserNav=()=>{
+
+    if (localStorage.getItem('UserData')) {
+
+        ROUTE(' ',USERLOCATIONPAGE,'SETTINGSPRODUCTSPAGE');
+        
+    } else {
+
+        ROUTE(' ',ACCOUNTPAGE,'SETTINGSPRODUCTSPAGE');
+        
+    }
+
+};
+
+const USERLOCATIONPAGE=()=>{
+
+    DISPLAY('',`
+    <header>
+
+        <img class='LeftIcon' src='${WHITEBACKICON}' onclick='HomeNav()' />
+
+        <h1 class='RightText'>Qel</h1>
+    
+    </header>
+
+    <div class='TopDiv'>
+
+        
+    
+    </div>
+        
+    `);
+
+};
+
+const FollowerPageNav=()=>{
+
+    if (localStorage.getItem('UserData')) {
+
+        ROUTE(' ',USERFOLLOWERPAGE,'SETTINGSPRODUCTSPAGE');
+        
+    } else {
+
+        ROUTE(' ',ACCOUNTPAGE,'SETTINGSPRODUCTSPAGE');
+        
+    }
+
+};
+
+const USERFOLLOWERPAGE=()=>{
+
+    DISPLAY('',`
+    <header>
+
+        <img class='LeftIcon' src='${WHITEBACKICON}' onclick='HomeNav()' />
+
+        <h1 class='RightText'>My Community</h1>
+    
+    </header>
+
+    <div class='TopDiv'>
+
+        
+    
+    </div>
+        
+    `);
+
+};
+
+const CommunityPageNav=()=>{
+
+    if (localStorage.getItem('UserData')) {
+
+        ROUTE(' ',QELCOMMUNITYPAGE,'SETTINGSPRODUCTSPAGE');
+        
+    } else {
+
+        ROUTE(' ',ACCOUNTPAGE,'SETTINGSPRODUCTSPAGE');
+        
+    }
+
+};
+
+const QELCOMMUNITYPAGE=()=>{
+
+    DISPLAY('',`
+    <header>
+
+        <img class='LeftIcon' src='${WHITEBACKICON}' onclick='SettingsPageNav()' />
+
+        <h1 class='RightText'>Qel Community</h1>
+    
+    </header>
+
+    <div class='TopDiv'>
+
+        
+    
+    </div>
+        
+    `);
+
+};
+
+const SellwithUsPageNav=()=>{
+
+    if (localStorage.getItem('UserData')) {
+
+        ROUTE(' ',SELLWITHUSPAGE,'SETTINGSPRODUCTSPAGE');
+        
+    } else {
+
+        ROUTE(' ',ACCOUNTPAGE,'SETTINGSPRODUCTSPAGE');
+        
+    }
+
+};
+
+const SELLWITHUSPAGE=()=>{
+
+    DISPLAY('',`
+    <header>
+
+        <img class='LeftIcon' src='${WHITEBACKICON}' onclick='SettingsPageNav()' />
+
+        <h1 class='RightText'>Qel Medistore Sellers</h1>
+    
+    </header>
+
+    <div class='TopDiv'>
+
+        
+    
+    </div>
+        
+    `);
+
+};
+
+const AppNotificationsNav=()=>{
+
+    ROUTE(' ',APPNOTIFICATIONSPAGE,'SETTINGSPRODUCTSPAGE');
+
+};
+
+const APPNOTIFICATIONSPAGE=()=>{
+
+    DISPLAY('',`
+    <header>
+
+        <img class='LeftIcon' src='${WHITEBACKICON}' onclick='SettingsPageNav()' />
+
+        <h1 class='RightText'>App Notifications</h1>
+    
+    </header>
+
+    <div class='TopDiv'>
+
+        
+    
+    </div>
+        
+    `);
+
+};
+
+const AppTermsNav=()=>{
+
+    ROUTE(' ',APPTERMSPAGE,'SETTINGSPRODUCTSPAGE');
+
+};
+
+const APPTERMSPAGE=()=>{
+
+    DISPLAY('',`
+    <header>
+
+        <img class='LeftIcon' src='${WHITEBACKICON}' onclick='SettingsPageNav()' />
+
+        <h1 class='RightText'>Policies</h1>
+    
+    </header>
+
+    <div class='TopDiv'>
+
+        
+    
+    </div>
+        
+    `);
+
+};
+
+const ContactNav=()=>{
+
+    ROUTE(' ',CONTACTUSPAGE,'SETTINGSPRODUCTSPAGE');
+
+};
+
+const CONTACTUSPAGE=()=>{
+
+    DISPLAY('',`
+    <header>
+
+        <img class='LeftIcon' src='${WHITEBACKICON}' onclick='SettingsPageNav()' />
+
+        <h1 class='RightText'>Reach Us</h1>
+    
+    </header>
+
+    <div class='TopDiv'>
+
+        
+    
+    </div>
+        
+    `);
+
+};
+
+const HelpNav=()=>{
+
+    ROUTE(' ',HELPPAGE,'SETTINGSPRODUCTSPAGE');
+
+};
+
+const HELPPAGE=()=>{
+
+    DISPLAY('',`
+    <header>
+
+        <img class='LeftIcon' src='${WHITEBACKICON}' onclick='SettingsPageNav()' />
+
+        <h1 class='RightText'>FAQ</h1>
+    
+    </header>
+
+    <div class='TopDiv'>
+
+        
+    
+    </div>
+        
+    `);
+
+};
+
+const AppVersionNav=()=>{
+
+    ROUTE(' ',APPVERSIONPAGE,'SETTINGSPRODUCTSPAGE');
+
+};
+
+const APPVERSIONPAGE=()=>{
+
+    DISPLAY('',`
+    <header>
+
+        <img class='LeftIcon' src='${WHITEBACKICON}' onclick='SettingsPageNav()' />
+
+        <h1 class='RightText'>Configuration</h1>
+    
+    </header>
+
+    <div class='TopDiv'>
+
+        <h3>Version : 01</h3>
+
+        <p>No Current Updates On Version 01</p>
+        
     </div>
         
     `);
