@@ -88,7 +88,7 @@ const BODY=()=>{
 };
 const RELOAD=()=>{
 
-    location.href='./index.html'; 
+    window.location.reload();
 
 };
 const BREAK=(ELEMENT)=>{
