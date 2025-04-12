@@ -197,3 +197,9 @@ header{
     font-size: 20px;
     margin-top: 0.5rem;
 }
+
+#Loaded{
+    position: absolute;
+    margin-top: 2rem;
+   
+}

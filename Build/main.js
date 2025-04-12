@@ -81,6 +81,8 @@ const HOMEPAGE=()=>{
 
         <div class='HomeDiv'>
 
+            <img  class='LoadingIcon' id='Loaded'src='${WHITELOADINGICON}'/>
+
             <br><br>
 
             <h1 class='SectionName'>Categories </h1>
@@ -88,8 +90,6 @@ const HOMEPAGE=()=>{
             <h1 class='SectionName' id='AllProducts' onclick='AllProductsNav()'>All Products</h1>
 
             <br>
-
-            <img  class='LoadingIcon' id='Loaded'src='${WHITELOADINGICON}'/>
 
             <div class='CatergorySection' id='HomeCatergories'></div>
 
@@ -149,11 +149,13 @@ const CATEGORIESDATA=()=>{
 
     const HomeCatergories=document.querySelector('#HomeCatergories');
 
-    const Loaded=document.querySelector('#Loaded')
+    const Loaded=document.querySelector('#Loaded');
 
     GETINDEXED('Catergory','Catergory',(data)=>{
 
         DISPLAY(HomeCatergories,'');
+
+        Loaded.style.display='none';
 
         REDUX(data,(Element)=>{
 
