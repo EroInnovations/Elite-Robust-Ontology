@@ -83,13 +83,13 @@ const HOMEPAGE=()=>{
 
             <br><br>
 
-            <img  class='LoadingIcon' src='${WHITELOADINGICON}'/>
-
             <h1 class='SectionName'>Categories </h1>
 
             <h1 class='SectionName' id='AllProducts' onclick='AllProductsNav()'>All Products</h1>
 
             <br>
+
+            <img  class='LoadingIcon' id='Loaded'src='${WHITELOADINGICON}'/>
 
             <div class='CatergorySection' id='HomeCatergories'></div>
 
@@ -148,6 +148,8 @@ const HomeNav=()=>{
 const CATEGORIESDATA=()=>{
 
     const HomeCatergories=document.querySelector('#HomeCatergories');
+
+    const Loaded=document.querySelector('#Loaded')
 
     GETINDEXED('Catergory','Catergory',(data)=>{
 
