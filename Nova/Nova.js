@@ -86,11 +86,7 @@ const BODY=()=>{
     ELEMENT.style.fontFamily='sans-serif';
  
 };
-const RELOAD=()=>{
 
-    window.location.reload();
-
-};
 const BREAK=(ELEMENT)=>{
 
     let ELEMENT1=document.createElement('br');

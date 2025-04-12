@@ -450,14 +450,6 @@ const SETTINGSPRODUCTSPAGE=()=>{
         
         </button>
 
-        <button class='inlineButton' onclick='RELOAD()'>
-
-            <img class='LeftImage' src='${WHITERETRYICON}'/>
-
-            <p class='RightTexter'>App Sync</p>
-        
-        </button>
-
     </div>
         
     `);
@@ -1187,7 +1179,7 @@ const APPVERSIONPAGE=()=>{
 
                                             HIDER(2000,()=>{
 
-                                                RELOAD();
+                                                window.location.reload();
 
                                             });
 
