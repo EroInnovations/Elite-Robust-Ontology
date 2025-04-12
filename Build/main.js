@@ -325,6 +325,8 @@ const SettingsPageNav=()=>{
 
 const SETTINGSPRODUCTSPAGE=()=>{
 
+    BACKPAGE('HOMEPAGE');
+
     DISPLAY('',`
     <header>
 
