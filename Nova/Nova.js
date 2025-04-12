@@ -1908,3 +1908,14 @@ const OPERATINGSYSTEM=() => {
   
     return os;
 };
+
+const FETCHDATA=(API,callback)=>{
+    fetch(API)
+    .then(res =>res.text())
+    .then(data =>{
+
+        callback(data)
+    } )
+    .catch(error=>console.log(error)
+    )
+};

@@ -12,11 +12,21 @@
 .CatergorySection{
     position: relative;
     background: transparent;
-    height: 50px;
+    height: 500px;
     margin: 2%;
     width: 95%;
-    display: inline-flex;
-    overflow-x: auto;
+    display: block;
+    overflow-y: auto ;
+}
+
+.CatergoriesDisplay{
+    position: relative;
+    height: 200px;
+    width: 31%;
+    background: transparent;
+    display: inline-table;
+    margin: 1%;
+    border-radius: 5px;
 }
 
 .SectionName{
@@ -41,31 +51,6 @@
     width: 95%;
     border-radius: 10px;
     display: inline-flex;   
-}
-
-.CatergoriesDisplay{
-    background: forestgreen;
-    position: relative;
-    flex-shrink: 0;
-    width: 70%;
-    height: 48px;
-    margin: auto;
-    margin-left: 2%;
-    display: inline-flex;
-    border-radius: 50px;
-}
-
-.SectionImageHolder{
-    position: relative;
-    width: 50px;
-    height: auto;
-    border-radius: 50px;
-    
-}
-
-.SectionImage{
-    width: 100%;
-    object-fit: contain;
 }
 
 .CatergoryName{
@@ -229,4 +214,8 @@ header{
 .AccountSection p:hover{
     color: teal;
     font-size: 20px;
+}
+
+#Update{
+    display: none;
 }

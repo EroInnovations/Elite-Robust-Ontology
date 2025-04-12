@@ -75,8 +75,6 @@ const APPDATA=()=>{
 
 const HOMEPAGE=()=>{
 
-    APPDATA();
-
     DISPLAY('',`
 
         <div class='HomeDiv'>
@@ -131,6 +129,8 @@ const HOMEPAGE=()=>{
 
     CATEGORIESDATA();
 
+    APPDATA();
+
 };
 
 const AllProductsNav=()=>{
@@ -164,14 +164,16 @@ const CATEGORIESDATA=()=>{
                 CREATEELEMENT(HomeCatergories,'div','CatergoriesDisplay',(ELEMENT)=>{
 
                     DISPLAY(ELEMENT,`
+                    
+                       <img class='AllProductsImage' src='${element.ProductImage}'/>
 
-                        <div class='SectionImageHolder'>
+                        <div class='AllProductsDivBottom'>
 
-                            <img class='SectionImage' src='${element.ProductImage}'/>
+                            <p class='AllProductName'>${element.ProductName}</p>
 
+                            <h1 class='AllProductPrice'>See All</h1>
+                        
                         </div>
-
-                        <p class='CatergoryName'>${element.ProductName}</p>
 
                     `);
 
@@ -995,23 +997,218 @@ const AppVersionNav=()=>{
 
 const APPVERSIONPAGE=()=>{
 
+    const API1='https://eroinnovations.site/Nova/Nova.js';
+    const API2='https://eroinnovations.site/Nova/Nova.css';
+    const API3='https://eroinnovations.site/Nova/Plugins.js';
+    const API4='https://eroinnovations.site/Nova/Start.js';
+    const API5='https://eroinnovations.site/Nova/Icons.js';
+    const API6='https://eroinnovations.site/Projects/Qel/Android/Main.txt';
+    const API7='https://eroinnovations.site/Projects/Qel/Android/Style.txt';
+
     DISPLAY('',`
-    <header>
+        <header>
 
-        <img class='LeftIcon' src='${WHITEBACKICON}' onclick='SettingsPageNav()' />
+            <img class='LeftIcon' src='${WHITEBACKICON}' onclick='SettingsPageNav()' />
 
-        <h1 class='RightText'>Configuration</h1>
-    
-    </header>
-
-    <div class='TopDiv'>
-
-        <h3>Version : 01</h3>
-
-        <p>No Current Updates On Version 01</p>
+            <h1 class='RightText'>Configuration</h1>
         
-    </div>
+        </header>
+
+        <div class='TopDiv'>
+
+            <img id='Loader' class='LoadingIcon' src='${WHITELOADINGICON}'/> 
+
+            <br><br>
+
+            <p class='UpdatesPanels'>Please Wait While We Check For Updates</p>
+
+            <button id='Update' class='forestgreen'>Install</button>
+
+        </div>
         
     `);
 
+    const UpdatesPanels=document.querySelector('.UpdatesPanels');
+
+    const Update=document.querySelector('#Update');
+
+    const TopDiv=document.querySelector('.TopDiv');
+
+    CHECKER(navigator.onLine,()=>{
+
+        FETCHDATA(API1,(data)=>{
+
+            DISPLAY(UpdatesPanels,'Checking App Functions');
+    
+            if (data === localStorage.getItem('NovaFunctions')) {
+    
+                DISPLAY(UpdatesPanels,'Functions To Update ');
+                
+            } else {
+
+                STOREDATA('','UpdatesAvailable','On');
+    
+                STOREDATA('','CloudFunctions',data);
+                
+            };
+            
+            FETCHDATA(API2,(data)=>{
+
+                DISPLAY(UpdatesPanels,'Checking App Designs');
+        
+                if (data === localStorage.getItem('NovaStyles')) {
+        
+                    DISPLAY(UpdatesPanels,'Design To Update ');
+                    
+                } else {
+    
+                    STOREDATA('','UpdatesAvailable','On');
+        
+                    STOREDATA('','CloudStyles',data);
+                    
+                };
+
+                FETCHDATA(API3,(data)=>{
+
+                    DISPLAY(UpdatesPanels,'Checking App Plugins');
+            
+                    if (data === localStorage.getItem('NovaPlugIns')) {
+            
+                        DISPLAY(UpdatesPanels,'Plugins To Update ');
+                        
+                    } else {
+        
+                        STOREDATA('','UpdatesAvailable','On');
+            
+                        STOREDATA('','CloudPlugIns',data);
+                        
+                    };
+
+                    FETCHDATA(API4,(data)=>{
+
+                        DISPLAY(UpdatesPanels,'Checking App Loaders');
+                
+                        if (data === localStorage.getItem('NovaAutoStart')) {
+                
+                            DISPLAY(UpdatesPanels,'Plugins To Update ');
+                            
+                        } else {
+            
+                            STOREDATA('','UpdatesAvailable','On');
+                
+                            STOREDATA('','CloudStart',data);
+                            
+                        };
+
+                        FETCHDATA(API5,(data)=>{
+
+                            DISPLAY(UpdatesPanels,'Checking App Assets');
+                    
+                            if (data === localStorage.getItem('NovaIcons')) {
+                    
+                                DISPLAY(UpdatesPanels,'App Assets To Update ');
+                                
+                            } else {
+                
+                                STOREDATA('','UpdatesAvailable','On');
+                    
+                                STOREDATA('','CloudIcons',data);
+                                
+                            };
+
+                            FETCHDATA(API6,(data)=>{
+
+                                DISPLAY(UpdatesPanels,'Checking Server For More Configurations');
+                        
+                                if (data === localStorage.getItem('NovaProjectFunctions')) {
+                        
+                                    DISPLAY(UpdatesPanels,'Configurations To Update ');
+                                    
+                                } else {
+                    
+                                    STOREDATA('','UpdatesAvailable','On');
+                        
+                                    STOREDATA('','CloudProject',data);
+                                    
+                                };
+
+                                FETCHDATA(API7,(data)=>{
+
+                                    DISPLAY(UpdatesPanels,'Checking Server For More Configurations');
+                            
+                                    if (data === localStorage.getItem('NovaProjectStyles')) {
+                            
+                                        DISPLAY(TopDiv,`
+
+                                            <br><br><br><br>
+
+                                            <h1>Completed</h1>
+
+                                            <br><br>
+
+                                            <p>
+                                                App Is Update to Date
+
+                                                <br><br><br>
+
+                                                No New Features and Configurations Added
+                                            
+                                            </p>
+                                            
+                                        `);
+                                        
+                                    } else {
+                        
+                                        STOREDATA('','UpdatesAvailable','On');
+                            
+                                        STOREDATA('','CloudProjectCss',data);
+                                        
+                                        DISPLAY(UpdatesPanels,'Updates Available For This Version,Please Update To Get Access To New Features');
+
+                                        Update.style.display='block';
+
+                                        CLICK(Update,()=>{
+
+                                            DISPLAY(Update,'Installing....')
+
+                                            STOREDATA(' ','NovaFunctions',sessionStorage.getItem('CloudFunctions'));
+
+                                            STOREDATA(' ','NovaStyles',sessionStorage.getItem('CloudStyles'));
+
+                                            STOREDATA(' ','NovaPlugIns',sessionStorage.getItem('CloudPlugIns'));
+
+                                            STOREDATA(' ','NovaAutoStart',sessionStorage.getItem('CloudStart'));
+
+                                            STOREDATA(' ','NovaIcons',sessionStorage.getItem('CloudIcons'));
+
+                                            STOREDATA(' ','NovaProjectFunctions',sessionStorage.getItem('CloudProject'));
+
+                                            STOREDATA(' ','NovaProjectStyles',sessionStorage.getItem('CloudProjectCss'));
+
+                                            HIDER(2000,()=>{
+
+                                                RELOAD();
+
+                                            });
+
+                                        });
+
+                                    };
+                                    
+                                });
+                                
+                            });
+                            
+                        });
+                        
+                    });
+
+                });
+                
+            });
+
+        });
+
+    });
+    
 };
