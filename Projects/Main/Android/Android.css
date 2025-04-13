@@ -1,0 +1,23 @@
+.AndroidHomeDiv{
+    overflow-y: auto;
+}
+
+.AndroidCompanyLogo{
+    width: 70%;
+    height: 40%;
+    margin-top: 10%;
+}
+
+.AndroidHeader{
+    position: relative;
+    display: inline-flex;
+    height: 50px;
+    background: transparent;
+}
+
+
+.AndroidLeftText{
+    text-align: left;
+    margin: 1%;
+    font-size: 17px;
+}

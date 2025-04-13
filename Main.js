@@ -1,15 +1,15 @@
 const  NOVASTART=()=>{
 
-    DISPLAY('',`
+    CHECKER(localStorage.getItem('OperatingSystem') === 'Android',()=>{
 
-        <header>
-        
-        </header>
+        ROUTE('',ANDROIDHOMEPAGE,'ANDROIDHOMEPAGE');
 
-        <div></div>
+    });
 
-        <footer></footer>
-        
-    `);
+    CHECKER(localStorage.getItem('OperatingSystem') === 'Desktop',()=>{
 
+        alert('')
+
+    });
+    
 };

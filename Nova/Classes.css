@@ -1,0 +1,254 @@
+.LoadingIcon  {
+    position:  relative;
+    width:  30px;
+    height:  30px;
+    border-radius:  50%;
+    animation:  spin 1s linear infinite reverse;
+}
+@keyframes spin  {
+    0%  {
+    transform:  rotate(0deg);
+}
+100%  {
+    transform:  rotate(-360deg);
+}
+}
+.View  {
+    position:  relative;
+    width:  95%;
+    height:  30%;
+    display:  block;
+    left:  2%;
+    margin-top:  0.5rem;
+    margin-bottom:  0.5rem;
+    border-radius:  10px;
+}
+.MessageDiv  {
+    width:  95%;
+    height:  50px;
+    top:  auto;
+    bottom:  2%;
+    left:  2.5%;
+    border-radius:  5px;
+    display:  inline-flex;
+}
+.MessageTitle  {
+    position:  relative;
+    margin-top:  auto;
+    margin-bottom:  auto;
+    margin-left:  auto;
+    margin-right:  auto;
+    color:  #fff;
+    font-size:  16px;
+}
+.AlertBox  {
+    width:  95%;
+    height:  30%;
+    left:  2%;
+    margin-top:  45%;
+    border-radius:  10px;
+    display:  inline-block;
+    color:  #fff;
+}
+.AlertTitle  {
+    font-size:  20px;
+}
+.AlertBoxOptions  {
+    top:  auto;
+    width:  100%;
+    height:  50px;
+    bottom:  0;
+    background:  #fff0;
+    display:  inline-flex;
+}
+#AlertMessage  {
+    width:  95%;
+    word-wrap:  break-word;
+}
+.BottomDrawer  {
+    top:  auto;
+    bottom:  0;
+    overflow-y:  auto;
+    overflow-x:  hidden;
+    height:  auto;
+    max-height:  50%;
+    display:  block;
+    border-radius:  20px 20px 0 0;
+    border-top:  1px solid #cdcdcd50;
+}
+.bottomCloser  {
+    top:  0;
+    width:  20%;
+    background:  #cdcdcd;
+    height:  3%;
+    left:  40%;
+    margin-top:  0.3rem;
+    margin-bottom:  0.5rem;
+    border-radius:  50px;
+}
+.BottomdataDiv  {
+    position:  relative;
+    height:  50%;
+    background:  #fff0;
+    width:  98%;
+    left:  1%;
+    border-radius:  20px 20px 0 0;
+    top:  10%;
+    bottom:  0;
+    margin-top:  1rem;
+    display:  block;
+}
+.PromptboxInput  {
+    position:  absolute;
+    margin-top:  1rem;
+    margin-bottom:  0.1rem;
+    background:  #fff0;
+    width:  95%;
+    left:  2%;
+    color:  #fff;
+    text-align:  center;
+}
+.Header  {
+    background:  #fff0;
+}
+.BackIcon  {
+    margin-left:  0.2rem;
+    margin-right:  1rem;
+}
+.AppHeader  {
+    position:  relative;
+    background:  #fff0;
+    display:  inline-flex;
+    margin-left:  auto;
+    margin-right:  auto;
+}
+.NavigatorDiv  {
+    top:  50px;
+    background:  #fff0;
+    overflow-y:  auto;
+    overflow-x:  hidden;
+    border-top:  1px solid #cdcdcd50;
+}
+.FooterNavigatorDiv  {
+    bottom:  50px;
+    background:  #fff0;
+    overflow-y:  auto;
+    overflow-x:  hidden;
+    border-bottom:  1px solid #cdcdcd50;
+}
+.ScrollView  {
+    background:  #fff0;
+    overflow-y:  auto;
+    overflow-x:  hidden;
+}
+.MessageDiv  {
+    width:  95%;
+    height:  50px;
+    top:  auto;
+    bottom:  2%;
+    left:  2.5%;
+    border-radius:  5px;
+    display:  inline-flex;
+}
+.MessageTitle  {
+    position:  relative;
+    margin-top:  auto;
+    margin-bottom:  auto;
+    margin-left:  auto;
+    margin-right:  auto;
+    color:  #fff;
+    font-size:  16px;
+}
+.LoadingIcon  {
+    position:  relative;
+    width:  30px;
+    height:  30px;
+    border-radius:  50%;
+    animation:  spin 1s linear infinite reverse;
+}
+@keyframes spin  {
+    0%  {
+    transform:  rotate(0deg);
+}
+100%  {
+    transform:  rotate(-360deg);
+}
+}
+.AlertBox  {
+    width:  95%;
+    height:  30%;
+    left:  2%;
+    margin-top:  45%;
+    border-radius:  10px;
+    display:  inline-block;
+    color:  #fff;
+}
+.AlertTitle  {
+    font-size:  20px;
+}
+.AlertBoxOptions  {
+    top:  auto;
+    width:  100%;
+    height:  50px;
+    bottom:  0;
+    background:  #fff0;
+    display:  inline-flex;
+}
+#AlertMessage  {
+    width:  95%;
+    word-wrap:  break-word;
+}
+.BottomDrawer  {
+    top:  auto;
+    bottom:  0;
+    overflow-y:  auto;
+    overflow-x:  hidden;
+    height:  auto;
+    max-height:  50%;
+    display:  block;
+    border-radius:  20px 20px 0 0;
+    border-top:  1px solid #cdcdcd50;
+}
+.bottomCloser  {
+    top:  0;
+    width:  20%;
+    background:  #cdcdcd;
+    height:  3%;
+    left:  40%;
+    margin-top:  0.3rem;
+    margin-bottom:  0.5rem;
+    border-radius:  50px;
+}
+.BottomdataDiv  {
+    position:  relative;
+    height:  50%;
+    background:  #fff0;
+    width:  98%;
+    left:  1%;
+    border-radius:  20px 20px 0 0;
+    top:  10%;
+    bottom:  0;
+    margin-top:  1rem;
+    display:  block;
+}
+.PromptboxInput  {
+    position:  absolute;
+    margin-top:  1rem;
+    margin-bottom:  0.1rem;
+    background:  #fff0;
+    width:  95%;
+    left:  2%;
+    color:  #fff;
+    text-align:  center;
+}
+.RoundFooter {
+    width:  95%;
+    left:  2%;
+    border-radius:  50px;
+    bottom:  1%;
+    height: 50px;
+    border: 1px solid #cdcdcd50;
+}
+#HomeLoader  {
+    margin:  70% 45%;
+}
