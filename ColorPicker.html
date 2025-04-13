@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Image Color Picker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f9f9f9;
+    }
+    input[type="file"] {
+      margin-bottom: 20px;
+    }
+    canvas {
+      display: block;
+      margin-top: 10px;
+      max-width: 100%;
+      border: 1px solid #ccc;
+    }
+    .color-info {
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .color-box {
+      width: 50px;
+      height: 50px;
+      border: 1px solid #aaa;
+    }
+    .color-values {
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Image Color Picker</h2>
+  <input type="file" id="imageLoader" accept="image/*">
+  <canvas id="imageCanvas"></canvas>
+
+  <div class="color-info" id="colorInfo" style="display:none;">
+    <div class="color-box" id="colorBox"></div>
+    <div class="color-values" id="colorValues"></div>
+  </div>
+
+  <script>
+    const imageLoader = document.getElementById('imageLoader');
+    const canvas = document.getElementById('imageCanvas');
+    const ctx = canvas.getContext('2d');
+    const colorInfo = document.getElementById('colorInfo');
+    const colorBox = document.getElementById('colorBox');
+    const colorValues = document.getElementById('colorValues');
+
+    imageLoader.addEventListener('change', handleImage, false);
+
+    function handleImage(e) {
+      const reader = new FileReader();
+      reader.onload = function(event) {
+        const img = new Image();
+        img.onload = function() {
+          canvas.width = img.width;
+          canvas.height = img.height;
+          ctx.drawImage(img, 0, 0);
+        }
+        img.src = event.target.result;
+      }
+      reader.readAsDataURL(e.target.files[0]);     
+    }
+
+    canvas.addEventListener('click', function(event) {
+      const rect = canvas.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+
+      const pixel = ctx.getImageData(x, y, 1, 1).data;
+      const r = pixel[0];
+      const g = pixel[1];
+      const b = pixel[2];
+
+      const hex = rgbToHex(r, g, b);
+
+      colorBox.style.backgroundColor = hex;
+      colorValues.innerHTML = `<strong>HEX:</strong> ${hex}<br><strong>RGB:</strong> ${r}, ${g}, ${b}`;
+      colorInfo.style.display = 'flex';
+    });
+
+    function rgbToHex(r, g, b) {
+      return "#" + [r, g, b].map(x => {
+        const hex = x.toString(16);
+        return hex.length === 1 ? "0" + hex : hex;
+      }).join('');
+    }
+  </script>
+</body>
+</html>
