@@ -10,7 +10,7 @@ const ANDROIDHOMEPAGE=()=>{
 
                 <p>Products</p>
 
-                <p>Services</p>
+                <p onclick='AndroidServicesNav()'>Services</p>
 
                 <p>Contact</p>
             
@@ -54,6 +54,44 @@ const ANDROIDHOMEPAGE=()=>{
 
         </div>
 
+    `);
+
+};
+
+const AndroidServicesNav=()=>{
+
+    ROUTE(' ',ANDROIDSERVICESPAGE,'ANDROIDHOMEPAGE');
+
+};
+
+const ANDROIDSERVICESPAGE=()=>{
+
+    DISPLAY('',`
+
+        <div class='AndroidHomeDiv'>
+
+            <img  class='AndroidCompanyLogo' src='/Assets/CompanyLogoTransparent.png'>
+        
+            <br><br>
+
+            <h1>Elite Robust Ontology<h1>
+
+            <br>
+
+            <div class='AndroidHeader'>
+
+                <p>Android</p>
+
+                <p onclick='AndroidServicesNav()'>Desktop</p>
+
+                <p>WebSite</p>
+
+                <p>Learning</p>
+            
+            </div>
+
+        </div>
+ 
     `);
 
 };
