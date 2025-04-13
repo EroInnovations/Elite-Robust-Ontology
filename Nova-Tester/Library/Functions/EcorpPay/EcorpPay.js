@@ -1,5 +1,0 @@
-const ECORPPAY=()=>{
-
-};
-
-export{ECORPPAY};

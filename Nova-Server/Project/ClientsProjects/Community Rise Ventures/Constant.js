@@ -1,1 +1,0 @@
-const LINk=`https://docs.google.com/spreadsheets/d/1m5ouoe7DpLNWYgvEehkxteXmmXKVT6xGWyjDrgxOeUs/edit?usp=sharing`;

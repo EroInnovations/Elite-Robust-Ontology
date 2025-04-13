@@ -1,1 +1,0 @@
-ZOOM();OPERATINGSYSTEM();CloudShipping();

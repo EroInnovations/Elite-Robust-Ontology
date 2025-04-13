@@ -1,1 +1,0 @@
-const STORELINK=`https://docs.google.com/spreadsheets/d/1kd15tCp1cX6TIUSsm3GcrfxDvOrmqlTNxAaseR8LBhw/edit?usp=sharing`;
