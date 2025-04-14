@@ -8,7 +8,7 @@ const  NOVASTART=()=>{
 
     CHECKER(localStorage.getItem('OperatingSystem') === 'Desktop',()=>{
 
-        alert('')
+        alert('');
 
     });
     
