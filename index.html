@@ -1,34 +1,300 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="Assets/CompanyLogo.png" type="image/x-icon">
-    <title>Elite Robust Ontology</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="shortcut icon" href="Assets/CompanyLogo.png" type="image/x-icon">
+  <title>Elite Robust Ontology</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      background: #f4f4f4;
+      color: #333;
+    }
+
+    a {
+      color: #0055a5;
+      text-decoration: none;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    header {
+      background: #003366;
+      color: #fff;
+      padding: 40px 0;
+      text-align: center;
+    }
+
+    .navbar {
+      background: #0055a5;
+      padding: 10px 0;
+    }
+
+    .navbar ul {
+      list-style: none;
+      text-align: center;
+    }
+
+    .navbar li {
+      display: inline;
+      margin: 0 20px;
+    }
+
+    .navbar a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    section {
+      display: none;
+      padding: 40px 0;
+    }
+
+    section.active {
+      display: block;
+    }
+
+    #hero {
+      background: #e0e0e0;
+      padding: 50px 0;
+      text-align: center;
+    }
+
+    #hero img {
+      width: 100%;
+      max-width: 600px;
+      margin-top: 20px;
+      border-radius: 10px;
+    }
+
+    ul {
+      list-style: disc;
+      padding-left: 20px;
+      text-align: left;
+      max-width: 700px;
+      margin: 20px auto;
+    }
+
+    .services {
+      background: #fff;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 20px;
+    }
+
+    .service-card {
+      background: #f9f9f9;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .service-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-bottom: 4px solid #003366;
+    }
+
+    footer {
+      background: #003366;
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 600px) {
+      .navbar li {
+        display: block;
+        margin: 10px 0;
+      }
+
+      #hero h2 {
+        font-size: 24px;
+      }
+    }
+
+    .glow-text {
+        color: #fff;
+        text-shadow: 0 0 5px #ffcc00, 0 0 10px #ffcc00, 0 0 20px #ffcc00;
+        font-weight: bold;
+        animation: glow-fade 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow-fade {
+        0% { text-shadow: 0 0 5px #ffcc00; }
+        100% { text-shadow: 0 0 20px #ffcc00; }
+    }
+
+  </style>
 </head>
-<link rel="stylesheet" href="/Nova/Nova.css">
-<link rel="stylesheet" href="/Nova/Classes.css">
-<link rel="stylesheet" href="style.css">
+<body>
 
-<!-- FOR DIFFERENT OS-->
+<header>
+  <div class="container">
+    <h1>Elite Robust Ontology</h1>
+    <p>Your Cloud-Native Software Partner in Mbale City</p>
+  </div>
+</header>
 
-<link rel="stylesheet" href="Projects/Main/Android/Android.css">
+<nav class="navbar">
+  <ul>
+    <li><a href="#" onclick="showSection('home')">Home</a></li>
+    <li><a href="#" onclick="showSection('about')">About</a></li>
+    <li><a href="#" onclick="showSection('services')">Services</a></li>
+    <li><a href="#" onclick="showSection('contact')">Contact</a></li>
+  </ul>
+</nav>
 
-<script src="Nova/Cloud.js"></script>
-<script src="Nova/Connection.js"></script>
-<script src="Nova/Icons.js"></script>
-<script src="Nova/Nova.js"></script>
-<script src="Nova/Plugins.js"></script>
-<script src="Nova/Start.js"></script>
-<body></body>
+<!-- HOME SECTION -->
+<section id="home" class="active">
+    <div class="container">
+      <div id="hero" style="position: relative; overflow: hidden; background: linear-gradient(135deg, #003366, #0055a5); color: white; border-radius: 10px; padding: 60px 20px;">
+        <div style="position: absolute; width: 100%; height: 100%; background: radial-gradient(circle at 20% 30%, rgba(255,255,255,0.05), transparent 70%), radial-gradient(circle at 80% 70%, rgba(255,255,255,0.07), transparent 70%); z-index: 0;"></div>
+        
+        <h2 class="glow-text" style="font-size: 36px; z-index: 2; position: relative;">Elite Robust Ontology</h2>
+        <p class="fade-in" style="margin-top: 10px; font-size: 18px; z-index: 2; position: relative;">
+          We build <span id="type-rotate" style="font-weight: bold; color: #ffcc00;"></span> solutions — cloud-native, scalable, and ready for the future.
+        </p>
+  
+        <img class="fade-in" src="Assets/CompanyLogo.png" alt="Software Dev" style="max-width: 600px; width: 100%; border-radius: 10px; margin-top: 30px; z-index: 2; position: relative;"/>
+  
+        <div style="margin-top: 40px; z-index: 2; position: relative;">
+          <button onclick="showSection('services')" style="padding: 12px 30px; margin: 10px; background: #ffcc00; color: #003366; font-weight: bold; border: none; border-radius: 5px; cursor: pointer;">Explore Services</button>
+          <button onclick="showSection('contact')" style="padding: 12px 30px; margin: 10px; background: transparent; border: 2px solid white; color: white; border-radius: 5px; cursor: pointer;">Talk to Us</button>
+        </div>
+  
+        <div style="background: rgba(255,255,255,0.1); padding: 20px; border-left: 5px solid #ffcc00; margin-top: 40px; max-width: 700px; margin-left: auto; margin-right: auto; z-index: 2; position: relative;">
+          <h3 style="color: #fff;">Mission</h3>
+          <p>To deliver modern, scalable solutions using cloud-native tools while empowering communities with future-ready ICT skills.</p>
+        </div>
+  
+        <h3 style="margin-top: 40px;" class="fade-in">Why Choose Us?</h3>
+        <ul class="fade-in" style="color: #fff;">
+          <li>🔥 Cloud-native apps built for speed, scale & security</li>
+          <li>👨‍💻 Expert team using Kubernetes, Docker, Firebase & more</li>
+          <li>🌍 Trusted locally in Mbale — serving globally</li>
+          <li>🎓 We teach what we build — through real-world ICT training</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  
 
-<!-- FOR DIFFERENT OS-->
-<script src="Projects/Main/Android/Android.js"></script>
+<!-- ABOUT SECTION -->
+<section id="about">
+  <div class="container">
+    <h2>About Us</h2>
+    <p>Based in Mbale City, Elite Robust Ontology is a software development company passionate about crafting digital experiences that scale. We specialize in mobile, desktop, website, and system development — and we teach ICT short courses to help bridge the tech gap.</p>
+  </div>
+</section>
 
-<script src="Main.js"></script>
+<!-- SERVICES SECTION -->
+<section id="services" class="services">
+  <div class="container">
+    <h2>Our Services</h2>
+    <div class="service-grid">
+      <div class="service-card" onclick="showServiceDetails('mobile')">
+        <img src="https://letstechiteasy.com/wp-content/uploads/2023/03/mobile-app-development.png" alt="Mobile Development" />
+        <h3>Mobile Development</h3>
+      </div>
+      <div class="service-card" onclick="showServiceDetails('web')">
+        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=80" alt="Website Development" />
+        <h3>Website Development</h3>
+      </div>
+      <div class="service-card" onclick="showServiceDetails('desktop')">
+        <img src="https://th.bing.com/th/id/OIP.PtRwHX-XhuoMfTxlIVDjEwHaEK?rs=1&pid=ImgDetMain" alt="Desktop Development" />
+        <h3>Desktop Development</h3>
+      </div>
+      <div class="service-card" onclick="showServiceDetails('system')">
+        <img src="https://th.bing.com/th/id/OIP.IVOBsgob8VSj1yIwtKJCXAHaEU?rs=1&pid=ImgDetMain" alt="System Development" />
+        <h3>System Development</h3>
+      </div>
+      <div class="service-card" onclick="showServiceDetails('ict')">
+        <img src="https://th.bing.com/th/id/OIP.VANV6NeAT6aIc8hdaU62mAAAAA?rs=1&pid=ImgDetMain" alt="ICT Training" />
+        <h3>ICT Short Courses</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE DETAILS -->
+<section id="service-detail">
+  <div class="container" id="service-content"></div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section id="contact">
+  <div class="container">
+    <h2>Contact Us</h2>
+    <p>Email: <a href="mailto:eroinnovations9@gmail.com">eroinnovations9@gmail.com</a></p>
+    <p>Instagram: <a href="https://instagram.com/elite_robust_ontology" target="_blank">Elite_Robust_Ontology</a></p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2025 Elite Robust Ontology. All rights reserved.</p>
+</footer>
+
 <script>
+  function showSection(sectionId) {
+    document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+    document.getElementById(sectionId).classList.add('active');
+  }
 
-    NOVASTART();
-
+  function showServiceDetails(service) {
+    const content = {
+      mobile: `
+        <h2>Mobile Development</h2>
+        <p>We build Android and iOS applications using Flutter and Kotlin, deploying them via CI/CD pipelines. Our mobile apps use cloud-native APIs like Firebase, AWS Amplify, and Azure Mobile Apps for authentication, notifications, and real-time sync.</p>
+      `,
+      web: `
+        <h2>Website Development</h2>
+        <p>We design responsive, modern websites using React, Next.js, and backend services like Node.js on cloud platforms (Vercel, Netlify, GCP). Our CI/CD ensures fast, scalable deployment with zero downtime.</p>
+      `,
+      desktop: `
+        <h2>Desktop Development</h2>
+        <p>We develop desktop software using Electron, .NET, and Python. Cloud-native architecture allows us to sync data and enable updates through RESTful APIs and cloud-hosted databases like Firebase or Supabase.</p>
+      `,
+      system: `
+        <h2>System Development</h2>
+        <p>Our system development includes building cloud-first backend solutions, REST APIs, microservices using Docker and Kubernetes, hosted on AWS, GCP, or Azure. We prioritize security, scalability, and observability.</p>
+      `,
+      ict: `
+        <h2>ICT Short Courses</h2>
+        <p>We offer hands-on ICT training in cloud-native tools, web development, data science, and DevOps. All courses emphasize real-world projects and use modern platforms like GitHub, AWS, and Docker in the curriculum.</p>
+      `
+    };
+    document.getElementById('service-content').innerHTML = content[service] + `<br><a href="#" onclick="showSection('services')">← Back to Services</a>`;
+    showSection('service-detail');
+  }
 </script>
+
+</body>
 </html>
