@@ -2212,7 +2212,6 @@ const AUTOSTART=()=>{
         
     };
 
-
 };
 
 const ACCOUNTCHECKER=(HomeCallBack,VerificationCallBack,LoginCallBack)=>{
