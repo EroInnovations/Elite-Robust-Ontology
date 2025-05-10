@@ -31,11 +31,15 @@ export const CLOUDCONNECTION=()=>{
 
                     localStorage.setItem('Updates','Approved');
 
-                    setTimeout(() => {
+                    if (!localStorage.getItem('Updates')) {
 
-                        location.reload();
+                        setTimeout(() => {
+
+                            location.reload();
+                            
+                        }, 2000);
                         
-                    }, 2000);
+                    };
 
                     return;
 
