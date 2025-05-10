@@ -29,13 +29,15 @@ export const CLOUDCONNECTION=()=>{
 
                     CONNECTION(element.AndroidFunctions,'PROJECTSTYLES');
 
-                    localStorage.setItem('Updates','Approved');
+                        localStorage.setItem('Updated',new Date());
 
                     if (localStorage.getItem('Updates')==='Approved') {
 
-                        localStorage.setItem('Updated',new Date());
+                        localStorage.setItem('Updates','Approved');
 
                     }else{
+
+                        localStorage.setItem('Updates','Approved');
 
                         setTimeout(() => {
 
