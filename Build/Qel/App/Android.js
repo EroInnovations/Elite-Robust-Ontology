@@ -275,6 +275,37 @@ const SECTIONSPAGE=()=>{
         
     `);
 
+    const CountryDiv=document.querySelector('.CountryDiv');
+
+    GETINDEXEDDATA('Catergory','Catergory',(element)=>{
+
+        console.log(element)
+
+        CREATEELEMENT(CountryDiv,'div','SectionDivs',(ELEMENTS)=>{
+
+            DISPLAY(ELEMENTS,`
+
+                <img class='ProductImage'src='${element.ProductImage}'/>
+
+                <footer class='SectionFooter'>
+
+                    <p class='ProductName'>${element.ProductName}</p>
+                
+                </footer
+
+            `);
+
+            CLICK(ELEMENTS,()=>{
+                STOREDATA(' ','Area',element.District);
+
+                HOMEPAGEROUTE();
+
+            });
+
+        });
+
+    });
+
 };
 
 const SAVEDPAGE=()=>{

@@ -167,3 +167,22 @@ header{
     width: 16px;
     height: 16px;
 }
+
+.SectionDivs{
+    position: relative;
+    width: 45%;
+    height: 200px;
+    display: inline-table;
+    margin: 2%;
+}
+
+.ProductImage{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+}
+
+.SectionFooter{
+    background: #000000;
+}
