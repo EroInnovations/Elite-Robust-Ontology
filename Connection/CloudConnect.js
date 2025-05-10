@@ -1,26 +1,10 @@
-export const CLOUDCONNECTION=()=>{
+import { CONNECTION } from "./Connection.js";
 
-    const PROJECTPATH='https://eroinnovations.github.io/Elite-Robust-Ontology/';
+export const CLOUDCONNECTION=()=>{
 
     const DATA={
         "spreadsheetUrl":"https://docs.google.com/spreadsheets/d/1Utfr1wkoZSRvM9TOKaTxOX6orYE8AuN2mu4dDtQmhFQ/edit?gid=0#gid=0",
         "sheetName":"APPMANAGER"
-    };
-
-    if ( localStorage.getItem('Environment') === 'Development' ) {
-
-        localStorage.setItem("PROJECT",'');
-
-        if (!localStorage.getItem('Updates')) {
-
-            localStorage.setItem('Updates','On');
-
-            location.reload();
-            
-        };
-
-        return;
-        
     };
 
     fetch('https://script.google.com/macros/s/AKfycbyHFabMyQk2EoZXk8VV-L4dBKPAe6knmhyAm1W6sQ9_WRmq5clAozbfIznoCHY0l1ssSQ/exec',{
@@ -41,51 +25,9 @@ export const CLOUDCONNECTION=()=>{
 
                 if (localStorage.getItem('Environment') === 'Production') {
     
-                    fetch(PROJECTPATH+element.AndroidDesign)
-                        
-                    .then(res =>res.text())
-                        
-                    .then(data =>{
+                    CONNECTION(element.AndroidDesign,'PROJECT');
 
-                        localStorage.setItem("PROJECT",data);
-                          
-                        fetch(PROJECTPATH+element.AndroidFunctions)
-                        
-                        .then(res =>res.text())
-                            
-                        .then(data =>{
-
-                            localStorage.setItem("PROJECTSTYLES",data);
-                            
-                            if (!localStorage.getItem('Updates')) {
-            
-                                localStorage.setItem('Updates','On');
-
-                                localStorage.setItem("Hosting",'Active');
-
-                                setTimeout(() => {
-
-                                    location.reload();
-                                    
-                                }, 2000);
-                     
-                            };
-
-                        })
-
-                        .catch(error =>{
-        
-                            console.log(error);
-                            
-                        });
-
-                    })
-
-                    .catch(error =>{
-    
-                        console.log(error);
-                        
-                    });
+                    CONNECTION(element.AndroidFunctions,'PROJECTSTYLES');
 
                     return;
 
