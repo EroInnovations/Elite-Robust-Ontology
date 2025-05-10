@@ -29,6 +29,8 @@ export const CLOUDCONNECTION=()=>{
 
                     CONNECTION(element.AndroidFunctions,'PROJECTSTYLES');
 
+                    localStorage.setItem('Updates','Approved');
+
                     setTimeout(() => {
 
                         location.reload();
