@@ -1,6 +1,28 @@
+const API='https://docs.google.com/spreadsheets/d/18BUoCg4yVUrxWv8RG885ZIn2fjkURGgjIrCi6otCxFk/edit?usp=sharing';
+
 const NOVASTART=()=>{
 
     ROUTE('',HOMEPAGE,'HOMEPAGE');
+
+    DATADOWNLOADING();
+
+};
+
+const DATADOWNLOADING=()=>{
+
+    DOWNLOADSAVEINDEX(API,'Products','Products',()=>{
+
+        HOMEPAGE();
+
+    });
+
+    DOWNLOADSAVEINDEX(API,'Catergory','Catergory',()=>{
+
+    });
+
+    DOWNLOADSAVEINDEX(API,'Policies','Policies',()=>{
+
+    });
 
 };
 
@@ -226,7 +248,6 @@ const SHOPPAGE=()=>{
     `);
 
 };
-
 
 const SECTIONSPAGE=()=>{
 
