@@ -70,6 +70,12 @@ const SHOPPINGPAGEROUTE=()=>{
 
 const HOMEPAGE=()=>{
 
+    if (!localStorage.getItem('Area')) {
+
+        localStorage.setItem('Area','Kampala');
+        
+    };
+
     DISPLAY('',`
 
         <div class='HomeHolderDiv'>
