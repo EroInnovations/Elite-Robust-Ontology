@@ -1,8 +1,22 @@
+const API='';
+
 const NOVASTART=()=>{
 
     ROUTE('',HOMEPAGE,'HOMEPAGE');
 
+    DATADOWNLOADING();
+
 };
+
+const DATADOWNLOADING=()=>{
+
+    DOWNLOADSAVEINDEX(API,'Products','Products',()=>{
+
+        HOMEPAGE();
+
+    });
+
+}
 
 const LOCATIONPAGEROUTE=()=>{
 
@@ -226,7 +240,6 @@ const SHOPPAGE=()=>{
     `);
 
 };
-
 
 const SECTIONSPAGE=()=>{
 

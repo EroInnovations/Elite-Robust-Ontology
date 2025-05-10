@@ -72,7 +72,7 @@ const APPMODE=(COLOR) => {
 
     if (localStorage.getItem('Environment') === 'Production' ) {
 
-       // changeWebViewBackground(COLOR);
+       changeWebViewBackground(COLOR);
         
     };
     
@@ -2213,4 +2213,90 @@ const AUTOSTART=()=>{
     };
 
 
+};
+
+const ACCOUNTCHECKER=(HomeCallBack,VerificationCallBack,LoginCallBack)=>{
+
+    CONDITION(localStorage.getItem('UserData'),()=>{
+
+        HomeCallBack();
+    
+    },()=>{
+    
+        CONDITION(localStorage.getItem('VeriifcationCode'),()=>{
+    
+            VerificationCallBack();
+    
+        },()=>{
+    
+            LoginCallBack();
+    
+        });
+    
+    });
+
+};
+const STOREINDEXEDDATA=(API,NAME)=>{
+
+    CHECKER(navigator.onLine,()=>{
+
+        GETDATA(API,NAME,(data)=>{
+
+            const DATA={
+                'Name':NAME,
+                'data':data
+            };
+
+            STOREINDEXED(NAME, NAME, DATA, (data)=>{
+
+                CHECKER(data === false,()=>{
+
+                    UPDATEINDEX(NAME, NAME,DATA,()=>{
+
+                    });
+
+                } );
+
+            });
+
+        },(data)=>{
+    
+            console.log(data);
+    
+        });
+
+    });
+
+};
+const DOWNLOADSAVEINDEX=(API,NAME,NAMED,callback)=>{
+
+    CHECKER(navigator.onLine,()=>{
+
+        GETDATA(API,NAME,(data)=>{
+
+            const Data={
+                'Name':NAMED,
+                'data':data
+            };
+    
+            STOREINDEXED(NAMED,NAMED,Data,(resback)=>{
+    
+                CONDITION(resback === false,()=>{
+    
+                    UPDATEINDEX(NAMED,NAMED,Data,()=>{
+    
+                    });
+    
+                },()=>{
+    
+                    callback();
+    
+                });
+                
+            });
+    
+        });
+
+    });
+    
 };
