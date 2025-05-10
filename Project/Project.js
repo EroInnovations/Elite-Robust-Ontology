@@ -106,7 +106,15 @@ const HOMEPAGE=()=>{
 
             </div>
 
-            <div class='AdSection'></div>
+            <div class='AdSection'>
+
+                <div class='SingleCatergory' id='CurrentCatergory'></div>
+
+                <div class='SingleCatergory' id='CurrentProduct'></div>
+
+                <div class='SingleCatergory'></div>
+            
+            </div>
 
             <div class='TopNav'>
 
@@ -122,13 +130,43 @@ const HOMEPAGE=()=>{
                 
             </div>
 
-            <div class='AdSection' id='CatergoryDiv'></div>
+            <div class='AdSection' id='CatergoryDiv'>
+
+                <button class='SectionedButtons'>
+
+                    <img src='${WHITETRENDINGTOPICSICON}'/>
+
+                    <p>Trending</p>
+                
+                </button>
+
+                <button class='SectionedButtons'>
+
+                    <img src='${WHITEUNHEARTICON}'/>
+
+                    <p>Rated</p>
+                
+                </button>
+
+                <button class='SectionedButtons'>
+
+                    <img src='${WHITESAVEDICON}'/>
+
+                    <p>Saved</p>
+                
+                </button>
+            
+            </div>
+
+            <h1 class='OurProducts'>Our Products</h1>
+
+            <div class='AllProducts'></div>
 
             <br><br><br>
             
         </div>
 
-        <footer>
+        <footer class='HomeFooter'>
 
             <div class='ImageTextHolder' onclick='SECTIONSPAGEROUTE()'>
 
@@ -166,7 +204,76 @@ const HOMEPAGE=()=>{
         
     `);
 
+    const CurrentCatergory=document.querySelector('#CurrentCatergory');
+
+    SINGLEDISPLAY(CurrentCatergory,'Catergory','Currentcatergory',()=>{
+
+    });
+
+    const CurrentProduct=document.querySelector('#CurrentProduct');
+
+    SINGLEDISPLAY(CurrentProduct,'Products','CurrentProducts',()=>{
+
+    });
+
+    const AllProducts=document.querySelector('.AllProducts');
+
+    GETINDEXEDDATA('Products','Products',(element)=>{
+
+        CREATEELEMENT(AllProducts,'div','SectionDivs',(ELEMENTS)=>{
+
+            DISPLAY(ELEMENTS,`
+
+                <img class='ProductImage'src='${element.ProductImage}'/>
+
+                <footer class='SectionFooter'>
+
+                    <p class='ProductName'>${element.ProductName}</p>
+                
+                </footer
+
+            `);
+
+            CLICK(ELEMENTS,()=>{
+                STOREDATA(' ','Area',element.District);
+
+                HOMEPAGEROUTE();
+
+            });
+
+        });
+
+    });
+
 };
+
+const SINGLEDISPLAY=(ELEMENTS,DATABASE,Stored,callback)=>{
+
+    GETINDEXEDDATA(DATABASE,DATABASE,(element)=>{
+
+        CLEAR(ELEMENTS);
+
+        CREATEELEMENT(ELEMENTS,'div','SingleCatergorye',(ELEMENTS)=>{
+
+            DISPLAY(ELEMENTS,`
+
+                <img class='ProductImager' src='${element.ProductImage}'/>
+
+            `);
+
+            CLICK(ELEMENTS,()=>{
+
+                STOREDATA(' ',Stored,element.District);
+
+                callback();
+
+            });
+
+        });
+
+    });
+
+}
 
 const LOCATIONPAGE=()=>{
 

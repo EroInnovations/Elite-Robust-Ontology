@@ -128,6 +128,8 @@ header{
     width: 96%;
     height: 200px;
     background: #cdcdcd20;
+    display: inline-flex;
+    overflow-x: auto;
 }
 
 .Catergories{
@@ -146,7 +148,7 @@ header{
 
 #CatergoryDiv{
     background: #cdcdcd20;
-    height: 150px;
+    height:70px;
 }
 
 .ImageTextHolderSlidered{
@@ -185,4 +187,60 @@ header{
 
 .SectionFooter{
     background: #000000;
+}
+
+.SingleCatergory{
+    position: relative;
+    width: 300px;
+    height: 90%;
+    margin: auto 2%;
+    background: #000000;
+    border-radius: 5px;
+    flex-shrink: 0;
+}
+
+.SingleCatergorye{
+    position: relative;
+    width: 300px;
+    height: 100%;
+    margin: 0;
+    background: #000000;
+    border-radius: 5px;
+    flex-shrink: 0;
+}
+
+.ProductImager{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    object-fit: contain;
+}
+
+.SectionedButtons{
+    position: relative;
+    height: 50px;
+    margin: auto 2%;
+    width: 150px;
+    display: inline-flex;
+    background: forestgreen;
+    border-radius: 5px;
+    border: none;
+    flex-shrink: 0;
+}
+
+.AllProducts{
+    position: relative;
+    width: 100%;
+    height: auto;
+    background: transparent;
+}
+
+.HomeFooter{
+    background: #333333;
+    height: 60px;
+}
+
+.OurProducts{
+    margin: 2% auto;
 }
