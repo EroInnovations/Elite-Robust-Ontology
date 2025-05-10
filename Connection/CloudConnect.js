@@ -29,12 +29,10 @@ export const CLOUDCONNECTION=()=>{
 
                     CONNECTION(element.AndroidFunctions,'PROJECTSTYLES');
 
-                        localStorage.setItem('Updated',new Date());
-
                     if (localStorage.getItem('Updates')==='Approved') {
 
-                        localStorage.setItem('Updates','Approved');
-
+                        localStorage.setItem('Updated',new Date());
+                        
                     }else{
 
                         localStorage.setItem('Updates','Approved');
