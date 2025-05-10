@@ -112,6 +112,8 @@ const HOMEPAGE=()=>{
 
             </div>
 
+            <div class='SearchDataDiv'></div> 
+
             <div class='AdSection'>
 
                 <div class='SingleCatergory' id='CurrentCatergory'></div>
@@ -251,7 +253,69 @@ const HOMEPAGE=()=>{
 
     });
 
+    const SearchInput=document.querySelector('.SearchInput');
+
+    const SearchDataDiv=document.querySelector('.SearchDataDiv');
+
+    SearchInput.addEventListener('input',()=>{
+
+       SEARCHACTION(SearchDataDiv,SearchInput)
+
+    });
+
+    SearchInput.addEventListener('focus',()=>{
+
+        STYLED(SearchDataDiv,'display','block');
+
+    });
+
+    SearchInput.addEventListener('blur',()=>{
+
+        STYLED(SearchDataDiv,'display','none');
+
+    });
+
+
+
 };
+
+const SEARCHACTION = (SearchDataDiv, SearchInput) => {
+
+    CLEAR(SearchDataDiv);
+
+    const searchTerm = SearchInput.value.trim().toLowerCase();
+    if (!searchTerm) {
+        DISPLAY(SearchDataDiv, '<p class="NoMessage">No Item Searched!</p>');
+        return;
+    }
+
+    let found = false;
+
+    GETINDEXEDDATA('Products', 'Products', (element) => {
+
+        if (element.ProductName.toLowerCase().includes(searchTerm)) {
+            found = true;
+
+            CREATEELEMENT(SearchDataDiv, 'div', 'SectionDivs', (ELEMENTS) => {
+                DISPLAY(ELEMENTS, `
+                    <img class='ProductImage' src='${element.ProductImage}' />
+                    <footer class='SectionFooter'>
+                        <p class='ProductName'>${element.ProductName}</p>
+                    </footer>
+                `);
+                CLICK(ELEMENTS, () => {
+                    STOREDATA(' ', 'Area', element.District);
+                    HOMEPAGEROUTE();
+                });
+            });
+        }
+    }, () => {
+        if (!found) {
+            DISPLAY(SearchDataDiv, '<p class="NoMessage">No Item Found with That Name.</p>');
+        }
+    });
+};
+
 
 const SINGLEDISPLAY=(ELEMENTS,DATABASE,Stored,callback)=>{
 
@@ -493,7 +557,7 @@ const SETTINGSPAGE=()=>{
             
             </button>
 
-            <button class='CountryDivs'>
+            <button class='CountryDivs' onclick='RELOAD()'>
 
                 <p class='LeftDistrict'>Sync</p>
 

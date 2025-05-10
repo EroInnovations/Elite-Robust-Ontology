@@ -244,3 +244,19 @@ header{
 .OurProducts{
     margin: 2% auto;
 }
+
+.SearchDataDiv{
+    position: relative;
+    width: 95%;
+    background: #cdcdcd20;
+    height: auto;
+    display: none;
+    border-radius: 5px;
+    margin-bottom: 3%;
+}
+
+.NoMessage{
+    color: #cdcdcd;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
