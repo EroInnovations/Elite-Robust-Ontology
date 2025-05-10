@@ -29,6 +29,12 @@ export const CLOUDCONNECTION=()=>{
 
                     CONNECTION(element.AndroidFunctions,'PROJECTSTYLES');
 
+                    setTimeout(() => {
+
+                        location.reload();
+                        
+                    }, 2000);
+
                     return;
 
                 };
