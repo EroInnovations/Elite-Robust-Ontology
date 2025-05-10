@@ -62,9 +62,13 @@ export const CLOUDCONNECTION=()=>{
                                 localStorage.setItem('Updates','On');
 
                                 localStorage.setItem("Hosting",'Active');
-            
-                                location.reload();
-                                        
+
+                                setTimeout(() => {
+
+                                    location.reload();
+                                    
+                                }, 2000);
+                     
                             };
 
                         })
