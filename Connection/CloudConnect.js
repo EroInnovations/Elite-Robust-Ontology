@@ -31,7 +31,11 @@ export const CLOUDCONNECTION=()=>{
 
                     localStorage.setItem('Updates','Approved');
 
-                    if (!localStorage.getItem('Updates')) {
+                    if (localStorage.getItem('Updates')==='Approved') {
+
+                        localStorage.setItem('Updated',new Date());
+
+                    }else{
 
                         setTimeout(() => {
 
