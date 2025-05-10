@@ -2182,7 +2182,7 @@ const PROJECTUPDATE=(callback)=>{
 };
 const AUTOSTART=()=>{
 
-    import('../Start/Start.js')
+    import('https://eroinnovations.github.io/Elite-Robust-Ontology/Start/Start.js')
     .then(module => {
           if (typeof module.START === 'function') {
             module.START();
