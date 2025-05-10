@@ -1,0 +1,14 @@
+Report ID: 9bf3aaca-2635-4633-a9a3-e71880ff2fd3
+Report timestamp: 2025-02-11T03:53:47Z
+
+# Account
+Phone number: +256768058124
+Allow sealed sender from anyone: false
+Find account by phone number: true
+Badges: None
+
+# Devices
+- ID: 1
+  Created: 2025-01-28T17:28:11Z
+  Last seen: 2025-02-11T00:00:00Z
+  User-agent: OWA
