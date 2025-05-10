@@ -1,6 +1,6 @@
 export const CLOUDCONNECTION=()=>{
 
-    const PROJECTPATH='https://eroinnovations.site/Build/';
+    const PROJECTPATH='https://eroinnovations.github.io/Elite-Robust-Ontology/';
 
     const DATA={
         "spreadsheetUrl":"https://docs.google.com/spreadsheets/d/1Utfr1wkoZSRvM9TOKaTxOX6orYE8AuN2mu4dDtQmhFQ/edit?gid=0#gid=0",
