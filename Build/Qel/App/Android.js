@@ -336,6 +336,10 @@ const SAVEDPAGE=()=>{
 
 };
 
+const CHANGECOLOR=()=>{
+
+}
+
 const SETTINGSPAGE=()=>{
 
     DISPLAY('',`
@@ -360,7 +364,7 @@ const SETTINGSPAGE=()=>{
 
         <div class='CountryDiv'>
 
-            <button class='CountryDivs'>
+            <button class='CountryDivs' onclick='CHANGECOLOR()'>
 
                 <p class='LeftDistrict'>App Mode</p>
 
