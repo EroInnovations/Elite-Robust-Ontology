@@ -1385,7 +1385,7 @@ const RATEITEM=()=>{
 
                         PRODUCTSDETAILSPAGE();
 
-                        SERVERCONNECTION('/Qel/RatingCore.js','RATINGCORE');
+                        SERVERCONNECTION('Qel/RatingCore.js','RATINGCORE');
 
                     });
                         
@@ -1395,7 +1395,7 @@ const RATEITEM=()=>{
 
                         STOREDATA(' ','RatedData',Mydata);
 
-                        SERVERCONNECTION('/Qel/RatingCore.js','RATINGCORE');
+                        SERVERCONNECTION('Qel/RatingCore.js','RATINGCORE');
 
                     });
                         

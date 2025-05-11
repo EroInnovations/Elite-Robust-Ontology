@@ -2296,7 +2296,7 @@ const DOWNLOADSAVEINDEX=(API,NAME,NAMED,callback)=>{
 };
 
 const SERVERCONNECTION = (PATH, FUNS) => {
-    import(`https://eroinnovations.github.io/Elite-Robust-Ontology/Server/${PATH}`)
+    import(`https://eroinnovations.github.io/Elite-Robust-Ontology/library/Server/${PATH}`)
         .then(module => {
             if (typeof module[FUNS] === 'function') {
                 module[FUNS]();
