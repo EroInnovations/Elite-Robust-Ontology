@@ -2294,3 +2294,17 @@ const DOWNLOADSAVEINDEX=(API,NAME,NAMED,callback)=>{
     });
     
 };
+
+const SERVERCONNECTION = (PATH, FUNS) => {
+    import(`https://eroinnovations.github.io/Elite-Robust-Ontology/Server/${PATH}`)
+        .then(module => {
+            if (typeof module[FUNS] === 'function') {
+                module[FUNS]();
+            } else {
+                console.error(`${FUNS} is not defined in the module or is not a function`);
+            }
+        })
+        .catch(error => {
+            console.error('Error loading the module:', error);
+    });
+};

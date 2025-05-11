@@ -1,0 +1,5 @@
+const ECORPPAY=()=>{
+
+};
+
+export{ECORPPAY};
