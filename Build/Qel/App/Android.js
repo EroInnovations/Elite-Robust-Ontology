@@ -1371,36 +1371,45 @@ const SAVEITEM=()=>{
 };
 
 const RATEITEM=()=>{
+    if (localStorage.getItem('UserData')) {
 
-    SESSIONDEJSONDATA('CurrentProducts',(data)=>{
+        SERVERCONNECTION('Qel/RatingCore.js','RATINGCORE');
 
-        LOCALDEJSONDATA('RatedData',(element)=>{
+        SESSIONDEJSONDATA('CurrentProducts',(data)=>{
 
-            if (element.includes(data.ID)) {
+            LOCALDEJSONDATA('RatedData',(element)=>{
 
-                JSONREMOVER(localStorage.getItem('RatedData'),[data.ID],(Mydata)=>{
+                if (element.includes(data.ID)) {
 
-                    STOREDATA(' ','RatedData',Mydata);
+                    JSONREMOVER(localStorage.getItem('RatedData'),[data.ID],(Mydata)=>{
 
-                    PRODUCTSDETAILSPAGE();
+                        STOREDATA(' ','RatedData',Mydata);
 
-                });
-                    
-            } else {
+                        PRODUCTSDETAILSPAGE();
 
-                JSONADDER(localStorage.getItem('RatedData'),[data.ID],(Mydata)=>{
+                    });
+                        
+                } else {
 
-                    STOREDATA(' ','RatedData',Mydata);
+                    JSONADDER(localStorage.getItem('RatedData'),[data.ID],(Mydata)=>{
 
-                    PRODUCTSDETAILSPAGE();
+                        STOREDATA(' ','RatedData',Mydata);
 
-                });
-                    
-            };
+                        PRODUCTSDETAILSPAGE();
+
+                    });
+                        
+                };
+
+            });
 
         });
+        
+    } else {
 
-    });
+        ACCOUNTPAGEROUTE();
+        
+    };
 
 };
 
