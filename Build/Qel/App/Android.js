@@ -94,6 +94,8 @@ const ACCOUNTPAGEROUTE=()=>{
 
 const HOMEPAGE=()=>{
 
+    DATADOWNLOADING();
+
     if (!localStorage.getItem('Area')) {
 
         localStorage.setItem('Area','Kampala');
