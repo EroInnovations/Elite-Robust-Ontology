@@ -68,6 +68,18 @@ const SHOPPINGPAGEROUTE=()=>{
 
 };
 
+const APPPREFERNCEPAGEROUTE=()=>{
+
+    ROUTE(' ',APPPREFERENCEPAGE,'HOMEPAGE');
+
+};
+
+const PRODUCTDETAILSPAGEROUTE=()=>{
+
+    ROUTE(' ',PRODUCTSDETAILSPAGE,'HOMEPAGE');
+
+};
+
 const HOMEPAGE=()=>{
 
     if (!localStorage.getItem('Area')) {
@@ -104,7 +116,7 @@ const HOMEPAGE=()=>{
 
                 <input class='SearchInput' type='Search' placeholder='Search For Items' />
 
-                <button class='SearchFilterButton'>
+                <button class='SearchFilterButton' onclick='APPPREFERNCEPAGEROUTE()'>
 
                     <img class='FilterIcon' src='${WHITESETTINGSSLIDERICON}'/>
                 
@@ -224,6 +236,22 @@ const HOMEPAGE=()=>{
 
     });
 
+    const SearchInput=document.querySelector('.SearchInput');
+
+    const SearchDataDiv=document.querySelector('.SearchDataDiv');
+
+    SearchInput.addEventListener('input',()=>{
+
+       SEARCHACTION(SearchDataDiv,SearchInput);
+
+    });
+
+    SearchInput.addEventListener('focus',()=>{
+
+        STYLED(SearchDataDiv,'display','block');
+
+    });
+
     const AllProducts=document.querySelector('.AllProducts');
 
     GETINDEXEDDATA('Products','Products',(element)=>{
@@ -243,56 +271,38 @@ const HOMEPAGE=()=>{
             `);
 
             CLICK(ELEMENTS,()=>{
-                STOREDATA(' ','Area',element.District);
 
-                HOMEPAGEROUTE();
+                JSONIFICATION(element,(MyElement)=>{
 
+                    STOREDATA('','CurrentProducts',MyElement);
+
+                    PRODUCTDETAILSPAGEROUTE();
+
+                });
+                
             });
 
         });
 
     });
 
-    const SearchInput=document.querySelector('.SearchInput');
-
-    const SearchDataDiv=document.querySelector('.SearchDataDiv');
-
-    SearchInput.addEventListener('input',()=>{
-
-       SEARCHACTION(SearchDataDiv,SearchInput)
-
-    });
-
-    SearchInput.addEventListener('focus',()=>{
-
-        STYLED(SearchDataDiv,'display','block');
-
-    });
-
-    SearchInput.addEventListener('blur',()=>{
-
-        STYLED(SearchDataDiv,'display','none');
-
-    });
-
-
-
 };
 
 const SEARCHACTION = (SearchDataDiv, SearchInput) => {
-
-    CLEAR(SearchDataDiv);
-
     const searchTerm = SearchInput.value.trim().toLowerCase();
+
     if (!searchTerm) {
-        DISPLAY(SearchDataDiv, '<p class="NoMessage">No Item Searched!</p>');
+        STYLED(SearchDataDiv, 'display', 'none');
+        CLEAR(SearchDataDiv);
         return;
     }
+
+    STYLED(SearchDataDiv, 'display', 'block');
+    CLEAR(SearchDataDiv);
 
     let found = false;
 
     GETINDEXEDDATA('Products', 'Products', (element) => {
-
         if (element.ProductName.toLowerCase().includes(searchTerm)) {
             found = true;
 
@@ -303,9 +313,18 @@ const SEARCHACTION = (SearchDataDiv, SearchInput) => {
                         <p class='ProductName'>${element.ProductName}</p>
                     </footer>
                 `);
+
                 CLICK(ELEMENTS, () => {
-                    STOREDATA(' ', 'Area', element.District);
-                    HOMEPAGEROUTE();
+                    JSONIFICATION(element, (MyElement) => {
+                        STOREDATA('', 'CurrentProducts', MyElement);
+
+                        // Ensure this function navigates correctly
+                        if (typeof PRODUCTDETAILSPAGEROUTE === 'function') {
+                            PRODUCTDETAILSPAGEROUTE();
+                        } else {
+                            console.error('PRODUCTDETAILSPAGEROUTE is not defined');
+                        }
+                    });
                 });
             });
         }
@@ -315,7 +334,6 @@ const SEARCHACTION = (SearchDataDiv, SearchInput) => {
         }
     });
 };
-
 
 const SINGLEDISPLAY=(ELEMENTS,DATABASE,Stored,callback)=>{
 
@@ -665,6 +683,74 @@ const USERACCOUNTPAGE=()=>{
         
         
         </div>
+        
+    `);
+
+};
+
+const APPPREFERENCEPAGE=()=>{
+
+    DISPLAY('',`
+
+        <header>
+
+            <div class='ImageTextHolderSlided' onclick='HOMEPAGEROUTE()'>
+
+                <img src='${WHITESINGLEBACKICON}'/>
+
+                <p>Back</p>
+                
+            </div>
+
+            <div class='ImageTextHolderSlider'>
+
+                <p>Filters</p>
+                
+            </div>
+        
+        </header>
+
+        <div class='CountryDiv'>
+
+            <button class='CountryDivs' onclick='CHANGECOLOR()'>
+
+                <p class='LeftDistrict'>Convert Currency</p>
+
+                <img class='RightDistricitImage'src='${WHITESUBSCRIPTIONICON}'/>
+            
+            </button>
+
+        </div> 
+        
+    `);
+
+};
+
+const PRODUCTSDETAILSPAGE=()=>{
+
+    DISPLAY('',`
+
+        <header>
+
+            <div class='ImageTextHolderSlided' onclick='HOMEPAGEROUTE()'>
+
+                <img src='${WHITESINGLEBACKICON}'/>
+
+                <p>Back</p>
+                
+            </div>
+
+            <div class='ImageTextHolderSlider'>
+
+                <p>Details</p>
+                
+            </div>
+        
+        </header>
+
+        <div class='CountryDiv'>
+
+        </div> 
         
     `);
 
