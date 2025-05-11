@@ -80,6 +80,12 @@ const PRODUCTDETAILSPAGEROUTE=()=>{
 
 };
 
+const ALLPRODUCTPAGEROUTE=()=>{
+
+    ROUTE('',ALLPRODUCTPAGE,'SECTIONSPAGE');
+
+};
+
 const HOMEPAGE=()=>{
 
     if (!localStorage.getItem('Area')) {
@@ -472,6 +478,8 @@ const SHOPPAGE=()=>{
 
 const SECTIONSPAGE=()=>{
 
+    BACKPAGE('HOMEPAGE');
+
     DISPLAY('',`
 
         <header>
@@ -517,9 +525,104 @@ const SECTIONSPAGE=()=>{
             `);
 
             CLICK(ELEMENTS,()=>{
-                STOREDATA(' ','Area',element.District);
+                
+                STOREDATA('','Sections',element.ID);
 
-                HOMEPAGEROUTE();
+                STOREDATA('','SectionName',element.ProductName);
+
+                ALLPRODUCTPAGEROUTE();
+                
+            });
+
+        });
+
+    });
+
+};
+
+const ALLPRODUCTPAGE=()=>{
+
+    DISPLAY('',`
+
+        <header>
+
+            <div class='ImageTextHolderSlided' onclick='HOMEPAGEROUTE()'>
+
+                <img src='${WHITESINGLEBACKICON}'/>
+
+                <p>Back</p>
+                
+            </div>
+
+            <div id='SectionNames' class='ImageTextHolderSlider'>
+
+                <p class='SectionNamer' >${sessionStorage.getItem('SectionName')}</p>
+                
+            </div>
+        
+        </header>
+
+        <div class='CountryDiv'></div>
+        
+    `);
+
+    const AllProducts=document.querySelector('.CountryDiv');
+
+    GETINDEXEDDATA('Products','Products',(element)=>{
+
+        CHECKER(element.ProductCatergory === sessionStorage.getItem('Sections'),()=>{
+
+            CREATEELEMENT(AllProducts,'div','SectionDivso',(ELEMENTS)=>{
+
+                if (localStorage.getItem('ConvertedPrice')) {
+
+                    DOLLAREXCHANGE('USD',element.ProductPrice,(data)=>{
+
+                        DISPLAY(ELEMENTS,`
+
+                            <img class='ProductImage'src='${element.ProductImage}'/>
+
+                            <footer class='SectionFooters'>
+
+                                <p class='ProductNamer'>${element.ProductName}</p>
+
+                                <h1 class='ProductPrice'>Price:${data}USD</1>
+                            
+                            </footer
+
+                        `);   
+
+                    });
+                    
+                } else {
+
+                    DISPLAY(ELEMENTS,`
+
+                        <img class='ProductImage'src='${element.ProductImage}'/>
+
+                        <footer class='SectionFooters'>
+
+                            <p class='ProductNamer'>${element.ProductName}</p>
+
+                            <h1 class='ProductPrice'>Price:${element.ProductPrice.toLocaleString()}UGX</1>
+                        
+                        </footer
+
+                    `);
+                
+                };
+
+                CLICK(ELEMENTS,()=>{
+
+                    JSONIFICATION(element,(MyElement)=>{
+
+                        STOREDATA('','CurrentProducts',MyElement);
+
+                        PRODUCTDETAILSPAGEROUTE();
+
+                    });
+                    
+                });
 
             });
 
@@ -772,30 +875,92 @@ const CONVERT=()=>{
 
 const PRODUCTSDETAILSPAGE=()=>{
 
-    DISPLAY('',`
+    SESSIONDEJSONDATA('CurrentProducts',(data)=>{
 
-        <header>
+        DISPLAY('',`
 
-            <div class='ImageTextHolderSlided' onclick='HOMEPAGEROUTE()'>
+            <header>
 
-                <img src='${WHITESINGLEBACKICON}'/>
+                <div class='ImageTextHolderSlided' onclick='SECTIONSPAGEROUTE()'>
 
-                <p>Back</p>
+                    <img src='${WHITESINGLEBACKICON}'/>
+
+                    <p>Back</p>
+                    
+                </div>
+
+                <div class='ImageTextHolderSlider'>
+
+                    <p>Details</p>
+                    
+                </div>
+            
+            </header>
+
+            <div class='CountryDiv'>
+
+                <img class='ProductedImage' src='${data.ProductImage}'/>
+
+                <h1 class='ProductedName'>${data.ProductName}</h1>
+
+                <div class='AdSection' ><p>${data.ProductDetails}</p></div>
+
+                <div class='TopNav'>
+
+                    <div class='ImageTextHolder' onclick=''>
+
+                        <img class='FooterImage' src='${WHITECHATICON}'/>
+
+                        <p>Comment</p>
+                    
+                    </div>
+
+                    <div class='ImageTextHolder' onclick=''>
+
+                        <img class='FooterImage' src='${WHITESAVEICON}'/>
+
+                        <p>Save</p>
+                    
+                    </div>
+
+                    <div class='ImageTextHolder' onclick=''>
+
+                        <img class='FooterImage' src='${WHITEUNHEARTICON}'/>
+
+                        <p>Rate</p>
+                    
+                    </div>
+
+                    <div class='ImageTextHolder' onclick=''>
+
+                        <img class='FooterImage' src='${WHITESENDICON}'/>
+
+                        <p>Share</p>
+                    
+                    </div>
                 
-            </div>
+                </div>
 
-            <div class='ImageTextHolderSlider'>
+                <footer>
 
-                <p>Details</p>
+                    <button class='BuyButtons'>
+
+                        <p>Buy Now</p>
+                    
+                    </button>
+
+                    <button id='Shop'  class='BuyButtons' >
+
+                        <p>Shop</p>
+                    
+                    </button>
                 
-            </div>
-        
-        </header>
+                </footer>
+            
+            </div> 
+            
+        `);
 
-        <div class='CountryDiv'>
-
-        </div> 
-        
-    `);
+    });
 
 };
