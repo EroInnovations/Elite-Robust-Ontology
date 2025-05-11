@@ -1,6 +1,7 @@
 import { GETDATA } from "../../../Functions/GetData/GetData.js";
 import { JSONADDER } from "../../../Functions/JsonAdder/JsonAdder.js";
 import { LOCALDEJSONDATA } from "../../../Functions/localDejsonData/localDejsonData.js";
+import { UPDATEDATA } from "../../../Functions/UpdateData/UpdateData.js";
 
 export const RATINGCORE=()=>{
 
@@ -18,7 +19,17 @@ export const RATINGCORE=()=>{
 
                         JSONADDER(Element.ProductRated,[localStorage.getItem('User')],(Rateddata)=>{
 
-                            console.log(Rateddata);
+                            const INFO=[Element.ProductName,Element.ProductPrice,Element.ProductDetails,Element.ProductCatergory,Element.ProductImage,Element.ProductImageOne,Element.ProductImageTwo,Element.ProductImageThree,Element.CreatedOn,Element.CreatedBy,Element.Approved,Element.ProductNumber,Rateddata,Element.ProductComments,Element.ProductSaved,Element.ProductShop,Element.ProductBought];
+
+                            UPDATEDATA(API,'Products',Element.ID,INFO,(Data)=>{
+
+                                console.log(Data);
+
+                            },(Data)=>{
+
+                                console.log(Data);
+
+                            });
 
                         });
                         

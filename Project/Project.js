@@ -1373,6 +1373,8 @@ const SAVEITEM=()=>{
 const RATEITEM=()=>{
     if (localStorage.getItem('UserData')) {
 
+        SERVERCONNECTION('Qel/RatingCore.js','RATINGCORE');
+
         SESSIONDEJSONDATA('CurrentProducts',(data)=>{
 
             LOCALDEJSONDATA('RatedData',(element)=>{
@@ -1385,8 +1387,6 @@ const RATEITEM=()=>{
 
                         PRODUCTSDETAILSPAGE();
 
-                        SERVERCONNECTION('Qel/RatingCore.js','RATINGCORE');
-
                     });
                         
                 } else {
@@ -1395,7 +1395,7 @@ const RATEITEM=()=>{
 
                         STOREDATA(' ','RatedData',Mydata);
 
-                        SERVERCONNECTION('Qel/RatingCore.js','RATINGCORE');
+                        PRODUCTSDETAILSPAGE();
 
                     });
                         
