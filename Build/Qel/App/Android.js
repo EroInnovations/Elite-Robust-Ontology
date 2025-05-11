@@ -266,7 +266,7 @@ const HOMEPAGE=()=>{
                 
                 </button>
 
-                <button class='SectionedButtons'>
+                <button class='SectionedButtons' onclick='RATEDITEMS()'>
 
                     <img src='${WHITEUNHEARTICON}'/>
 
@@ -286,7 +286,7 @@ const HOMEPAGE=()=>{
 
             <h1 class='OurProducts'>Our Products</h1>
 
-            <div class='AllProducts'></div>
+            <div class='AllProducts' id='SpecialProducts'></div>
 
             <br><br><br>
             
@@ -1851,5 +1851,75 @@ const LOGOUT=()=>{
     DELETEDATA(' ','UserData');
 
     RELOAD();
+
+};
+
+const RATEDITEMS=()=>{
+
+    const SpecialProducts=document.querySelector('#SpecialProducts');
+
+    DISPLAY(SpecialProducts,'');
+
+        GETINDEXEDDATA('Products','Products',(element)=>{
+
+        CHECKER(element.ProductRated,()=>{
+
+            CREATEELEMENT(SpecialProducts,'div','SectionDivso',(ELEMENTS)=>{
+
+                if (localStorage.getItem('ConvertedPrice')) {
+
+                    DOLLAREXCHANGE('USD',element.ProductPrice,(data)=>{
+
+                        DISPLAY(ELEMENTS,`
+
+                            <img class='ProductImage'src='${element.ProductImage}'/>
+
+                            <footer class='SectionFooters'>
+
+                                <p class='ProductNamer'>${element.ProductName}</p>
+
+                                <h1 class='ProductPrice'>Price:${data}USD</1>
+                            
+                            </footer
+
+                        `);   
+
+                    });
+                    
+                } else {
+
+                    DISPLAY(ELEMENTS,`
+
+                        <img class='ProductImage'src='${element.ProductImage}'/>
+
+                        <footer class='SectionFooters'>
+
+                            <p class='ProductNamer'>${element.ProductName}</p>
+
+                            <h1 class='ProductPrice'>Price:${element.ProductPrice.toLocaleString()}UGX</1>
+                        
+                        </footer
+
+                    `);
+                
+                };
+
+                CLICK(ELEMENTS,()=>{
+
+                    JSONIFICATION(element,(MyElement)=>{
+
+                        STOREDATA('','CurrentProducts',MyElement);
+
+                        PRODUCTDETAILSPAGEROUTE();
+
+                    });
+                    
+                });
+
+            });
+
+        });
+
+    });
 
 };
