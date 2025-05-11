@@ -1304,35 +1304,43 @@ const BUYNOW=()=>{
 
 const SHOPITEM=()=>{
 
-    SESSIONDEJSONDATA('CurrentProducts',(data)=>{
+    if (localStorage.getItem('UserData')) {
 
-        LOCALDEJSONDATA('ShopData',(element)=>{
+        SESSIONDEJSONDATA('CurrentProducts',(data)=>{
 
-            if (element.includes(data.ID)) {
+            LOCALDEJSONDATA('ShopData',(element)=>{
 
-                JSONREMOVER(localStorage.getItem('ShopData'),[data.ID],(Mydata)=>{
+                if (element.includes(data.ID)) {
 
-                    STOREDATA(' ','ShopData',Mydata);
+                    JSONREMOVER(localStorage.getItem('ShopData'),[data.ID],(Mydata)=>{
 
-                    PRODUCTSDETAILSPAGE();
+                        STOREDATA(' ','ShopData',Mydata);
 
-                });
-                    
-            } else {
+                        PRODUCTSDETAILSPAGE();
 
-                JSONADDER(localStorage.getItem('ShopData'),[data.ID],(Mydata)=>{
+                    });
+                        
+                } else {
 
-                    STOREDATA(' ','ShopData',Mydata);
+                    JSONADDER(localStorage.getItem('ShopData'),[data.ID],(Mydata)=>{
 
-                    PRODUCTSDETAILSPAGE();
+                        STOREDATA(' ','ShopData',Mydata);
 
-                });
-                    
-            };
+                        PRODUCTSDETAILSPAGE();
+
+                    });
+                        
+                };
+
+            });
 
         });
+        
+    } else {
+        
+        ACCOUNTPAGEROUTE();
 
-    });
+    };
 
 };
 
