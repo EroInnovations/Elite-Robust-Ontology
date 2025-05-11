@@ -2094,7 +2094,6 @@ const DOLLAREXCHANGE = (CONVERSION, AMOUNT, callback) => {
 
     callback(roundedAmount);
 };
-
 const SITECLOSE=()=>{
 
     if (localStorage.getItem('Environment') === 'Production'||localStorage.getItem('OperatingSystem') === 'Android' ) {
@@ -2210,7 +2209,6 @@ const AUTOSTART=()=>{
     };
 
 };
-
 const ACCOUNTCHECKER=(HomeCallBack,VerificationCallBack,LoginCallBack)=>{
 
     CONDITION(localStorage.getItem('UserData'),()=>{
