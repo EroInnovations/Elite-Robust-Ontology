@@ -122,8 +122,6 @@ const HOMEPAGE=()=>{
         
     };
 
-    DATADOWNLOADING();
-
     DISPLAY('',`
 
         <div class='HomeHolderDiv'>
@@ -359,6 +357,8 @@ const HOMEPAGE=()=>{
         });
 
     });
+
+    DATADOWNLOADING();
 
 };
 
