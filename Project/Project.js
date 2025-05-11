@@ -1373,7 +1373,11 @@ const SAVEITEM=()=>{
 const RATEITEM=()=>{
     if (localStorage.getItem('UserData')) {
 
-        SERVERCONNECTION('Qel/RatingCore.js','RATINGCORE');
+        if (navigator.onLine) {
+
+            SERVERCONNECTION('Qel/RatingCore.js','RATINGCORE');
+            
+        };
 
         SESSIONDEJSONDATA('CurrentProducts',(data)=>{
 
