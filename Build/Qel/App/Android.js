@@ -86,6 +86,12 @@ const ALLPRODUCTPAGEROUTE=()=>{
 
 };
 
+const ACCOUNTPAGEROUTE=()=>{
+
+    ROUTE('',ACCOUNTPAGE,'PRODUCTSDETAILSPAGE');
+
+};
+
 const HOMEPAGE=()=>{
 
     if (!localStorage.getItem('Area')) {
@@ -943,7 +949,7 @@ const PRODUCTSDETAILSPAGE=()=>{
 
                 <footer>
 
-                    <button class='BuyButtons'>
+                    <button class='BuyButtons' onclick='BUYNOW()'>
 
                         <p>Buy Now</p>
                     
@@ -962,5 +968,77 @@ const PRODUCTSDETAILSPAGE=()=>{
         `);
 
     });
+
+};
+
+const BUYNOW=()=>{
+
+    if (localStorage.getItem('User')) {
+        
+    } else {
+        
+        ACCOUNTPAGEROUTE();
+
+    }
+
+}
+
+const ACCOUNTPAGE=()=>{
+
+    DISPLAY('',`
+
+        <header>
+
+            <div class='ImageTextHolderSlided' onclick='PRODUCTDETAILSPAGEROUTE()'>
+
+                <img src='${WHITESINGLEBACKICON}'/>
+
+                <p>Back</p>
+                
+            </div>
+
+            <div class='ImageTextHolderSlider'>
+
+                <p>Access</p>
+                
+            </div>
+        
+        </header>
+
+        <div class='CountryDiv'>
+
+            <h1 class='LogInName'>Login To Use All Features</h1>
+
+            <div class='TopNav'>
+
+                <button class='SearchFilterButton'>
+
+                    <img class='FilterIcon' src='${WHITEGMAILICON}'/>
+                
+                </button>
+
+                <input class='SearchInputer' type='email' placeholder='Enter User Email' />
+
+            </div>
+
+            <div class='TopNav'>
+
+                <button class='SearchFilterButton'>
+
+                    <img class='FilterIcon' src='${WHITESECRETCODEICON}'/>
+                
+                </button>
+
+                <input class='SearchInputer' type='password' placeholder='Enter User Password' />
+
+            </div>
+
+            <button class='LoginButton'>Sign In</button>
+
+            <button id='CreateAccount' class='LoginButton'>Create Account</button>
+        
+        </div>
+        
+    `);
 
 };

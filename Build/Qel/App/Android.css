@@ -311,7 +311,7 @@ header{
 }
 
 #Shop{
-    background: blue;
+    background: teal;
 }
 
 .ProductedImage{
@@ -328,4 +328,36 @@ header{
     padding: 2%;
     margin: 2% auto;
 
+}
+
+.SearchInputer{
+    background: #cdcdcd20;
+    width: 80%;
+    border-radius: 5px;
+    margin: auto 1%;
+    padding: 1.5%;
+}
+
+.LoginButton{
+    background: forestgreen;
+    width: 98%;
+    margin: auto;
+    height: 50px;
+    border: none;
+    outline:none;
+    border-radius: 5px;
+    margin-top: 1%;
+}
+
+#CreateAccount{
+    background: teal;
+}
+
+.LogInName{
+    width: 90%;
+    font-size: 23px;
+    border: 1px solid #cdcdcd20;
+    border-radius: 5px;
+    padding: 2%;
+    margin: 2% auto;
 }
