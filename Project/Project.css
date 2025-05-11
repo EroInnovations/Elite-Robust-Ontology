@@ -361,3 +361,10 @@ header{
     padding: 2%;
     margin: 2% auto;
 }
+
+.ForgotPassword{
+    text-align: right;
+    margin-right: 1%;
+    padding: 2%;
+    font-size: 18px;
+}

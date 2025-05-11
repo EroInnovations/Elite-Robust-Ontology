@@ -1033,11 +1033,107 @@ const ACCOUNTPAGE=()=>{
 
             </div>
 
+            <p class='ForgotPassword'>Forgot Password?</p>
+
             <button class='LoginButton'>Sign In</button>
 
             <button id='CreateAccount' class='LoginButton'>Create Account</button>
         
         </div>
+        
+    `);
+
+    const CountryDiv=document.querySelector('.CountryDiv');
+
+    const CreateAccount=document.querySelector('#CreateAccount');
+
+    CreateAccount.addEventListener('click',()=>{
+
+        CREATEACCOUNT(CountryDiv);
+
+    });
+
+    const ForgotPassword=document.querySelector('.ForgotPassword');
+
+    ForgotPassword.addEventListener('click',()=>{
+
+        FORGOTPASSWORD(CountryDiv);
+
+    });
+
+};
+
+const CREATEACCOUNT=(CountryDiv)=>{
+
+        DISPLAY(CountryDiv,`
+
+            <h1 class='LogInName'>Create Account For Features Access</h1>
+
+            <div class='TopNav'>
+
+                <button class='SearchFilterButton'>
+
+                    <img class='FilterIcon' src='${WHITEUSERICON}'/>
+                
+                </button>
+
+                <input class='SearchInputer' type='text' placeholder='Enter User Name' />
+
+            </div>
+
+            <div class='TopNav'>
+
+                <button class='SearchFilterButton'>
+
+                    <img class='FilterIcon' src='${WHITEGMAILICON}'/>
+                
+                </button>
+
+                <input class='SearchInputer' type='email' placeholder='Enter User Email' />
+
+            </div>
+
+            <div class='TopNav'>
+
+                <button class='SearchFilterButton'>
+
+                    <img class='FilterIcon' src='${WHITESECRETCODEICON}'/>
+                
+                </button>
+
+                <input class='SearchInputer' type='password' placeholder='Enter User Password' />
+
+            </div>
+
+            <button class='LoginButton'>Sign Up</button>
+
+            <button id='CreateAccount' class='LoginButton' onclick='ACCOUNTPAGE()'>Login</button>
+        
+    `);
+
+};
+
+const FORGOTPASSWORD=(CountryDiv)=>{
+
+        DISPLAY(CountryDiv,`
+
+            <h1 class='LogInName'>Recover Account For Access</h1>
+
+            <div class='TopNav'>
+
+                <button class='SearchFilterButton'>
+
+                    <img class='FilterIcon' src='${WHITEGMAILICON}'/>
+                
+                </button>
+
+                <input class='SearchInputer' type='email' placeholder='Enter User Email' />
+
+            </div>
+
+            <button class='LoginButton'>Recover</button>
+
+            <button id='CreateAccount' class='LoginButton' onclick='ACCOUNTPAGE()'>Login</button>
         
     `);
 
