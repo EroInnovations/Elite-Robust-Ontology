@@ -91,14 +91,6 @@ header{
     margin-right: 1%;
 }
 
-.ProfileHolder{
-    position: relative;
-    height: 300px;
-    width: 95%;
-    background: orange;
-    margin: 1% auto;
-}
-
 .SearchInput{
     background: #cdcdcd20;
     width: 80%;

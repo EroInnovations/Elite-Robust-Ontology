@@ -1,15 +1,46 @@
 const API='https://docs.google.com/spreadsheets/d/18BUoCg4yVUrxWv8RG885ZIn2fjkURGgjIrCi6otCxFk/edit?usp=sharing';
 
-
 const NOVASTART=()=>{
-
-    STOREDATA(' ','UserData','');
 
     ROUTE('',HOMEPAGE,'HOMEPAGE');
 
     DATADOWNLOADING();
 
+    if (!localStorage.getItem('User')) {
+
+        USERCONNECTION();
+        
+    };
+
 };
+
+const USERCONNECTION=()=>{
+
+    GETDATA(API,'Users',(data)=>{
+
+        FINDER(data,'ID',localStorage.getItem('User'),(MyData)=>{
+
+            if (MyData.ID === localStorage.getItem('User')) {
+
+                JSONIFICATION(MyData,(Uses)=>{
+
+                    STOREDATA(' ','UserData',Uses);
+
+                });
+                
+            } else {
+
+                DELETEDATA(' ','UserData');
+
+                DELETEDATA(' ','User');
+                
+            };
+
+        });
+
+    });
+
+}
 
 const DATADOWNLOADING=()=>{
 
@@ -92,6 +123,21 @@ const ALLPRODUCTPAGEROUTE=()=>{
 const ACCOUNTPAGEROUTE=()=>{
 
     ROUTE('',ACCOUNTPAGE,'PRODUCTSDETAILSPAGE');
+
+};
+
+const PROFILEUSERROUTER=()=>{
+
+    if (localStorage.getItem('UserData')) {
+
+        ROUTE('',PROFILEPAGE,'USERACCOUNTPAGE');
+        
+    } else {
+
+
+        ACCOUNTPAGEROUTE();
+        
+    };
 
 };
 
@@ -359,6 +405,8 @@ const HOMEPAGE=()=>{
     });
 
     DATADOWNLOADING();
+
+    USERCONNECTION();
 
 };
 
@@ -1004,9 +1052,13 @@ const USERACCOUNTPAGE=()=>{
 
         <div class='CountryDiv'>
 
-            <div class='ProfileHolder'>
+            <button class='CountryDivs' onclick='PROFILEUSERROUTER()'>
+
+                <p class='LeftDistrict'>My Profile</p>
+
+                <img class='RightDistricitImage'src='${WHITEUSERPROFILEICON}'/>
             
-            </div>
+            </button>
 
             <button class='CountryDivs'>
 
@@ -1381,7 +1433,7 @@ const ACCOUNTPAGE=()=>{
                 
                 </button>
 
-                <input class='SearchInputer' type='email' placeholder='Enter User Email' />
+                <input id='Email' class='SearchInputer' type='email' placeholder='Enter User Email' />
 
             </div>
 
@@ -1393,7 +1445,7 @@ const ACCOUNTPAGE=()=>{
                 
                 </button>
 
-                <input class='SearchInputer' type='password' placeholder='Enter User Password' />
+                <input id='Password' class='SearchInputer' type='password' placeholder='Enter User Password' />
 
             </div>
 
@@ -1425,6 +1477,48 @@ const ACCOUNTPAGE=()=>{
 
     });
 
+    const LoginButton=document.querySelector('.LoginButton');
+
+    const Email=document.querySelector('#Email');
+
+    const Password=document.querySelector('#Password');
+
+    LoginButton.addEventListener('click',()=>{
+
+        if (Email.value) {
+
+            if (Password.value) {
+
+                if (navigator.onLine) {
+
+                    TOAST('Please Wait');
+
+                    GETDATA(API,'Users',(data)=>{
+
+                        console.log(data);
+
+                    });
+                    
+                } else {
+
+                    TOAST('Check Your Internet');
+                    
+                }
+            
+            } else {
+                
+                TOAST('Enter Password');
+
+            }
+            
+        } else {
+            
+            TOAST('Enter Email');
+
+        }
+
+    });
+    
 };
 
 const CREATEACCOUNT=(CountryDiv)=>{
@@ -1441,7 +1535,7 @@ const CREATEACCOUNT=(CountryDiv)=>{
                 
                 </button>
 
-                <input class='SearchInputer' type='text' placeholder='Enter User Name' />
+                <input id='Name' class='SearchInputer' type='text' placeholder='Enter User Name' />
 
             </div>
 
@@ -1453,7 +1547,7 @@ const CREATEACCOUNT=(CountryDiv)=>{
                 
                 </button>
 
-                <input class='SearchInputer' type='email' placeholder='Enter User Email' />
+                <input id='Email' class='SearchInputer' type='email' placeholder='Enter User Email' />
 
             </div>
 
@@ -1465,7 +1559,7 @@ const CREATEACCOUNT=(CountryDiv)=>{
                 
                 </button>
 
-                <input class='SearchInputer' type='password' placeholder='Enter User Password' />
+                <input id='Password' class='SearchInputer' type='password' placeholder='Enter User Password' />
 
             </div>
 
@@ -1474,6 +1568,84 @@ const CREATEACCOUNT=(CountryDiv)=>{
             <button id='CreateAccount' class='LoginButton' onclick='ACCOUNTPAGE()'>Login</button>
         
     `);
+
+    const LoginButton=document.querySelector('.LoginButton');
+    const Name=document.querySelector('#Name');
+    const Email=document.querySelector('#Email');
+    const Password=document.querySelector('#Password');
+
+    LoginButton.addEventListener('click',()=>{
+
+        if (Name.value) {
+
+            if (Email.value) {
+
+                if (Password.value) {
+
+                    if (navigator.onLine) {
+
+                        TOAST('Please Wait');
+
+                        GETDATA(API,'Users',(data)=>{
+
+                            FINDER(data,'UserEmail',Email.value,(user)=>{
+
+                                if (user.UserEmail === Email.value ) {
+
+                                    TOAST('User Found');
+                                    
+                                } else {
+
+                                    const HEADERS=['UserName','UserEmail','UserPassword','Date']
+
+                                    const INFO=[Name.value,Email.value,Password.value,new Date()]
+
+                                    INSERTDATA(API,'Users',HEADERS,INFO,(data)=>{
+
+                                        STOREDATA(' ','User',data.uniqueId);
+
+                                        RELOAD();
+
+                                    },(data)=>{
+
+                                        TOAST('Something Went Wrong');
+
+                                    });
+                                    
+                                }
+
+                            });
+
+                        })
+                
+                    } else {
+                        
+                        TOAST('Check Your Internet');
+
+                    };
+                
+                } else {
+                    
+                    TOAST('Enter Password');
+
+                };
+                
+            } else {
+                
+                TOAST('Enter Email')
+
+            };
+
+        } else {
+            
+
+            TOAST('Enter Name')
+
+        };
+
+    });
+
+
 
 };
 
@@ -1498,6 +1670,37 @@ const FORGOTPASSWORD=(CountryDiv)=>{
             <button class='LoginButton'>Recover</button>
 
             <button id='CreateAccount' class='LoginButton' onclick='ACCOUNTPAGE()'>Login</button>
+        
+    `);
+
+};
+
+const PROFILEPAGE=()=>{
+
+    DISPLAY('',`
+
+        <header>
+
+            <div class='ImageTextHolderSlided' onclick='HOMEPAGEROUTE()'>
+
+                <img src='${WHITESINGLEBACKICON}'/>
+
+                <p>Back</p>
+                
+            </div>
+
+            <div class='ImageTextHolderSlider'>
+
+                <p>My Account</p>
+                
+            </div>
+        
+        </header>
+
+        <div class='CountryDiv'>
+
+        
+        </div>
         
     `);
 
