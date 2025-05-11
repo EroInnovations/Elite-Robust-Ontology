@@ -256,19 +256,45 @@ const HOMEPAGE=()=>{
 
     GETINDEXEDDATA('Products','Products',(element)=>{
 
-        CREATEELEMENT(AllProducts,'div','SectionDivs',(ELEMENTS)=>{
+        CREATEELEMENT(AllProducts,'div','SectionDivso',(ELEMENTS)=>{
 
-            DISPLAY(ELEMENTS,`
+            if (localStorage.getItem('ConvertedPrice')) {
 
-                <img class='ProductImage'src='${element.ProductImage}'/>
+                DOLLAREXCHANGE('USD',element.ProductPrice,(data)=>{
 
-                <footer class='SectionFooter'>
+                    DISPLAY(ELEMENTS,`
 
-                    <p class='ProductName'>${element.ProductName}</p>
+                        <img class='ProductImage'src='${element.ProductImage}'/>
+
+                        <footer class='SectionFooters'>
+
+                            <p class='ProductNamer'>${element.ProductName}</p>
+
+                            <h1 class='ProductPrice'>Price:${data}USD</1>
+                        
+                        </footer
+
+                    `);   
+
+                });
                 
-                </footer
+            } else {
 
-            `);
+                DISPLAY(ELEMENTS,`
+
+                    <img class='ProductImage'src='${element.ProductImage}'/>
+
+                    <footer class='SectionFooters'>
+
+                        <p class='ProductNamer'>${element.ProductName}</p>
+
+                        <h1 class='ProductPrice'>Price:${element.ProductPrice.toLocaleString()}UGX</1>
+                    
+                    </footer
+
+                `);
+            
+            };
 
             CLICK(ELEMENTS,()=>{
 
@@ -712,7 +738,7 @@ const APPPREFERENCEPAGE=()=>{
 
         <div class='CountryDiv'>
 
-            <button class='CountryDivs' onclick='CHANGECOLOR()'>
+            <button class='CountryDivs' onclick='CONVERT()'>
 
                 <p class='LeftDistrict'>Convert Currency</p>
 
@@ -723,6 +749,24 @@ const APPPREFERENCEPAGE=()=>{
         </div> 
         
     `);
+
+};
+
+const CONVERT=()=>{
+
+    if (localStorage.getItem('ConvertedPrice')) {
+
+        DELETEDATA(' ','ConvertedPrice');
+
+        RELOAD();
+        
+    } else {
+
+        STOREDATA(' ','ConvertedPrice','Approved');
+
+        RELOAD();
+        
+    };
 
 };
 

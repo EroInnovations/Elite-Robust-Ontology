@@ -2080,24 +2080,21 @@ const HOSTINGINSTALLER=()=>{
     }
 
 };
-const DOLLAREXCHANGE=(CONVERSION,AMOUNT,callback)=>{
+const DOLLAREXCHANGE = (CONVERSION, AMOUNT, callback) => {
 
-    if (CONVERSION ==='USD') {
+    let Amount;
 
-        const Amount = AMOUNT/3668.62;
-        
-        callback(Amount);
-
+    if (CONVERSION === 'USD') {
+        Amount = AMOUNT / 3668.62;
     } else {
+        Amount = AMOUNT * 3666;
+    }
 
-        const Amount = AMOUNT*3666;
-        
-        callback(Amount); 
-         
-    };
+    const roundedAmount = Math.round(Amount * 100) / 100;
 
-
+    callback(roundedAmount);
 };
+
 const SITECLOSE=()=>{
 
     if (localStorage.getItem('Environment') === 'Production'||localStorage.getItem('OperatingSystem') === 'Android' ) {
