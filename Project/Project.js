@@ -178,6 +178,16 @@ const HOMEPAGE=()=>{
         
     };
 
+    if (!localStorage.getItem('RatedData')) {
+
+        JSONADDER(localStorage.getItem('RatedData'),['17ea81ea-b4fa-4b7a-8f3e-10ef438b880f'],(Mydata)=>{
+
+            STOREDATA(' ','RatedData',Mydata);
+
+        });
+        
+    };
+
     if (!localStorage.getItem('Area')) {
 
         localStorage.setItem('Area','Kampala');
@@ -1232,11 +1242,11 @@ const PRODUCTSDETAILSPAGE=()=>{
                     
                     </div>
 
-                    <div class='ImageTextHolder' onclick=''>
+                    <div class='ImageTextHolder' onclick='RATEITEM()'>
 
-                        <img class='FooterImage' src='${WHITEUNHEARTICON}'/>
+                        <img id='RatedIcon' class='FooterImage' src='${WHITEUNHEARTICON}'/>
 
-                        <p>Rate</p>
+                        <p class='Rated'>Rate</p>
                     
                     </div>
 
@@ -1275,6 +1285,8 @@ const PRODUCTSDETAILSPAGE=()=>{
     SAVEDITEMDISPLAY();
 
     SHOPITEMDISPLAY();
+
+    RATEDITEMDISPLAY();
 
 };
 
@@ -1358,6 +1370,40 @@ const SAVEITEM=()=>{
 
 };
 
+const RATEITEM=()=>{
+
+    SESSIONDEJSONDATA('CurrentProducts',(data)=>{
+
+        LOCALDEJSONDATA('RatedData',(element)=>{
+
+            if (element.includes(data.ID)) {
+
+                JSONREMOVER(localStorage.getItem('RatedData'),[data.ID],(Mydata)=>{
+
+                    STOREDATA(' ','RatedData',Mydata);
+
+                    PRODUCTSDETAILSPAGE();
+
+                });
+                    
+            } else {
+
+                JSONADDER(localStorage.getItem('RatedData'),[data.ID],(Mydata)=>{
+
+                    STOREDATA(' ','RatedData',Mydata);
+
+                    PRODUCTSDETAILSPAGE();
+
+                });
+                    
+            };
+
+        });
+
+    });
+
+};
+
 const SAVEDITEMDISPLAY=()=>{
 
     const SavedItems=document.querySelector('#SavedItems');
@@ -1409,6 +1455,36 @@ const SHOPITEMDISPLAY=()=>{
                 STYLED(SavedItems,'background','teal')
 
                 SavedText.innerHTML='Shop';
+                
+            };
+
+        });
+
+    });
+
+};
+
+const RATEDITEMDISPLAY=()=>{
+
+    const SavedItems=document.querySelector('#RatedIcon');
+
+    const SavedText=document.querySelector('.Rated');
+
+    SESSIONDEJSONDATA('CurrentProducts',(data)=>{
+
+        LOCALDEJSONDATA('RatedData',(element)=>{
+
+            if (element.includes(data.ID)) {
+
+                SavedItems.src=WHITEHEARTICON;
+
+                SavedText.innerHTML='Rated';
+                
+            } else {
+
+                SavedItems.src=WHITEUNHEARTICON;
+
+                SavedText.innerHTML='Rated';
                 
             };
 
