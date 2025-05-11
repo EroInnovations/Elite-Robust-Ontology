@@ -22,9 +22,9 @@ const USERCONNECTION=()=>{
 
             if (MyData.ID === localStorage.getItem('User')) {
 
-                JSONIFICATION(MyData,(Uses)=>{
+                JSONIFICATION(MyData,(User)=>{
 
-                    STOREDATA(' ','UserData',Uses);
+                    STOREDATA(' ','UserData',User);
 
                 });
                 
