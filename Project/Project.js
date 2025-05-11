@@ -80,7 +80,15 @@ const SECTIONSPAGEROUTE=()=>{
 
 const SAVEDPAGEROUTE=()=>{
 
-   ROUTE(' ',SAVEDPAGE,'HOMEPAGE');
+    if (localStorage.getItem('UserData')) {
+
+        ROUTE(' ',SAVEDPAGE,'HOMEPAGE');
+        
+    } else {
+
+        ACCOUNTPAGEROUTE();
+        
+    };
 
 };
 
@@ -98,7 +106,15 @@ const USERACCOUNTPAGEROUTE=()=>{
 
 const SHOPPINGPAGEROUTE=()=>{
 
-    ROUTE(' ',SHOPPAGE,'HOMEPAGE');
+    if (localStorage.getItem('UserData')) {
+        
+        ROUTE(' ',SHOPPAGE,'HOMEPAGE');
+
+    } else {
+        
+        ACCOUNTPAGEROUTE();
+
+    };
 
 };
 
@@ -312,9 +328,13 @@ const HOMEPAGE=()=>{
         
     `);
 
-    SAVEDNOTES();
+    if (localStorage.getItem('UserData')) {
 
-    SHOPNOTES();
+        SAVEDNOTES();
+
+        SHOPNOTES();
+        
+    }
 
     const CurrentCatergory=document.querySelector('#CurrentCatergory');
 
@@ -1092,14 +1112,13 @@ const USERACCOUNTPAGE=()=>{
             
             </button>
 
-            <button class='CountryDivs'>
+            <button class='CountryDivs' onclick='LOGOUT()'>
 
                 <p class='LeftDistrict'>Log Out</p>
 
                 <img class='RightDistricitImage'src='${WHITELOGOUTICON}'/>
             
             </button>
-        
         
         </div>
         
@@ -1495,6 +1514,36 @@ const ACCOUNTPAGE=()=>{
 
                     GETDATA(API,'Users',(data)=>{
 
+                        FINDER(data,'UserEmail',Email.value,(Users)=>{
+
+                            if (Users.UserEmail === Email.value ) {
+
+                                if (Users.UserPassword === Password.value) {
+
+                                    JSONIFICATION(Users,(Mydata)=>{
+
+                                        STOREDATA(' ','UserData',Mydata);
+
+                                        STOREDATA(' ','User',Users.ID);
+
+                                        RELOAD();
+
+                                    })
+                                    
+                                } else {
+                                    
+                                    TOAST('Wrong User Password');
+
+                                }
+                                
+                            } else {
+
+                                TOAST('No User Account Found!')
+                                
+                            }
+
+                        });
+
                         console.log(data);
 
                     });
@@ -1703,5 +1752,15 @@ const PROFILEPAGE=()=>{
         </div>
         
     `);
+
+};
+
+const LOGOUT=()=>{
+
+    DELETEDATA(' ','User');
+
+    DELETEDATA(' ','UserData');
+
+    RELOAD();
 
 };
