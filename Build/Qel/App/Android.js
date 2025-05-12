@@ -163,6 +163,12 @@ const PRODUCTPAGEROUTER=()=>{
 
 };
 
+const POLICYPAGEROUTER=()=>{
+
+    ROUTE('',PRIVACYPOLICYPAGE,'HOMEPAGE');
+
+};
+
 const HOMEPAGE=()=>{
 
     if (!localStorage.getItem('SavedData')) {
@@ -1018,7 +1024,7 @@ const SETTINGSPAGE=()=>{
 
         <div class='CountryDiv'>
 
-            <button class='CountryDivs'>
+            <button class='CountryDivs' onclick='POLICYPAGEROUTER()'>
 
                 <p class='LeftDistrict'>Privacy Policy</p>
 
@@ -2147,6 +2153,46 @@ const PRODUCTPAGE=()=>{
                 });
 
             });
+
+        });
+
+    });
+
+};
+
+const PRIVACYPOLICYPAGE=()=>{
+
+    DISPLAY('',`
+
+        <header>
+
+            <div class='ImageTextHolderSlided' onclick='HOMEPAGEROUTE()'>
+
+                <img src='${WHITESINGLEBACKICON}'/>
+
+                <p>Back</p>
+                
+            </div>
+
+            <div id='SectionNames' class='ImageTextHolderSlider'>
+
+                <p class='SectionNamer' >Policy</p>
+                
+            </div>
+        
+        </header>
+
+        <div class='CountryDiv'></div>
+        
+    `);
+
+    const AllProducts=document.querySelector('.CountryDiv');
+
+    GETINDEXEDDATA('Policies','Policies',(element)=>{
+
+        CHECKER(element.ID === 'a7f2c9de-8b64-4e1a-a5d7-3fcb9182d4e6'  ,()=>{
+
+            DISPLAY(AllProducts,element.Data+'<br><br>');
 
         });
 
