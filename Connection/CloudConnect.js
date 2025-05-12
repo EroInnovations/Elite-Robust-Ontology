@@ -44,7 +44,10 @@ export const CLOUDCONNECTION=()=>{
 
                     const allKeysPresent = requiredKeys.every(key => localStorage.getItem(key));
 
-                    if (allKeysPresent) {
+                    if (!allKeysPresent) {
+                        console.log('Some Updates Missing');
+                        START();
+                    } else {
                         if (localStorage.getItem('Updates') === 'Approved') {
                             localStorage.setItem('Updated', new Date().toISOString());
                         } else {
@@ -52,11 +55,8 @@ export const CLOUDCONNECTION=()=>{
                             setTimeout(() => {
                                 location.reload();
                             }, 2000);
-                        }
-                    } else {
-                        console.log('Some Updates Missing')
-                        START();
-                    }
+                        };
+                    };
 
                     return;
 
