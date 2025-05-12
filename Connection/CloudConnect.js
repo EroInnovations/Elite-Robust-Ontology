@@ -1,3 +1,4 @@
+import { START } from "../Start/Start.js";
 import { CONNECTION } from "./Connection.js";
 
 export const CLOUDCONNECTION=()=>{
@@ -29,21 +30,30 @@ export const CLOUDCONNECTION=()=>{
 
                     CONNECTION(element.AndroidFunctions,'PROJECTSTYLES');
 
-                    if (localStorage.getItem('Updates')==='Approved') {
-
-                        localStorage.setItem('Updated',new Date());
+                    if (localStorage.getItem('FUNCTIONS')&&localStorage.getItem('NOVA')&&localStorage.getItem('PLUGINS')&&localStorage.getItem('APIS')&&localStorage.getItem('AUTORUN')&&localStorage.getItem('NOVACLASSES')&&localStorage.getItem('NOVACOMPONENTS')&&localStorage.getItem('ASSETS')&&localStorage.getItem('NOVASTYLES')) {
                         
+                        if (localStorage.getItem('Updates')==='Approved') {
+
+                            localStorage.setItem('Updated',new Date());
+                        
+                        }else{
+
+                            localStorage.setItem('Updates','Approved');
+
+                            setTimeout(() => {
+
+                                location.reload();
+                                
+                            },2000);
+                            
+                        };
+
                     }else{
 
-                        localStorage.setItem('Updates','Approved');
-
-                        setTimeout(() => {
-
-                            location.reload();
-                            
-                        },4000);
                         
-                    };
+                        START();
+
+                    }
 
                     return;
 
