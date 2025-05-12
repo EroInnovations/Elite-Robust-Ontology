@@ -20,7 +20,7 @@ const USERCONNECTION=()=>{
 
         FINDER(data,'ID',localStorage.getItem('User'),(MyData)=>{
 
-            if (MyData.ID === localStorage.getItem('User')&&MyData.Deleted) {
+            if (MyData.ID === localStorage.getItem('User')&&!MyData.Deleted) {
 
                 JSONIFICATION(MyData,(Uses)=>{
 
