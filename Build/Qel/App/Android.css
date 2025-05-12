@@ -76,7 +76,7 @@ header{
     width: 95%;
     height: 50px;
     background: transparent;
-    border: 1px solid #cdcdcd;
+    border: none;
     display: inline-flex;
     left: 0;
     margin: 1% auto;
@@ -315,7 +315,7 @@ header{
 .ProductedName{
     width: 90%;
     font-size: 23px;
-    border: 1px solid #cdcdcd20;
+    border: none;
     border-radius: 5px;
     padding: 2%;
     margin: 2% auto;
@@ -348,7 +348,7 @@ header{
 .LogInName{
     width: 90%;
     font-size: 23px;
-    border: 1px solid #cdcdcd20;
+    border: none;
     border-radius: 5px;
     padding: 2%;
     margin: 2% auto;

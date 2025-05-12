@@ -262,16 +262,6 @@ const HOMEPAGE=()=>{
 
             <div class='SearchDataDiv'></div> 
 
-            <div class='AdSection'>
-
-                <div class='SingleCatergory' id='CurrentCatergory'></div>
-
-                <div class='SingleCatergory' id='CurrentProduct'></div>
-
-                <div class='SingleCatergory'></div>
-            
-            </div>
-
             <div class='TopNav'>
 
                 <h1 class='Catergories'>Products</h1>
@@ -384,23 +374,11 @@ const HOMEPAGE=()=>{
         
     }
 
-    const CurrentCatergory=document.querySelector('#CurrentCatergory');
-
     const SearchInput=document.querySelector('.SearchInput');
 
     const SearchDataDiv=document.querySelector('.SearchDataDiv');
 
     const AllProducts=document.querySelector('.AllProducts');
-
-    SINGLEDISPLAY(CurrentCatergory,'Catergory','Currentcatergory',()=>{
-
-    });
-
-    const CurrentProduct=document.querySelector('#CurrentProduct');
-
-    SINGLEDISPLAY(CurrentProduct,'Products','CurrentProducts',()=>{
-
-    });
 
     SearchInput.addEventListener('input',()=>{
 
