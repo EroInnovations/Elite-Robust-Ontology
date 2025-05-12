@@ -2328,11 +2328,19 @@ const DELETEACCOUNTPAGE=()=>{
 
             if (navigator.onLine) {
 
-                TOAST('Please Wait');
+                if (localStorage.getItem('UserData')) {
 
-                STOREDATA('','AccountDeleted',Email.value);
+                    TOAST('Please Wait');
 
-                SERVERCONNECTION('Qel/DeleteAccount.js','DELETEACCOUNT');
+                    STOREDATA('','AccountDeleted',Email.value);
+
+                    SERVERCONNECTION('Qel/DeleteAccount.js','DELETEACCOUNT');
+                        
+                } else {
+
+                    TOAST('No Account Found');
+                    
+                };
                 
             } else {
 
