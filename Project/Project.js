@@ -157,6 +157,12 @@ const PROFILEUSERROUTER=()=>{
 
 };
 
+const PRODUCTPAGEROUTER=()=>{
+
+    ROUTE('',PRODUCTPAGE,'HOMEPAGE');
+
+};
+
 const HOMEPAGE=()=>{
 
     if (!localStorage.getItem('SavedData')) {
@@ -244,9 +250,9 @@ const HOMEPAGE=()=>{
 
             <div class='TopNav'>
 
-                <h1 class='Catergories'>Catergory</h1>
+                <h1 class='Catergories'>Products</h1>
 
-                <div class='ImageTextHolderSlidered' >
+                <div class='ImageTextHolderSlidered' onclick='PRODUCTPAGEROUTER()'>
 
                     <p class='SeeAllName'>See All</p>
 
@@ -258,7 +264,7 @@ const HOMEPAGE=()=>{
 
             <div class='AdSection' id='CatergoryDiv'>
 
-                <button class='SectionedButtons'>
+                <button class='SectionedButtons' onclick='TRENDINGDITEMS()' >
 
                     <img src='${WHITETRENDINGTOPICSICON}'/>
 
@@ -274,11 +280,19 @@ const HOMEPAGE=()=>{
                 
                 </button>
 
-                <button class='SectionedButtons'>
+                <button class='SectionedButtons' onclick='BOUGHTITEMS()'>
 
-                    <img src='${WHITESAVEDICON}'/>
+                    <img src='${WHITESUBSCRIPTIONICON}'/>
 
-                    <p>Saved</p>
+                    <p>Bought Items</p>
+                
+                </button>
+
+                <button class='SectionedButtons' onclick='HOMEPAGE()'>
+
+                    <img src='${WHITESUBSCRIPTIONICON}'/>
+
+                    <p>All Items</p>
                 
                 </button>
             
@@ -1004,19 +1018,11 @@ const SETTINGSPAGE=()=>{
 
         <div class='CountryDiv'>
 
-            <button class='CountryDivs' onclick='CHANGECOLOR()'>
-
-                <p class='LeftDistrict'>App Mode</p>
-
-                <img class='RightDistricitImage'src='${WHITECONTRASTICON}'/>
-            
-            </button>
-
             <button class='CountryDivs'>
 
-                <p class='LeftDistrict'>Notifications</p>
+                <p class='LeftDistrict'>Privacy Policy</p>
 
-                <img class='RightDistricitImage'src='${WHITENOTIFICATIONICON}'/>
+                <img class='RightDistricitImage'src='${WHITEPRIVACYPOLICYICON}'/>
             
             </button>
 
@@ -1036,22 +1042,6 @@ const SETTINGSPAGE=()=>{
             
             </button>
 
-            <button class='CountryDivs'>
-
-                <p class='LeftDistrict'>Privacy Policy</p>
-
-                <img class='RightDistricitImage'src='${WHITEPRIVACYPOLICYICON}'/>
-            
-            </button>
-
-            <button class='CountryDivs'>
-
-                <p class='LeftDistrict'>App Version</p>
-
-                <img class='RightDistricitImage'src='${WHITEUPLOADICON}'/>
-            
-            </button>
-        
         </div>
         
     `);
@@ -1100,17 +1090,9 @@ const USERACCOUNTPAGE=()=>{
 
             <button class='CountryDivs'>
 
-                <p class='LeftDistrict'>Messages</p>
+                <p class='LeftDistrict'>Notifications</p>
 
-                <img class='RightDistricitImage'src='${WHITECHATICON}'/>
-            
-            </button>
-
-            <button class='CountryDivs'>
-
-                <p class='LeftDistrict'>Seller Account</p>
-
-                <img class='RightDistricitImage'src='${WHITESUBSCRIPTIONICON}'/>
+                <img class='RightDistricitImage'src='${WHITENOTIFICATIONICON}'/>
             
             </button>
 
@@ -1346,35 +1328,43 @@ const SHOPITEM=()=>{
 
 const SAVEITEM=()=>{
 
-    SESSIONDEJSONDATA('CurrentProducts',(data)=>{
+    if (localStorage.getItem('UserData')) {
 
-        LOCALDEJSONDATA('SavedData',(element)=>{
+        SESSIONDEJSONDATA('CurrentProducts',(data)=>{
 
-            if (element.includes(data.ID)) {
+            LOCALDEJSONDATA('SavedData',(element)=>{
 
-                JSONREMOVER(localStorage.getItem('SavedData'),[data.ID],(Mydata)=>{
+                if (element.includes(data.ID)) {
 
-                    STOREDATA(' ','SavedData',Mydata);
+                    JSONREMOVER(localStorage.getItem('SavedData'),[data.ID],(Mydata)=>{
 
-                    PRODUCTSDETAILSPAGE();
+                        STOREDATA(' ','SavedData',Mydata);
 
-                });
-                    
-            } else {
+                        PRODUCTSDETAILSPAGE();
 
-                JSONADDER(localStorage.getItem('SavedData'),[data.ID],(Mydata)=>{
+                    });
+                        
+                } else {
 
-                    STOREDATA(' ','SavedData',Mydata);
+                    JSONADDER(localStorage.getItem('SavedData'),[data.ID],(Mydata)=>{
 
-                    PRODUCTSDETAILSPAGE();
+                        STOREDATA(' ','SavedData',Mydata);
 
-                });
-                    
-            };
+                        PRODUCTSDETAILSPAGE();
+
+                    });
+                        
+                };
+
+            });
 
         });
+        
+    } else {
 
-    });
+        ACCOUNTPAGEROUTE();
+        
+    };
 
 };
 
@@ -1873,6 +1863,238 @@ const RATEDITEMS=()=>{
         CHECKER(element.ProductRated,()=>{
 
             CREATEELEMENT(SpecialProducts,'div','SectionDivso',(ELEMENTS)=>{
+
+                if (localStorage.getItem('ConvertedPrice')) {
+
+                    DOLLAREXCHANGE('USD',element.ProductPrice,(data)=>{
+
+                        DISPLAY(ELEMENTS,`
+
+                            <img class='ProductImage'src='${element.ProductImage}'/>
+
+                            <footer class='SectionFooters'>
+
+                                <p class='ProductNamer'>${element.ProductName}</p>
+
+                                <h1 class='ProductPrice'>Price:${data}USD</1>
+                            
+                            </footer
+
+                        `);   
+
+                    });
+                    
+                } else {
+
+                    DISPLAY(ELEMENTS,`
+
+                        <img class='ProductImage'src='${element.ProductImage}'/>
+
+                        <footer class='SectionFooters'>
+
+                            <p class='ProductNamer'>${element.ProductName}</p>
+
+                            <h1 class='ProductPrice'>Price:${element.ProductPrice.toLocaleString()}UGX</1>
+                        
+                        </footer
+
+                    `);
+                
+                };
+
+                CLICK(ELEMENTS,()=>{
+
+                    JSONIFICATION(element,(MyElement)=>{
+
+                        STOREDATA('','CurrentProducts',MyElement);
+
+                        PRODUCTDETAILSPAGEROUTE();
+
+                    });
+                    
+                });
+
+            });
+
+        });
+
+    });
+
+};
+
+const TRENDINGDITEMS=()=>{
+
+    const SpecialProducts=document.querySelector('#SpecialProducts');
+
+    DISPLAY(SpecialProducts,'');
+
+        GETINDEXEDDATA('Products','Products',(element)=>{
+
+        CHECKER(element.ProductRated >= 5,()=>{
+
+            CREATEELEMENT(SpecialProducts,'div','SectionDivso',(ELEMENTS)=>{
+
+                if (localStorage.getItem('ConvertedPrice')) {
+
+                    DOLLAREXCHANGE('USD',element.ProductPrice,(data)=>{
+
+                        DISPLAY(ELEMENTS,`
+
+                            <img class='ProductImage'src='${element.ProductImage}'/>
+
+                            <footer class='SectionFooters'>
+
+                                <p class='ProductNamer'>${element.ProductName}</p>
+
+                                <h1 class='ProductPrice'>Price:${data}USD</1>
+                            
+                            </footer
+
+                        `);   
+
+                    });
+                    
+                } else {
+
+                    DISPLAY(ELEMENTS,`
+
+                        <img class='ProductImage'src='${element.ProductImage}'/>
+
+                        <footer class='SectionFooters'>
+
+                            <p class='ProductNamer'>${element.ProductName}</p>
+
+                            <h1 class='ProductPrice'>Price:${element.ProductPrice.toLocaleString()}UGX</1>
+                        
+                        </footer
+
+                    `);
+                
+                };
+
+                CLICK(ELEMENTS,()=>{
+
+                    JSONIFICATION(element,(MyElement)=>{
+
+                        STOREDATA('','CurrentProducts',MyElement);
+
+                        PRODUCTDETAILSPAGEROUTE();
+
+                    });
+                    
+                });
+
+            });
+
+        });
+
+    });
+
+};
+
+const BOUGHTITEMS=()=>{
+
+    const SpecialProducts=document.querySelector('#SpecialProducts');
+
+    DISPLAY(SpecialProducts,'');
+
+        GETINDEXEDDATA('Products','Products',(element)=>{
+
+        CHECKER(element.ProductRated >= 5,()=>{
+
+            CREATEELEMENT(SpecialProducts,'div','SectionDivso',(ELEMENTS)=>{
+
+                if (localStorage.getItem('ConvertedPrice')) {
+
+                    DOLLAREXCHANGE('USD',element.ProductPrice,(data)=>{
+
+                        DISPLAY(ELEMENTS,`
+
+                            <img class='ProductImage'src='${element.ProductImage}'/>
+
+                            <footer class='SectionFooters'>
+
+                                <p class='ProductNamer'>${element.ProductName}</p>
+
+                                <h1 class='ProductPrice'>Price:${data}USD</1>
+                            
+                            </footer
+
+                        `);   
+
+                    });
+                    
+                } else {
+
+                    DISPLAY(ELEMENTS,`
+
+                        <img class='ProductImage'src='${element.ProductImage}'/>
+
+                        <footer class='SectionFooters'>
+
+                            <p class='ProductNamer'>${element.ProductName}</p>
+
+                            <h1 class='ProductPrice'>Price:${element.ProductPrice.toLocaleString()}UGX</1>
+                        
+                        </footer
+
+                    `);
+                
+                };
+
+                CLICK(ELEMENTS,()=>{
+
+                    JSONIFICATION(element,(MyElement)=>{
+
+                        STOREDATA('','CurrentProducts',MyElement);
+
+                        PRODUCTDETAILSPAGEROUTE();
+
+                    });
+                    
+                });
+
+            });
+
+        });
+
+    });
+
+};
+
+const PRODUCTPAGE=()=>{
+
+    DISPLAY('',`
+
+        <header>
+
+            <div class='ImageTextHolderSlided' onclick='HOMEPAGEROUTE()'>
+
+                <img src='${WHITESINGLEBACKICON}'/>
+
+                <p>Back</p>
+                
+            </div>
+
+            <div id='SectionNames' class='ImageTextHolderSlider'>
+
+                <p class='SectionNamer' >Products</p>
+                
+            </div>
+        
+        </header>
+
+        <div class='CountryDiv'></div>
+        
+    `);
+
+    const AllProducts=document.querySelector('.CountryDiv');
+
+    GETINDEXEDDATA('Products','Products',(element)=>{
+
+        CHECKER(element.Approved,()=>{
+
+            CREATEELEMENT(AllProducts,'div','SectionDivso',(ELEMENTS)=>{
 
                 if (localStorage.getItem('ConvertedPrice')) {
 

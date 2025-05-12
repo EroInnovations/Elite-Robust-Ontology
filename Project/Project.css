@@ -119,7 +119,7 @@ header{
     position: relative;
     width: 96%;
     height: 200px;
-    background: #cdcdcd20;
+    background: transparent;
     display: inline-flex;
     overflow-x: auto;
 }
@@ -139,7 +139,7 @@ header{
 }
 
 #CatergoryDiv{
-    background: #cdcdcd20;
+    background: transparent;
     height:70px;
 }
 

@@ -1,0 +1,23 @@
+.CompanyLogo{
+    width: 95%;
+    height: 300px;
+    margin: 2%;
+    border-radius: 5px;
+}
+
+.Moto{
+    margin: 2% auto;
+    font-size: 18px;
+}
+
+.MiniAboutUs{
+    text-align: left;
+    padding: 2.5%;
+}
+
+.TopNav{
+    position: relative;
+    width: 95%;
+    height: 50px;
+    display: inline-flex;
+}
