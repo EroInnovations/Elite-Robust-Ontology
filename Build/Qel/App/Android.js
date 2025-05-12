@@ -6,7 +6,7 @@ const NOVASTART=()=>{
 
     DATADOWNLOADING();
 
-    if (!localStorage.getItem('User')) {
+    if (localStorage.getItem('User')) {
 
         USERCONNECTION();
         
@@ -20,7 +20,7 @@ const USERCONNECTION=()=>{
 
         FINDER(data,'ID',localStorage.getItem('User'),(MyData)=>{
 
-            if (MyData.ID === localStorage.getItem('User')) {
+            if (MyData.ID === localStorage.getItem('User')&&MyData.Deleted) {
 
                 JSONIFICATION(MyData,(Uses)=>{
 
@@ -1599,18 +1599,6 @@ const ACCOUNTPAGE=()=>{
 
     const Password=document.querySelector('#Password');
 
-    Email.addEventListener('input',()=>{
-
-        STOREDATA('','Email',Email.value);
-
-    });
-
-    Password.addEventListener('input',()=>{
-
-        STOREDATA('','Password',Password.value);
-        
-    })
-
     LoginButton.addEventListener('click',()=>{
 
         if (Email.value) {
@@ -1621,7 +1609,47 @@ const ACCOUNTPAGE=()=>{
 
                     TOAST('Please Wait');
 
-                    SERVERCONNECTION('Qel/LoginUser.js','LOGINUSER');
+                    GETDATA(API,'Users',(data)=>{
+    
+                        FINDER(data,'UserEmail',Email.value,(User)=>{
+
+                            if (User.UserEmail === Email.value) {
+
+                                if (User.UserPassword === Password.value) {
+
+                                    if (!User.Deleted) {
+
+                                        STOREDATA(' ','User',User.ID);
+
+                                        JSONIFICATION(User,(MyData)=>{
+
+                                            STOREDATA(' ','UserData',MyData);
+
+                                            RELOAD();
+
+                                        });
+                                        
+                                    } else {
+
+                                        TOAST('Something Went Wrong');
+                                        
+                                    };
+                                    
+                                } else {
+
+                                    TOAST('Wrong User Password');
+                                    
+                                };
+                                
+                            } else {
+
+                                TOAST('User Not Found');
+                                
+                            };
+                    
+                        });
+    
+                    });
                     
                 } else {
 
@@ -2334,7 +2362,35 @@ const DELETEACCOUNTPAGE=()=>{
 
                     STOREDATA('','AccountDeleted',Email.value);
 
-                    SERVERCONNECTION('Qel/DeleteAccount.js','DELETEACCOUNT');
+                        GETDATA(API,'Users',(data)=>{
+
+                            FINDER(data,'ID',localStorage.getItem('User'),(User)=>{
+
+                                if (User.ID === localStorage.getItem('User')) {
+
+                                    const INFO=[User.UserName,User.UserEmail,User.UserPassword,User.Date,Email.value,User.Photo,User.Activity,User.Device,User.SavedItems,User.Settings,User.Notifications,User.Updates,User.Versions,User.BoughtProducts,User.ShoppedProducts]
+
+                                    UPDATEDATA(API,'Users',User.ID,INFO,(Reason)=>{
+
+                                        DELETEDATA(' ','User');
+
+                                        DELETEDATA(' ','UserData');
+
+                                        RELOAD();
+
+                                        console.log(Reason);
+
+                                    },(error)=>{
+
+                                        TOAST('Failed to Delete Account')
+
+                                    });
+                                    
+                                } 
+
+                            });
+
+                        });
                         
                 } else {
 
