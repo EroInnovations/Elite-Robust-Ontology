@@ -54,6 +54,7 @@ export const CLOUDCONNECTION=()=>{
                             }, 2000);
                         }
                     } else {
+                        console.log('Some Updates Missing')
                         START();
                     }
 
