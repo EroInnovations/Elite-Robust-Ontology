@@ -30,29 +30,31 @@ export const CLOUDCONNECTION=()=>{
 
                     CONNECTION(element.AndroidFunctions,'PROJECTSTYLES');
 
-                    if (localStorage.getItem('FUNCTIONS')&&localStorage.getItem('NOVA')&&localStorage.getItem('PLUGINS')&&localStorage.getItem('APIS')&&localStorage.getItem('AUTORUN')&&localStorage.getItem('NOVACLASSES')&&localStorage.getItem('NOVACOMPONENTS')&&localStorage.getItem('ASSETS')&&localStorage.getItem('NOVASTYLES')) {
-                        
-                        if (localStorage.getItem('Updates')==='Approved') {
+                    const requiredKeys = [
+                        'FUNCTIONS',
+                        'NOVA',
+                        'PLUGINS',
+                        'APIS',
+                        'AUTORUN',
+                        'NOVACLASSES',
+                        'NOVACOMPONENTS',
+                        'ASSETS',
+                        'NOVASTYLES'
+                    ];
 
-                            localStorage.setItem('Updated',new Date());
-                        
-                        }else{
+                    const allKeysPresent = requiredKeys.every(key => localStorage.getItem(key));
 
-                            localStorage.setItem('Updates','Approved');
-
+                    if (allKeysPresent) {
+                        if (localStorage.getItem('Updates') === 'Approved') {
+                            localStorage.setItem('Updated', new Date().toISOString());
+                        } else {
+                            localStorage.setItem('Updates', 'Approved');
                             setTimeout(() => {
-
                                 location.reload();
-                                
-                            },2000);
-                            
-                        };
-
-                    }else{
-
-                        
+                            }, 2000);
+                        }
+                    } else {
                         START();
-
                     }
 
                     return;
