@@ -169,6 +169,24 @@ const POLICYPAGEROUTER=()=>{
 
 };
 
+const CONTACTUSPAGEROUTER=()=>{
+
+    ROUTE('',CONTACTUSPAGE,'HOMEPAGE');
+
+};
+
+const HELPAGEROUTER=()=>{
+
+    ROUTE('',HELPPAGE,'HOMEPAGE');
+
+};
+
+const DELETEACCOUNTROUTER=()=>{
+
+    ROUTE('',DELETEACCOUNTPAGE,'HOMEPAGE');
+
+};
+
 const HOMEPAGE=()=>{
 
     if (!localStorage.getItem('SavedData')) {
@@ -1040,7 +1058,7 @@ const SETTINGSPAGE=()=>{
             
             </button>
 
-            <button class='CountryDivs'>
+            <button class='CountryDivs' onclick='APPUPDATES()'>
 
                 <p class='LeftDistrict'>Updates</p>
 
@@ -1088,21 +1106,29 @@ const USERACCOUNTPAGE=()=>{
 
             <button class='CountryDivs'>
 
-                <p class='LeftDistrict'>Community</p>
-
-                <img class='RightDistricitImage'src='${WHITEGROUPICON}'/>
-            
-            </button>
-
-            <button class='CountryDivs'>
-
                 <p class='LeftDistrict'>Notifications</p>
 
                 <img class='RightDistricitImage'src='${WHITENOTIFICATIONICON}'/>
             
             </button>
 
-            <button class='CountryDivs'>
+            <button class='CountryDivs' onclick='HELPAGEROUTER()'>
+
+                <p class='LeftDistrict'>Help</p>
+
+                <img class='RightDistricitImage'src='${WHITEHELPICON}'/>
+            
+            </button>
+
+            <button class='CountryDivs' onclick='CONTACTUSPAGEROUTER()'>
+
+                <p class='LeftDistrict'>Contact Us</p>
+
+                <img class='RightDistricitImage'src='${WHITEPHONEICON}'/>
+            
+            </button>
+
+            <button class='CountryDivs' onclick='DELETEACCOUNTROUTER()'>
 
                 <p class='LeftDistrict'>Delete Account</p>
 
@@ -1548,7 +1574,7 @@ const ACCOUNTPAGE=()=>{
                 <input id='Email' class='SearchInputer' type='email' placeholder='Enter User Email' />
 
             </div>
-
+            
             <div class='TopNav'>
 
                 <button class='SearchFilterButton'>
@@ -2198,4 +2224,142 @@ const PRIVACYPOLICYPAGE=()=>{
 
     });
 
+};
+
+const APPUPDATES=()=>{
+
+    WEBSITE('https://qelmedistore.site');
+
+};
+
+const CONTACTUSPAGE=()=>{
+
+    DISPLAY('',`
+
+        <header>
+
+            <div class='ImageTextHolderSlided' onclick='HOMEPAGEROUTE()'>
+
+                <img src='${WHITESINGLEBACKICON}'/>
+
+                <p>Back</p>
+                
+            </div>
+
+            <div class='ImageTextHolderSlider'>
+
+                <p>Reach Us</p>
+                
+            </div>
+        
+        </header>
+
+        <div class='CountryDiv'>
+
+            <button class='CountryDivs' onclick=''>
+
+                <p class='LeftDistrict'>Gmail</p>
+
+                <img class='RightDistricitImage'src='${WHITEGMAILICON}'/>
+            
+            </button>
+
+            <button class='CountryDivs' onclick=''>
+
+                <p class='LeftDistrict'>Call</p>
+
+                <img class='RightDistricitImage'src='${WHITEPHONEICON}'/>
+            
+            </button>
+
+        </div>
+        
+    `);
+
+};
+
+const HELPPAGE=()=>{
+
+    DISPLAY('',`
+
+        <header>
+
+            <div class='ImageTextHolderSlided' onclick='HOMEPAGEROUTE()'>
+
+                <img src='${WHITESINGLEBACKICON}'/>
+
+                <p>Back</p>
+                
+            </div>
+
+            <div id='SectionNames' class='ImageTextHolderSlider'>
+
+                <p class='SectionNamer' >Help</p>
+                
+            </div>
+        
+        </header>
+
+        <div class='CountryDiv'></div>
+        
+    `);
+
+    const AllProducts=document.querySelector('.CountryDiv');
+
+    GETINDEXEDDATA('Policies','Policies',(element)=>{
+
+        CHECKER(element.ID === 'a7f2c9de-8b64-4e1a-a5d7-3fcb9182d4e6'  ,()=>{
+
+            DISPLAY(AllProducts,element.Data+'<br><br>');
+
+        });
+
+    });
+
+};
+
+const DELETEACCOUNTPAGE=()=>{
+
+    DISPLAY('',`
+
+        <header>
+
+            <div class='ImageTextHolderSlided' onclick='PRODUCTDETAILSPAGEROUTE()'>
+
+                <img src='${WHITESINGLEBACKICON}'/>
+
+                <p>Back</p>
+                
+            </div>
+
+            <div class='ImageTextHolderSlider'>
+
+                <p>Access</p>
+                
+            </div>
+        
+        </header>
+
+        <div class='CountryDiv'>
+
+            <h1 class='LogInName'>Delete Access</h1>
+
+            <div class='TopNav'>
+
+                <button class='SearchFilterButton'>
+
+                    <img class='FilterIcon' src='${WHITEHELPICON}'/>
+                
+                </button>
+
+                <input id='Email' class='SearchInputer' type='text' placeholder='Enter Reason For Account Deletion' />
+
+            </div>
+            
+            <button class='LoginButton'>Delete My Account</button>
+
+        </div>
+        
+    `);
+    
 };
