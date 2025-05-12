@@ -48,6 +48,7 @@ export const CLOUDCONNECTION=()=>{
                         console.log('Some Updates Missing');
                         START();
                     } else {
+                        console.log('All Updates Recieved');
                         if (localStorage.getItem('Updates') === 'Approved') {
                             localStorage.setItem('Updated', new Date().toISOString());
                         } else {
