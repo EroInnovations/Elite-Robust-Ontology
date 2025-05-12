@@ -41,7 +41,7 @@ export const CLOUDCONNECTION=()=>{
 
                             location.reload();
                             
-                        }, 2000);
+                        },4000);
                         
                     };
 
