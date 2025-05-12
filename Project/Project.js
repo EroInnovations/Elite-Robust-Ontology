@@ -1599,6 +1599,18 @@ const ACCOUNTPAGE=()=>{
 
     const Password=document.querySelector('#Password');
 
+    Email.addEventListener('input',()=>{
+
+        STOREDATA('','Email',Email.value);
+
+    });
+
+    Password.addEventListener('input',()=>{
+
+        STOREDATA('','Password',Password.value);
+        
+    })
+
     LoginButton.addEventListener('click',()=>{
 
         if (Email.value) {
@@ -1609,41 +1621,7 @@ const ACCOUNTPAGE=()=>{
 
                     TOAST('Please Wait');
 
-                    GETDATA(API,'Users',(data)=>{
-
-                        FINDER(data,'UserEmail',Email.value,(Users)=>{
-
-                            if (Users.UserEmail === Email.value ) {
-
-                                if (Users.UserPassword === Password.value) {
-
-                                    JSONIFICATION(Users,(Mydata)=>{
-
-                                        STOREDATA(' ','UserData',Mydata);
-
-                                        STOREDATA(' ','User',Users.ID);
-
-                                        RELOAD();
-
-                                    })
-                                    
-                                } else {
-                                    
-                                    TOAST('Wrong User Password');
-
-                                }
-                                
-                            } else {
-
-                                TOAST('No User Account Found!')
-                                
-                            }
-
-                        });
-
-                        console.log(data);
-
-                    });
+                    SERVERCONNECTION('Qel/LoginUser.js','LOGINUSER');
                     
                 } else {
 
@@ -2339,5 +2317,35 @@ const DELETEACCOUNTPAGE=()=>{
         </div>
         
     `);
-    
+
+    const LoginButton=document.querySelector('.LoginButton');
+
+    const Email=document.querySelector('#Email');
+
+    LoginButton.addEventListener('click',()=>{
+
+        if (Email.value) {
+
+            if (navigator.onLine) {
+
+                TOAST('Please Wait');
+
+                STOREDATA('','AccountDeleted',Email.value);
+
+                SERVERCONNECTION('Qel/DeleteAccount.js','DELETEACCOUNT');
+                
+            } else {
+
+                TOAST('Check Your Internet');
+                
+            }
+            
+        } else {
+
+            TOAST('Enter Reason For Account Deletion');
+            
+        };
+
+    });
+
 };
