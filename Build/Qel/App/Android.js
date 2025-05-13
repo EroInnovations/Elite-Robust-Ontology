@@ -1790,23 +1790,41 @@ const CREATEACCOUNT=(CountryDiv)=>{
                                     
                                 } else {
 
-                                    const HEADERS=['UserName','UserEmail','UserPassword','Date']
+                                    const HEADERS=['UserName','UserEmail','UserPassword','Date'];
 
-                                    const INFO=[Name.value,Email.value,Password.value,new Date()]
+                                    const INFO=[Name.value,Email.value,Password.value,new Date()];
 
-                                    INSERTDATA(API,'Users',HEADERS,INFO,(data)=>{
+                                    const Message='Welcome to Qel Medistore App,\n\nThank You For Your Account Creation!\n\n Get Your Online Medical Needs Supplied to You,\n\n For More Information Please Visit Us Here:\n\nhttps://qelmedistore.site'
 
-                                        STOREDATA(' ','User',data.uniqueId);
+                                    QELMAIL(Email.value,'Account Creation',Message,(Data)=>{
 
-                                        RELOAD();
+                                        if (Data.message === 'Email sent successfully.' ) {
+                                    
+                                            INSERTDATA(API,'Users',HEADERS,INFO,(data)=>{
+        
+                                                STOREDATA(' ','User',data.uniqueId);
+        
+                                                RELOAD();
+        
+                                            },(data)=>{
+        
+                                                TOAST('Something Went Wrong');
+        
+                                            });
+                                            
+                                        } else {
 
-                                    },(data)=>{
+                                            TOAST('Failed,Please Try Again');
+                                            
+                                        };
+
+                                    },()=>{
 
                                         TOAST('Something Went Wrong');
 
                                     });
-                                    
-                                }
+  
+                                };
 
                             });
 
@@ -1845,27 +1863,95 @@ const CREATEACCOUNT=(CountryDiv)=>{
 
 const FORGOTPASSWORD=(CountryDiv)=>{
 
-        DISPLAY(CountryDiv,`
+    DISPLAY(CountryDiv,`
 
-            <h1 class='LogInName'>Recover Account For Access</h1>
+        <h1 class='LogInName'>Recover Account For Access</h1>
 
-            <div class='TopNav'>
+        <div class='TopNav'>
 
-                <button class='SearchFilterButton'>
+            <button class='SearchFilterButton'>
 
-                    <img class='FilterIcon' src='${WHITEGMAILICON}'/>
+                <img class='FilterIcon' src='${WHITEGMAILICON}'/>
                 
-                </button>
+            </button>
 
-                <input class='SearchInputer' type='email' placeholder='Enter User Email' />
+            <input class='SearchInputer' type='email' placeholder='Enter User Email' />
 
-            </div>
+        </div>
 
-            <button class='LoginButton'>Recover</button>
+        <button class='LoginButton'>Recover</button>
 
-            <button id='CreateAccount' class='LoginButton' onclick='ACCOUNTPAGE()'>Login</button>
+        <button id='CreateAccount' class='LoginButton' onclick='ACCOUNTPAGE()'>Login</button>
         
     `);
+
+    const SearchInputer=document.querySelector('.SearchInputer');
+
+    const LoginButton=document.querySelector('.LoginButton');
+
+    LoginButton.addEventListener('click',()=>{
+
+        if (SearchInputer.value) {
+
+            if (navigator.onLine) {
+
+                TOAST('Please Wait...');
+
+                GETDATA(API,'Users',(data)=>{
+
+                    FINDER(data,'UserEmail',SearchInputer.value,(MyData)=>{
+
+                        if (MyData.UserEmail === SearchInputer.value &&!MyData.Deleted) {
+
+                            QELMAIL(MyData.UserEmail,'Account Recovery','Your Password Is ===>'+MyData.UserPassword,(Data)=>{
+
+                                if (Data.message === 'Email sent successfully.' ) {
+                                    
+                                    DISPLAY(CountryDiv,`
+
+                                        <h1 class='LogInName'>Recover Account For Access</h1>
+
+                                        <h1>Account Details Sent Your Email.</h1>
+
+                                        <button id='CreateAccount' class='LoginButton' onclick='ACCOUNTPAGE()'>Login</button>
+                                        
+                                    `);
+
+                                } else {
+
+                                    TOAST('Account Recovery Failed');
+                                    
+                                };
+
+                            },()=>{
+
+                                TOAST('Something Went Wrong');
+
+                            })
+                            
+                        } else {
+
+                            TOAST('No User Account Found');
+                            
+                        };
+
+                    });
+
+                });
+                
+            } else {
+
+                TOAST('Check Your Internet');
+                
+            };
+            
+        } else {
+
+            TOAST('Enter User Email');
+            
+        };
+
+    });
 
 };
 
