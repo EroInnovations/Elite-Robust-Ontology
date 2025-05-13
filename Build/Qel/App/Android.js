@@ -26,6 +26,8 @@ const USERCONNECTION=(callback)=>{
 
                     STOREDATA(' ','UserData',Uses);
 
+                    STOREDATA(' ','Area',MyData.Location);
+
                     callback();
 
                 });
