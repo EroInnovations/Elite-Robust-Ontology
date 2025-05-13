@@ -14,7 +14,7 @@ const NOVASTART=()=>{
 
 };
 
-const USERCONNECTION=()=>{
+const USERCONNECTION=(callback)=>{
 
     GETDATA(API,'Users',(data)=>{
 
@@ -25,6 +25,8 @@ const USERCONNECTION=()=>{
                 JSONIFICATION(MyData,(Uses)=>{
 
                     STOREDATA(' ','UserData',Uses);
+
+                    callback();
 
                 });
                 
@@ -184,6 +186,18 @@ const HELPAGEROUTER=()=>{
 const DELETEACCOUNTROUTER=()=>{
 
     ROUTE('',DELETEACCOUNTPAGE,'HOMEPAGE');
+
+};
+
+const UPDATEPROFILEPHOTOTACCOUNTROUTER=()=>{
+
+    ROUTE('',PROFILEPHOTOPAGE,'HOMEPAGE');
+
+};
+
+const UPDATEPROFILEDETAILSACCOUNTROUTER=()=>{
+
+    ROUTE('',PROFILEDETAILSPAGE,'HOMEPAGE');
 
 };
 
@@ -608,7 +622,41 @@ const LOCATIONPAGE=()=>{
             `);
 
             CLICK(ELEMENTS,()=>{
+
                 STOREDATA(' ','Area',element.District);
+
+                if (navigator.onLine) {
+
+                    if (localStorage.getItem('UserData')) {
+                        
+                        GETDATA(API,'Users',(data)=>{
+            
+                            FINDER(data,'ID',localStorage.getItem('User'),(User)=>{
+            
+                                if (User.ID === localStorage.getItem('User')) {
+            
+                                    const INFO=[User.UserName,User.UserEmail,User.UserPassword,User.Date,User.Deleted,User.Photo,User.Activity,element.District,User.Device,User.SavedItems,User.Settings,User.Notifications,User.Updates,User.Versions,User.BoughtProducts,User.ShoppedProducts]
+            
+                                        UPDATEDATA(API,'Users',User.ID,INFO,(Reason)=>{
+            
+                                            USERCONNECTION(()=>{
+            
+                                            });
+            
+                                        },(error)=>{
+            
+                                        TOAST('Failed to Update User Data');
+            
+                                    });
+                                                
+                                } 
+            
+                            });
+            
+                        });
+                    };
+                
+                };
 
                 HOMEPAGEROUTE();
 
@@ -1079,14 +1127,6 @@ const USERACCOUNTPAGE=()=>{
                 <p class='LeftDistrict'>My Profile</p>
 
                 <img class='RightDistricitImage'src='${WHITEUSERPROFILEICON}'/>
-            
-            </button>
-
-            <button class='CountryDivs'>
-
-                <p class='LeftDistrict'>Notifications</p>
-
-                <img class='RightDistricitImage'src='${WHITENOTIFICATIONICON}'/>
             
             </button>
 
@@ -1829,32 +1869,101 @@ const FORGOTPASSWORD=(CountryDiv)=>{
 
 const PROFILEPAGE=()=>{
 
-    DISPLAY('',`
+    LOCALDEJSONDATA('UserData',(data)=>{
 
-        <header>
+        DISPLAY('',`
 
-            <div class='ImageTextHolderSlided' onclick='HOMEPAGEROUTE()'>
+            <header>
 
-                <img src='${WHITESINGLEBACKICON}'/>
+                <div class='ImageTextHolderSlided' onclick='HOMEPAGEROUTE()'>
 
-                <p>Back</p>
+                    <img src='${WHITESINGLEBACKICON}'/>
+
+                    <p>Back</p>
+                    
+                </div>
+
+                <div class='ImageTextHolderSlider'>
+
+                    <p>My Account</p>
+                    
+                </div>
+            
+            </header>
+
+            <div class='CountryDiv'>
+
+                <img class='ProfileImage' src='${data.Photo||WHITEUSERICON}'/>
+
+                <div class='TopNav'>
+
+                    <button class='SearchFilterButton'>
+
+                        <img class='FilterIcon' src='${WHITEUSERPROFILEICON}'/>
+                    
+                    </button>
+
+                    <input id='Password' readonly class='SearchInputer' type='password' placeholder='${data.UserName}' />
+
+                </div>
+
+                <div class='TopNav'>
+
+                    <button class='SearchFilterButton'>
+
+                        <img class='FilterIcon' src='${WHITEGMAILICON}'/>
+                    
+                    </button>
+
+                    <input id='Password' readonly class='SearchInputer' type='password' placeholder='${data.UserEmail}' />
+
+                </div>
+
+                <div class='TopNav'>
+
+                    <button class='SearchFilterButton'>
+
+                        <img class='FilterIcon' src='${WHITECREATEDONICON}'/>
+                    
+                    </button>
+
+                    <input id='Password' readonly class='SearchInputer' type='password' placeholder='${data.Date}' />
+
+                </div>
+
+                <div class='TopNav'>
+
+                    <button class='SearchFilterButton'>
+
+                        <img class='FilterIcon' src='${WHITELOCATIONICON}'/>
+                    
+                    </button>
+
+                    <input id='Password' readonly class='SearchInputer' type='password' placeholder='${data.Location||'Kampala'}' />
+
+                </div>
+
+                <footer>
+
+                    <button class='BuyButtons' onclick='UPDATEPROFILEPHOTOTACCOUNTROUTER()'>
+
+                        <p>Update Profile Photo</p>
+                    
+                    </button>
+
+                    <button id='Shop'  class='BuyButtons' onclick='UPDATEPROFILEDETAILSACCOUNTROUTER()' >
+
+                        <p class='Shopped'>Update Profile Details</p>
+                    
+                    </button>
                 
+                </footer>
+
             </div>
+            
+        `);
 
-            <div class='ImageTextHolderSlider'>
-
-                <p>My Account</p>
-                
-            </div>
-        
-        </header>
-
-        <div class='CountryDiv'>
-
-        
-        </div>
-        
-    `);
+    });
 
 };
 
@@ -2368,7 +2477,7 @@ const DELETEACCOUNTPAGE=()=>{
 
                                 if (User.ID === localStorage.getItem('User')) {
 
-                                    const INFO=[User.UserName,User.UserEmail,User.UserPassword,User.Date,Email.value,User.Photo,User.Activity,User.Device,User.SavedItems,User.Settings,User.Notifications,User.Updates,User.Versions,User.BoughtProducts,User.ShoppedProducts]
+                                    const INFO=[User.UserName,User.UserEmail,User.UserPassword,User.Date,Email.value,User.Photo,User.Activity,User.Location,User.Device,User.SavedItems,User.Settings,User.Notifications,User.Updates,User.Versions,User.BoughtProducts,User.ShoppedProducts]
 
                                     UPDATEDATA(API,'Users',User.ID,INFO,(Reason)=>{
 
@@ -2409,6 +2518,282 @@ const DELETEACCOUNTPAGE=()=>{
             TOAST('Enter Reason For Account Deletion');
             
         };
+
+    });
+
+};
+
+const PROFILEPHOTOPAGE=()=>{
+
+    DELETEDATA('','ProfileData');
+
+    LOCALDEJSONDATA('UserData',(data)=>{
+
+        DISPLAY('',`
+
+            <header>
+
+                <div class='ImageTextHolderSlided' onclick='HOMEPAGEROUTE()'>
+
+                    <img src='${WHITESINGLEBACKICON}'/>
+
+                    <p>Back</p>
+                    
+                </div>
+
+                <div class='ImageTextHolderSlider'>
+
+                    <p>My Photo</p>
+                    
+                </div>
+            
+            </header>
+
+            <div class='CountryDiv'>
+
+                <img class='ProfileImage' src='${data.Photo||WHITEUSERICON}'/>
+
+                <button class='LoginButton'>Select Profile Image</button>
+
+                <footer>
+
+                    <button id='RemovePhoto' class='BuyButtons'>
+
+                        <p>Remove Profile Photo</p>
+                    
+                    </button>
+
+                    <button id='Shop'  class='BuyButtons'>
+
+                        <p class='Shopped'>Update Profile Details</p>
+                    
+                    </button>
+                
+                </footer>
+
+            </div>
+            
+        `);
+
+        const LoginButton=document.querySelector('.LoginButton');
+
+        const ProfileImage=document.querySelector('.ProfileImage');
+        
+        LoginButton.addEventListener('click',()=>{
+
+            IMAGEPICKER(ProfileImage,(UserData)=>{
+
+                STOREDATA('','ProfileData',UserData);
+
+            });
+
+        });
+
+        const RemovePhoto=document.querySelector('#RemovePhoto');
+
+        RemovePhoto.addEventListener('click',()=>{
+
+            if (navigator.onLine) {
+                
+                GETDATA(API,'Users',(data)=>{
+    
+                    FINDER(data,'ID',localStorage.getItem('User'),(User)=>{
+    
+                        if (User.ID === localStorage.getItem('User')) {
+    
+                            const INFO=[User.UserName,User.UserEmail,User.UserPassword,User.Date,User.Deleted,'',User.Activity,User.Location,User.Device,User.SavedItems,User.Settings,User.Notifications,User.Updates,User.Versions,User.BoughtProducts,User.ShoppedProducts]
+    
+                                UPDATEDATA(API,'Users',User.ID,INFO,(Reason)=>{
+    
+                                    USERCONNECTION(()=>{
+    
+                                        PROFILEUSERROUTER();
+    
+                                    });
+    
+                                },(error)=>{
+    
+                                TOAST('Failed to Remove Profile Photo');
+    
+                            });
+                                        
+                        } 
+    
+                    });
+    
+                });
+
+            } else {
+                
+                TOAST('Check Your Internet');
+
+            };
+
+        });
+
+        const Shop=document.querySelector('#Shop');
+
+        Shop.addEventListener('click',()=>{
+
+            if (sessionStorage.getItem('ProfileData')) {
+                
+                if (navigator.onLine) {
+                    
+                    GETDATA(API,'Users',(data)=>{
+        
+                        FINDER(data,'ID',localStorage.getItem('User'),(User)=>{
+        
+                            if (User.ID === localStorage.getItem('User')) {
+        
+                                const INFO=[User.UserName,User.UserEmail,User.UserPassword,User.Date,User.Deleted,sessionStorage.getItem('ProfileData'),User.Activity,User.Location,User.Device,User.SavedItems,User.Settings,User.Notifications,User.Updates,User.Versions,User.BoughtProducts,User.ShoppedProducts]
+        
+                                    UPDATEDATA(API,'Users',User.ID,INFO,(Reason)=>{
+        
+                                        USERCONNECTION(()=>{
+        
+                                            PROFILEUSERROUTER();
+        
+                                        });
+        
+                                    },(error)=>{
+        
+                                    TOAST('Failed to Remove Profile Photo');
+        
+                                });
+                                            
+                            } 
+        
+                        });
+        
+                    });
+    
+                } else {
+                    
+                    TOAST('Check Your Internet');
+    
+                };
+
+            } else {
+                
+                TOAST('No Profile Photo Added');
+
+            };
+
+        });
+
+    });
+
+};
+
+const PROFILEDETAILSPAGE=()=>{
+
+    LOCALDEJSONDATA('UserData',(data)=>{
+
+        DISPLAY('',`
+
+            <header>
+
+                <div class='ImageTextHolderSlided' onclick='HOMEPAGEROUTE()'>
+
+                    <img src='${WHITESINGLEBACKICON}'/>
+
+                    <p>Back</p>
+                    
+                </div>
+
+                <div class='ImageTextHolderSlider'>
+
+                    <p>My Account</p>
+                    
+                </div>
+            
+            </header>
+
+            <div class='CountryDiv'>
+
+                <div class='TopNav'>
+
+                    <button class='SearchFilterButton'>
+
+                        <img class='FilterIcon' src='${WHITEUSERPROFILEICON}'/>
+                    
+                    </button>
+
+                    <input id='Name' class='SearchInputer' type='text' placeholder='Enter User Name' />
+
+                </div>
+
+                <footer>
+
+                    <button class='BuyButtons' onclick='DELETEACCOUNTROUTER()'>
+
+                        <p>Delete User Profile</p>
+                    
+                    </button>
+
+                    <button id='Shop'  class='BuyButtons'>
+
+                        <p class='Shopped'>Update Profile</p>
+                    
+                    </button>
+                
+                </footer>
+
+            </div>
+            
+        `);
+
+        const Shop=document.querySelector('#Shop');
+
+        const Name=document.querySelector('#Name');
+
+        Shop.addEventListener('click',()=>{
+
+            if (Name.value) {
+                
+                if (navigator.onLine) {
+                    
+                    GETDATA(API,'Users',(data)=>{
+        
+                        FINDER(data,'ID',localStorage.getItem('User'),(User)=>{
+        
+                            if (User.ID === localStorage.getItem('User')) {
+        
+                                const INFO=[Name.value||User.UserName,User.UserEmail,User.UserPassword,User.Date,User.Deleted,sessionStorage.getItem('ProfileData'),User.Activity,User.Location,User.Device,User.SavedItems,User.Settings,User.Notifications,User.Updates,User.Versions,User.BoughtProducts,User.ShoppedProducts]
+        
+                                    UPDATEDATA(API,'Users',User.ID,INFO,(Reason)=>{
+        
+                                        USERCONNECTION(()=>{
+        
+                                            PROFILEUSERROUTER();
+        
+                                        });
+        
+                                    },(error)=>{
+        
+                                    TOAST('Failed to Update User Data');
+        
+                                });
+                                            
+                            } 
+        
+                        });
+        
+                    });
+    
+                } else {
+                    
+                    TOAST('Check Your Internet');
+    
+                };
+
+            } else {
+                
+                TOAST('Please Add Information');
+
+            };
+
+        });
 
     });
 

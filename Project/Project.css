@@ -371,3 +371,19 @@ header{
     border-radius: 50px;
     display: none;
 }
+
+input{
+    text-align: left;
+}
+
+input::placeholder{
+    color: white;
+}
+
+.ProfileImage{
+    background: #cdcdcd20;
+    width: 50%;
+    height: 200px;
+    border-radius: 50px;
+    padding: 2%;
+}
