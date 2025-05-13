@@ -28,6 +28,8 @@ const USERCONNECTION=(callback)=>{
 
                     STOREDATA(' ','Area',MyData.Location);
 
+                    STOREDATA(' ','SavedData',MyData.SavedItems);
+
                     callback();
 
                 });
@@ -1392,6 +1394,36 @@ const SAVEITEM=()=>{
 
                         STOREDATA(' ','SavedData',Mydata);
 
+                        if (navigator.onLine) {
+                
+                            GETDATA(API,'Users',(data)=>{
+                
+                                FINDER(data,'ID',localStorage.getItem('User'),(User)=>{
+                
+                                    if (User.ID === localStorage.getItem('User')) {
+                
+                                        const INFO=[User.UserName,User.UserEmail,User.UserPassword,User.Date,User.Deleted,User.Photo,User.Activity,User.Location,User.Device,localStorage.getItem('SavedData'),User.Settings,User.Notifications,User.Updates,User.Versions,User.BoughtProducts,User.ShoppedProducts];
+                
+                                            UPDATEDATA(API,'Users',User.ID,INFO,(Reason)=>{
+                
+                                                USERCONNECTION(()=>{
+                
+                                                });
+                
+                                            },(error)=>{
+                
+                                            TOAST('Failed to Remove Profile Photo');
+                
+                                        });
+                                                    
+                                    } 
+                
+                                });
+                
+                            });
+
+                        }
+
                         PRODUCTSDETAILSPAGE();
 
                     });
@@ -1401,6 +1433,36 @@ const SAVEITEM=()=>{
                     JSONADDER(localStorage.getItem('SavedData'),[data.ID],(Mydata)=>{
 
                         STOREDATA(' ','SavedData',Mydata);
+
+                        if (navigator.onLine) {
+                
+                            GETDATA(API,'Users',(data)=>{
+                
+                                FINDER(data,'ID',localStorage.getItem('User'),(User)=>{
+                
+                                    if (User.ID === localStorage.getItem('User')) {
+                
+                                        const INFO=[User.UserName,User.UserEmail,User.UserPassword,User.Date,User.Deleted,User.Photo,User.Activity,User.Location,User.Device,localStorage.getItem('SavedData'),User.Settings,User.Notifications,User.Updates,User.Versions,User.BoughtProducts,User.ShoppedProducts];
+                
+                                            UPDATEDATA(API,'Users',User.ID,INFO,(Reason)=>{
+                
+                                                USERCONNECTION(()=>{
+                
+                                                });
+                
+                                            },(error)=>{
+                
+                                            TOAST('Failed to Remove Profile Photo');
+                
+                                        });
+                                                    
+                                    } 
+                
+                                });
+                
+                            });
+
+                        };
 
                         PRODUCTSDETAILSPAGE();
 
