@@ -700,7 +700,7 @@ const SHOPPAGE=()=>{
 
             <button class='BuyButtons'>
 
-                <p class='Total'>Total:NIL</p>
+                <p class='Total'>Calculating...</p>
                     
             </button>
 
