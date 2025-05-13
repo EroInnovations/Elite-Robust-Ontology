@@ -338,7 +338,15 @@ const HOMEPAGE=()=>{
 
             <h1 class='OurProducts'>Our Products</h1>
 
-            <div class='AllProducts' id='SpecialProducts'></div>
+            <div class='AllProducts' id='SpecialProducts'>
+            
+                <div id='Lod' class="loader">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+
+            </div>
 
             <br><br><br>
             
@@ -416,7 +424,11 @@ const HOMEPAGE=()=>{
 
     });
 
+    const Lod=document.querySelector('#Lod');
+
     GETINDEXEDDATA('Products','Products',(element)=>{
+
+        STYLED(Lod,'display','none');
 
         CREATEELEMENT(AllProducts,'div','SectionDivso',(ELEMENTS)=>{
 
@@ -473,7 +485,7 @@ const HOMEPAGE=()=>{
         });
 
     });
-
+    
     DATADOWNLOADING();
 
     USERCONNECTION();
@@ -2141,6 +2153,10 @@ const RATEDITEMS=()=>{
 
     const SpecialProducts=document.querySelector('#SpecialProducts');
 
+    const OurProducts=document.querySelector('.OurProducts');
+
+    OurProducts.innerHTML='Rated Products';
+
     DISPLAY(SpecialProducts,'');
 
         GETINDEXEDDATA('Products','Products',(element)=>{
@@ -2211,6 +2227,10 @@ const TRENDINGDITEMS=()=>{
 
     const SpecialProducts=document.querySelector('#SpecialProducts');
 
+    const OurProducts=document.querySelector('.OurProducts');
+
+    OurProducts.innerHTML='Trending Products';
+
     DISPLAY(SpecialProducts,'');
 
         GETINDEXEDDATA('Products','Products',(element)=>{
@@ -2280,6 +2300,10 @@ const TRENDINGDITEMS=()=>{
 const BOUGHTITEMS=()=>{
 
     const SpecialProducts=document.querySelector('#SpecialProducts');
+
+    const OurProducts=document.querySelector('.OurProducts');
+
+    OurProducts.innerHTML='Bought Products';
 
     DISPLAY(SpecialProducts,'');
 

@@ -387,3 +387,12 @@ input::placeholder{
     border-radius: 50px;
     padding: 2%;
 }
+
+#Lod{
+    position: relative;
+    width: 10%;
+    height: 50px;
+    margin-top: 35%;
+    display: flex;
+    background: transparent;
+}
