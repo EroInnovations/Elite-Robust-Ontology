@@ -12,6 +12,12 @@ const NOVASTART=()=>{
         
     };
 
+    if (!navigator.onLine) {
+
+        TOAST('Your Offline,Please Check Your Internet Connection')
+        
+    };
+
 };
 
 const USERCONNECTION=(callback)=>{
@@ -1724,6 +1730,10 @@ const ACCOUNTPAGE=()=>{
                                     if (!User.Deleted) {
 
                                         STOREDATA(' ','User',User.ID);
+
+                                        STOREDATA(' ','Area',User.Location);
+
+                                        STOREDATA(' ','SavedData',User.SavedItems);
 
                                         JSONIFICATION(User,(MyData)=>{
 
