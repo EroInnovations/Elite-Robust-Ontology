@@ -1,4 +1,4 @@
-package com.elite.qel_medistore;
+package com.elite.community_rise_ventures;
 
 import android.content.ContentResolver;
 import android.content.ContentValues;

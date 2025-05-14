@@ -1,4 +1,4 @@
-package com.elite.qel_medistore;
+package com.elite.community_rise_ventures;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;

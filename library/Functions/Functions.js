@@ -1518,14 +1518,22 @@ const DRIVEID=(url)=>{
 };
 const TOAST=(Message)=>{
 
-    if (localStorage.getItem('Environment')==='Production') {
+    if(localStorage.getItem('State')==='Web'){
 
-        Android.showToast(Message);
-        
-    } else {
+        alert(Message);
 
-        console.log(Message);
+    }else{
         
+        if (localStorage.getItem('Environment')==='Production') {
+    
+            Android.showToast(Message);
+            
+        } else {
+    
+            console.log(Message);
+            
+        };
+
     };
 
 };
