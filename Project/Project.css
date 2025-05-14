@@ -1,19 +1,13 @@
-.HomeDiv{
+.PostsDiv{
+    background: transparent;
+    top: 0;
+    bottom: 50px;
     overflow-y: auto;
 }
 
-.CompanyLogo{
-    width: 95%;
-    height: auto;
-    margin: 3% auto;
-    border-radius: 5px;
-}
-
-.TopDiv{
-    display: inline-flex;
-    position: relative;
-    background: transparent;
-    height: 50px;
+#Now{
+    top: 0;
+    bottom: 50px;
 }
 
 .LeftImage{
@@ -24,30 +18,76 @@
     margin-right: 0.5rem;
 }
 
-p{
-    font-size: 20px;
+.PostsDiv{
+    top: 50px;
+    overflow-y: auto;
+    bottom: 0;
 }
 
-.CompanyMiniAbout{
-    text-align: left;
-    margin-top: 0.5rem;
-    margin-left: 0.5rem;
+.Name{
+    width: 95%;
+    height: 50px;
+    background: #33333320;
 }
 
-.ProjectDiv{
+.Story{
+    width: 95%;
+    height: 200px;
+    background: #33333320;
+    margin-top: 2%;
+    border: none;
+    outline: none;
+}
+
+.Logos{
+    width: 95%;
+    height: 200px;
+}
+
+button{
+    width: 95%;
+    height: 50px;
+    background: forestgreen;
+    border: none;
+    border-radius: 5px;
+}
+
+.HomePOsst{
+    width: 100%;
+    background: transparent;
+    min-height: 300px;
+    height: auto;
+    position: relative;
+    margin: 0;
+    border-bottom: 1px solid #cdcdcd;
+}
+
+.Covered{
+    width: 95%;
+    height: 200px;
+    margin: 2%;
+    border-radius: 10px;
+}
+
+.MessageDiv{
     position: relative;
     width: 95%;
     height: 200px;
-    margin: 3% auto;
-    border-radius: 5px;
-    background: transparent;
-    display: inline-flex;
+    margin: 2%;
+    border-radius: 10px;
+    background: #33333320;
 }
 
-#ContactUsDiv{
-    height: 50px;
+.This{
+    width: 40%;
+    margin: auto;
+    height: 40px;
 }
 
-#Holder{
+.ThereFooter{
+    position: relative;
+}
+
+#Posetr{
     top: 50px;
 }

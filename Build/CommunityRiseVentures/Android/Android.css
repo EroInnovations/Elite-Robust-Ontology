@@ -1,0 +1,93 @@
+.PostsDiv{
+    background: transparent;
+    top: 0;
+    bottom: 50px;
+    overflow-y: auto;
+}
+
+#Now{
+    top: 0;
+    bottom: 50px;
+}
+
+.LeftImage{
+    margin-left: 0.5rem;
+}
+
+.RightText{
+    margin-right: 0.5rem;
+}
+
+.PostsDiv{
+    top: 50px;
+    overflow-y: auto;
+    bottom: 0;
+}
+
+.Name{
+    width: 95%;
+    height: 50px;
+    background: #33333320;
+}
+
+.Story{
+    width: 95%;
+    height: 200px;
+    background: #33333320;
+    margin-top: 2%;
+    border: none;
+    outline: none;
+}
+
+.Logos{
+    width: 95%;
+    height: 200px;
+}
+
+button{
+    width: 95%;
+    height: 50px;
+    background: forestgreen;
+    border: none;
+    border-radius: 5px;
+}
+
+.HomePOsst{
+    width: 100%;
+    background: transparent;
+    min-height: 300px;
+    height: auto;
+    position: relative;
+    margin: 0;
+    border-bottom: 1px solid #cdcdcd;
+}
+
+.Covered{
+    width: 95%;
+    height: 200px;
+    margin: 2%;
+    border-radius: 10px;
+}
+
+.MessageDiv{
+    position: relative;
+    width: 95%;
+    height: 200px;
+    margin: 2%;
+    border-radius: 10px;
+    background: #33333320;
+}
+
+.This{
+    width: 40%;
+    margin: auto;
+    height: 40px;
+}
+
+.ThereFooter{
+    position: relative;
+}
+
+#Posetr{
+    top: 50px;
+}
