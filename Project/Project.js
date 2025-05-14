@@ -8,7 +8,7 @@ const NOVASTART=()=>{
 
 };
 
-const DATADOWNLOADING=(callback)=>{
+const DATADOWNLOADING=()=>{
 
     DOWNLOADSAVEINDEX(API,'News','News',()=>{
 
@@ -18,190 +18,200 @@ const DATADOWNLOADING=(callback)=>{
 
 };
 
-const POSTPAGEROUTER=()=>{
-
-    ROUTE(' ',POSTSPAGE,'HOMEPAGE');
-
-};
-
 const HOMEPAGEROUTER=()=>{
 
     ROUTE('',HOMEPAGE,'HOMEPAGE');
-    
-}
+
+};
+
+const SERVICESROUTER=()=>{
+
+    ROUTE(' ',SERVICEPAGE,'HOMEPAGE');
+
+};
+
+const ABOUTUSPAGEROUTER=()=>{
+
+    ROUTE(' ',ABOUTUSPAGE,'HOMEPAGE');
+
+};
+
+const DONATEPAGEROUTER=()=>{
+
+    ROUTE(' ',DONATEPAGE,'HOMEPAGE');
+
+};
 
 const HOMEPAGE=()=>{
 
     DISPLAY('',`
 
-        <div id='Now' class='PostsDiv'></div>
+        <div class='HomeDiv'>
+            
+            <img class='CompanyLogo' src='${COMMUNITYRISELOGO}'/>
 
-        <footer>
+            <div class='TopDiv'>
 
-            <img src='${WHITEHOMEICON}' onclick='RELOAD()' />
+                <p onclick='SERVICESROUTER()'>Services</p>
 
-            <img onclick='POSTPAGEROUTER()' src='${WHITEPOSTICON}'/>
+                <p onclick='ABOUTUSPAGEROUTER()'>About Us</p>
 
-            <img src='${WHITESETTINGSICON}'/>
+                <p onclick='DONATEPAGEROUTER()'>Donate</p>
+            
+            </div>
+
+            <h1>Creating a Smile and making a difference!</h1>
+
+            <p class='CompanyMiniAbout'>Community Rise Ventures is a Non Government Founded Organisation that has taken steps to try and solve the community problems ,Our Vision is to create a stable and sustainable Community for enhanced Development.</p>
+
+            <div class='ProjectDiv'></div>
+
+            <div id='ContactUsDiv' class='ProjectDiv'>
+
+                <img onclick='WHATSAPPUS()' src='${WHITEWHATSAPPICON}'/>
+
+                <img onclick='FACEBOOKUS()' src='${WHITEFACEBOOKICON}'/>
+
+                <img onclick='GMAILUS()' src='${WHITEGMAILICON}'/>
+
+                <img onclick='INSTAGRAMUS()' src='${WHITEINSTAGRAMICON}'/>
+            
+            </div>
         
-        </footer>
-        
+        </div>
+
     `);
 
-    const PostsDiv=document.querySelector('.PostsDiv');
-
-    DATADOWNLOADING();
+    const ProjectDiv=document.querySelector('.ProjectDiv');
 
     GETINDEXEDDATA('News','News',(data)=>{
 
-        CREATEELEMENT(PostsDiv,'div','HomePOsst',(ELEMENT)=>{
+        CREATEELEMENT(ProjectDiv,'div','MiniProjectHolder',(ELEMENT)=>{
 
             DISPLAY(ELEMENT,`
 
-                <img class='Covered' src='${data.ImageOne}'/>
+                <img class='ImageOne' src='${data.ImageOne}'/>
 
-                <div class='MessageDiv'>
+                <footer class='HomeFooter'>
 
-                    <p>${data.Story}</p>
-                
-                </div>
-
-                <footer class='ThereFooter'>
-
-                    <button class='This'>Update Post</button>
-
-                    <button class='This'>Delete Post</button>
+                    <p>${data.Name}</p>
                 
                 </footer>
                 
             `);
 
         });
+        
+        console.log(data);
 
     });
 
 };
 
-const POSTSPAGE=()=>{
+const WHATSAPPUS=()=>{
 
-    DELETEDATA('','Cover');
-    DELETEDATA('','One');
-    DELETEDATA('','Two');
+    WHATSAPP('0779332496');
+
+};
+
+const GMAILUS=()=>{
+
+    GMAIL('communityriseventures@gmail.com');
+
+};
+
+const INSTAGRAMUS=()=>{
+
+    INSTAGRAM('community_rise_ventures');
+
+};
+
+const FACEBOOKUS=()=>{
+
+    WEBSITE('https://www.facebook.com/share/gGoc7h3UY95qyPvU/?mibextid=wwXIfr')
+
+};
+
+const SERVICEPAGE=()=>{
+
+    DISPLAY('',`
+
+        <div class='HomeDiv'>
+
+            <header>
+
+                <img onclick='HOMEPAGEROUTER()' class='LeftImage' src='${WHITEBACKICON}'/>
+            
+                <p class='RightText'>Services</p>
+
+            </header>
+            
+        
+        </div>
+
+    `);
+
+};
+
+const ABOUTUSPAGE=()=>{
+
+    DISPLAY('',`
+
+        <div class='HomeDiv'>
+
+            <header>
+
+                <img onclick='HOMEPAGEROUTER()' class='LeftImage' src='${WHITEBACKICON}'/>
+            
+                <p class='RightText'>About Us</p>
+
+            </header>
+            
+        </div>
+
+    `);
+
+};
+
+const DONATEPAGE=()=>{
 
     DISPLAY('',`
 
         <header>
 
             <img onclick='HOMEPAGEROUTER()' class='LeftImage' src='${WHITEBACKICON}'/>
+            
+            <p class='RightText'>Donate</p>
 
-            <p class='RightText' >Posts</p>
-        
         </header>
 
-        <div id='Posetr' class='PostsDiv'>
-            <input class='Name' type='text' placeholder='Enter Post Title' />
-            <textarea class='Story' placeholder='Enter Story'></textarea>
-            <br><br>
-            <p>Cover Image</p>
+        <div id='Holder' class='HomeDiv'>
+
+            <p >All Donations or FundRaising that are for Community Rise Ventures are recieved on the Company Account ,Help the Needy Via This Account Details Below. Your Help is Gratefully Appreciated.
+            </p>
+
             <br>
-            <img Id='Cover' class='Logos' src='${COMMUNITYRISELOGO}'/>
-            <br><br>
-            <p>Image One</p>
-            <br>
-            <img id='One' class='Logos' src='${COMMUNITYRISELOGO}'/>
-            <br><br>
-            <p>Image Two</p>
-            <br>
-            <img  id='Two' class='Logos' src='${COMMUNITYRISELOGO}'/>
-            <br><br>
-            <button id='CreatePost'>Post</button>
-            <br><br>
-        </div>
-        
-    `);
 
-    const CreatePost=document.querySelector('#CreatePost');
-
-    const Name=document.querySelector('.Name');
-    const Cover=document.querySelector('#Cover');
-    const One=document.querySelector('#One');
-    const Two=document.querySelector('#Two');
-    const Story=document.querySelector('.Story');
-
-    Cover.addEventListener('click',()=>{
-        IMAGEPICKER(Cover,(data)=>{
-            sessionStorage.setItem('Cover',data);
-        });
-    });
-
-    One.addEventListener('click',()=>{
-        IMAGEPICKER(One,(data)=>{
-            sessionStorage.setItem('One',data);
-        });
-    });
-
-    Two.addEventListener('click',()=>{
-        IMAGEPICKER(Two,(data)=>{
-            sessionStorage.setItem('Two',data);
-        });
-    });
-
-    CreatePost.addEventListener('click',()=>{
-
-        if (Name.value) {
-
-            if (Story.value) {
-                
-                if (sessionStorage.getItem('Cover')) {
-
-                    if (navigator.onLine) {
-
-                        TOAST('Please Wait'); 
-
-                        const HEADERS=['Name','Story','ImageOne','ImageTwo','ImageThree','Date'];
-
-                        const INFO=[Name.value,Story.value,sessionStorage.getItem('Cover'),sessionStorage.getItem('One'),sessionStorage.getItem('Two'),new Date()];
-
-                        INSERTDATA(API,'News',HEADERS,INFO,(daa)=>{
-
-                            DATADOWNLOADING();
-
-                            setTimeout(() => {
-
-                                NOVASTART();
-                                
-                            }, 2000);
-
-                        },(data)=>{
-                            console.log(data);
-
-                            TOAST('Failed to Create Post'); 
-                        });
-                        
-                    } else {
-                        
-                        TOAST('Check Your Internet'); 
-
-                    };
-                
-                } else {
-        
-                    TOAST('Add Cover Photo'); 
-                
-                };
-
-            } else {
-
-                TOAST('Add a Story'); 
-                
-            };
+            <h1>Donations and FundRaising</h1>
             
-        } else {
+            <div class='TopDiv'>
 
-           TOAST('Enter Post Title'); 
+                <p>Account Number</p>
 
-        };
+                <p>60080462400</p>
 
-    });
+            </div>
+
+            <div class='TopDiv'>
+
+                <p>Bank Name</p>
+
+                <p>Absa Bank</p>
+
+            </div>
+
+        </div>
+
+    `);
 
 };

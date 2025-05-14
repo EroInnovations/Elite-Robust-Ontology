@@ -1,6 +1,20 @@
+const API='https://docs.google.com/spreadsheets/d/15BPlgHpUmm65nUNSLRwlRzaWv1hPenriWVvL5MDcmiw/edit?usp=sharing';
+
 const NOVASTART=()=>{
 
     ROUTE('',HOMEPAGE,'HOMEPAGE');
+
+    DATADOWNLOADING();
+
+};
+
+const DATADOWNLOADING=()=>{
+
+    DOWNLOADSAVEINDEX(API,'News','News',()=>{
+
+        HOMEPAGE();
+
+    });
 
 };
 
@@ -67,6 +81,30 @@ const HOMEPAGE=()=>{
         </div>
 
     `);
+
+    const ProjectDiv=document.querySelector('.ProjectDiv');
+
+    GETINDEXEDDATA('News','News',(data)=>{
+
+        CREATEELEMENT(ProjectDiv,'div','MiniProjectHolder',(ELEMENT)=>{
+
+            DISPLAY(ELEMENT,`
+
+                <img class='ImageOne' src='${data.ImageOne}'/>
+
+                <footer class='HomeFooter'>
+
+                    <p>${data.Name}</p>
+                
+                </footer>
+                
+            `);
+
+        });
+        
+        console.log(data);
+
+    });
 
 };
 

@@ -1,13 +1,19 @@
-.PostsDiv{
-    background: transparent;
-    top: 0;
-    bottom: 50px;
+.HomeDiv{
     overflow-y: auto;
 }
 
-#Now{
-    top: 0;
-    bottom: 50px;
+.CompanyLogo{
+    width: 95%;
+    height: auto;
+    margin: 3% auto;
+    border-radius: 5px;
+}
+
+.TopDiv{
+    display: inline-flex;
+    position: relative;
+    background: transparent;
+    height: 50px;
 }
 
 .LeftImage{
@@ -18,76 +24,51 @@
     margin-right: 0.5rem;
 }
 
-.PostsDiv{
+p{
+    font-size: 20px;
+}
+
+.CompanyMiniAbout{
+    text-align: left;
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+}
+
+.ProjectDiv{
+    position: relative;
+    width: 95%;
+    height: 200px;
+    margin: 3% auto;
+    border-radius: 5px;
+    background: transparent;
+    display: inline-flex;
+    overflow-x: auto;
+}
+
+#ContactUsDiv{
+    height: 50px;
+}
+
+#Holder{
     top: 50px;
-    overflow-y: auto;
-    bottom: 0;
 }
 
-.Name{
-    width: 95%;
-    height: 50px;
-    background: #33333320;
-}
-
-.Story{
-    width: 95%;
-    height: 200px;
-    background: #33333320;
-    margin-top: 2%;
-    border: none;
-    outline: none;
-}
-
-.Logos{
-    width: 95%;
-    height: 200px;
-}
-
-button{
-    width: 95%;
-    height: 50px;
-    background: forestgreen;
-    border: none;
+.MiniProjectHolder{
+    position: relative;
+    width: 150px;
+    height: 95%;
+    display: block;
+    margin: auto;
     border-radius: 5px;
 }
 
-.HomePOsst{
+.ImageOne{
+    position: absolute;
     width: 100%;
-    background: transparent;
-    min-height: 300px;
-    height: auto;
-    position: relative;
-    margin: 0;
-    border-bottom: 1px solid #cdcdcd;
+    height: 100%;
+    left: 0;
 }
 
-.Covered{
-    width: 95%;
-    height: 200px;
-    margin: 2%;
-    border-radius: 10px;
-}
-
-.MessageDiv{
-    position: relative;
-    width: 95%;
-    height: 200px;
-    margin: 2%;
-    border-radius: 10px;
-    background: #33333320;
-}
-
-.This{
-    width: 40%;
-    margin: auto;
-    height: 40px;
-}
-
-.ThereFooter{
-    position: relative;
-}
-
-#Posetr{
-    top: 50px;
+.HomeFooter{
+    background: #333333;
 }
