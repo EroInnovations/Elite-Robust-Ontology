@@ -5,7 +5,7 @@
     "version_name": "1",
     "min_sdk": 21,
     "compile_sdk": 33,
-    "color_black": "#333333",
-    "color_dark_gray": "#333333",
-    "color_white": "#cdcdcd"
+    "color_black": "#800080",
+    "color_dark_gray": "#800080",
+    "color_white": "#800080"
 }
