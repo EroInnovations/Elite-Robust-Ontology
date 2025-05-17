@@ -1,5 +1,5 @@
 <resources>
-    <color name="black">#800080</color>
-    <color name="dark_gray">#800080</color> 
-    <color name="white">#800080</color>
+    <color name="black">#000080</color>
+    <color name="dark_gray">#000080</color> 
+    <color name="white">#000080</color>
 </resources>

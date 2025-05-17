@@ -1,4 +1,4 @@
-package com.elite.community_rise_ventures;
+package com.elite.elgon_christian_union;
 
 import android.graphics.Color;
 import android.net.Uri;
