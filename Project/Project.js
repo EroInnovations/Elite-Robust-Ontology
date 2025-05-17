@@ -172,38 +172,78 @@ const VIDOESPAGE=()=>{
 
         </header>
 
-        <div class='HeaderDiv'>
+        <div id='Contents' class='HeaderDiv'>
 
-            <img class='loading' src='${WHITELOADINGICON}'/>
+            <h1>Sunday Prayers</h1>
 
+            <iframe class='IframeVideos'></iframe>
+
+            <h1>Other Prayer Sessions</h1>
+
+            <div id='Contenter' class='RelativeDiv'></div>
+    
         </div>
         
     `);
 
-    const loading=document.querySelector('.loading');
+    const IframeVideos=document.querySelector('.IframeVideos');
 
-    const DataDiv=document.querySelector('.HeaderDiv');
+    const RelativeDiv=document.querySelector('.RelativeDiv');
 
     GETINDEXEDDATA('ElgonServices','ElgonServices',(data)=>{
 
-        STYLED(loading,'display','none');
+        MONTHTIME(data.Date,(Data)=>{
 
-        CREATEELEMENT(DataDiv,'Div','HomePostDiv',(ElEMENTS)=>{
+            if (Data === true ) {
 
-            YOUTUBEUD(data.Story,(Link)=>{
+                YOUTUBEUD(data.Story,(Link)=>{
 
-                DISPLAY(ElEMENTS,`
+                    IframeVideos.src='https://www.youtube.com/embed/'+Link;
 
-                    <h1 class='LeftText'>${data.Date}</h1>
-    
-                    <iframe class='IframeVideos' src='https://www.youtube.com/embed/${Link}'></iframe>
-    
-                `);
+                });
 
-            })
+            } else {
+
+                YOUTUBEUD(data.Story,(Link)=>{
+
+                    IframeVideos.src='https://www.youtube.com/embed/'+Link;
+
+                });
+                
+            }
 
         });
 
+        CREATEELEMENT(RelativeDiv,'Div','InineViewer',(ELEMENT)=>{
+
+            YOUTUBEUD(data.Story,(Link)=>{
+
+                DISPLAY(ELEMENT,`
+
+                    <iframe class='SmallIframe' src='https://www.youtube.com/embed/${Link}'></iframe>
+    
+                `);
+
+            });
+
+            CREATEELEMENT(ELEMENT,'p','bottomText',(ElEMENTS)=>{
+
+                ElEMENTS.innerText='Watch';
+
+                CLICK(ElEMENTS,()=>{
+
+                    YOUTUBEUD(data.Story,(Link)=>{
+
+                        IframeVideos.src='https://www.youtube.com/embed/'+Link;
+
+                    }); 
+
+                });
+
+            });
+
+        });
+        
         console.log(data)
 
     });
