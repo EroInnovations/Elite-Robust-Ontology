@@ -2,7 +2,11 @@ const NOVASTART=()=>{
 
     DISPLAY('',`
 
-        <audio controls src='#'></audio>
+        <div class='HomeDiv'>
+
+            <img Src=''/>
+        
+        </div>
         
     `);
 

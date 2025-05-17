@@ -12,7 +12,7 @@ header{
 div{
     position: absolute;
     width: 100%;
-    height: auto;
+    height: 100%;
     top: 0;
     bottom: 0;
     left: 0;
@@ -29,6 +29,7 @@ img{
     height: 100%;
     margin: auto;
     object-fit: cover;
+    border: none;
 }
 
 footer{
