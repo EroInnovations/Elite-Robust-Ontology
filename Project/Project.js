@@ -29,6 +29,32 @@ const HOMEPAGE=()=>{
                 <img class='RightIcon' src='${WHITEUSERICON}'/>
             
             </div>
+
+            <h1>Dash Board</h1>
+
+            <div class='ContentHolder'>
+
+                <div class='InineView'>
+                    <img id='CenterIcon' class='Icon' src='${WHITEPOSTICON}'/>
+                    <p>Posts</p>
+                </div>
+
+                <div class='InineView'>
+                    <img id='CenterIcon' class='Icon' src='${WHITEGROUPICON}'/>
+                    <p>Admins</p>
+                </div>
+
+                <div class='InineView'>
+                    <img id='CenterIcon' class='Icon' src='${WHITEPOSTICON}'/>
+                    <p>Visitpr</p>
+                </div>
+
+                <div class='InineView'>
+                    <img id='CenterIcon' class='Icon' src='${WHITESETTINGSICON}'/>
+                    <p>Settings</p>
+                </div>
+
+            </div>
         
         </div>
 

@@ -20,3 +20,15 @@
     margin-top: 2%;
     border-radius: 10px;
 }
+
+.ContentHolder{
+    position: relative;
+    background: transparent;
+    overflow-y: auto;
+    height: auto;
+}
+
+#CenterIcon{
+    margin-top: 45%;
+    margin-bottom: 35%;
+}

@@ -1,6 +1,6 @@
 const NOVASTART=()=>{
 
-    if (localStorage.getItem('UserData')) {
+    if (!localStorage.getItem('UserData')) {
 
         ROUTE('',HOMEPAGE,'HOMEPAGE');
         
@@ -8,8 +8,12 @@ const NOVASTART=()=>{
     
         ROUTE('',LOGINPAGE,'LOGINPAGE');
 
-    }
+    };
 
+};
+
+const HOMEPAGEROUTER=()=>{
+    ROUTE('',HOMEPAGE,'HOMEPAGE');
 };
 
 const HOMEPAGE=()=>{
@@ -18,7 +22,39 @@ const HOMEPAGE=()=>{
 
         <div class='HomeDiv'>
 
-            <h1>Welcome</h1>
+            <div class='TopNav'>
+
+                <img class='LeftIcon' src='${WHITEMENUICON}'/>
+
+                <img class='RightIcon' src='${WHITEUSERICON}'/>
+            
+            </div>
+
+            <h1>Dash Board</h1>
+
+            <div class='ContentHolder'>
+
+                <div class='InineView'>
+                    <img id='CenterIcon' class='Icon' src='${WHITEPOSTICON}'/>
+                    <p>Posts</p>
+                </div>
+
+                <div class='InineView'>
+                    <img id='CenterIcon' class='Icon' src='${WHITEGROUPICON}'/>
+                    <p>Admins</p>
+                </div>
+
+                <div class='InineView'>
+                    <img id='CenterIcon' class='Icon' src='${WHITEPOSTICON}'/>
+                    <p>Visitpr</p>
+                </div>
+
+                <div class='InineView'>
+                    <img id='CenterIcon' class='Icon' src='${WHITESETTINGSICON}'/>
+                    <p>Settings</p>
+                </div>
+
+            </div>
         
         </div>
 
@@ -44,7 +80,7 @@ const LOGINPAGE=()=>{
 
             <input class='RoundInput' type='password'  Placeholder='Enter Password'/>
         
-            <h1 class='ForgotPassword'>ForgotPassword?</h1>
+            <h1 class='ForgotPassword' onclick='FORGOTPASSWORDPAGEROUTER()'>ForgotPassword?</h1>
 
             <button class='LoginButton'>LogIn</button>
 
@@ -76,8 +112,6 @@ const CREATEACCOUNTPAGE=()=>{
 
             <input class='RoundInput' type='password'  Placeholder='Enter Password'/>
         
-            <h1 class='ForgotPassword'>ForgotPassword?</h1>
-
             <button class='LoginButton'>Create Account</button>
 
             <button onclick='LOGINPAGEROUTER()' class='CreateButton'>LogIn</button>
@@ -89,3 +123,30 @@ const CREATEACCOUNTPAGE=()=>{
     `);
 
 };
+
+const FORGOTPASSWORDPAGEROUTER=()=>{
+   ROUTE(' ',FORGOTPASSWORDPAGE,'LOGINPAGE');  
+}
+
+const FORGOTPASSWORDPAGE=()=>{
+
+    DISPLAY('',`
+
+        <div class='HomeDiv'>
+
+            <img class='AppLogo' src='${MOUNTLOGO}'/>
+
+            <h1 class='AppName'>Mt Elgon Christian Union</h1>
+
+            <input class='RoundInput' type='email'  Placeholder='Enter Email'/>
+
+            <button class='LoginButton'>Recover</button>
+
+            <button onclick='LOGINPAGEROUTER()' class='CreateButton'>LogIn</button>
+
+        </div>
+
+    `);
+
+};
+

@@ -56,3 +56,13 @@
     height: 20px;
     margin-right: 1rem;
 }
+
+.InineView{
+    position: relative;
+    width: 40%;
+    height: 200px;
+    background: orange;
+    display: inline-table;
+    margin: 2%;
+    border-radius: 10px;
+}
