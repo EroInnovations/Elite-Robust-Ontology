@@ -1,3 +1,4 @@
+
 const API='https://docs.google.com/spreadsheets/d/1CL2HWe9Pwj18F7O9RKny8oRQFAw5-K_A0Io-rvCWryk/edit?usp=sharing';
 
 const NOVASTART=()=>{
@@ -46,7 +47,7 @@ const HOMEPAGE=()=>{
 
             <div class='TopNav'>
 
-                <h1>Videos</h1>
+                <h1 onclick='VIDEOPAGEROUTER()'>Videos</h1>
 
                 <h1>About Us</h1>
 
@@ -161,5 +162,51 @@ const VIDEOPAGEROUTER=()=>{
 };
 
 const VIDOESPAGE=()=>{
+
+    DISPLAY('',`
+
+        <header>
+
+            <img onclick='HOMEPAGEROUTE()' class='LeftIcon' src='${WHITEBACKICON}'/>
+        
+            <p class='RightText'>Prayer Streams</p>
+
+        </header>
+
+        <div class='HeaderDiv'>
+
+            <img class='loading' src='${WHITELOADINGICON}'/>
+
+        </div>
+        
+    `);
+
+    const loading=document.querySelector('.loading');
+
+    const DataDiv=document.querySelector('.HeaderDiv');
+
+    GETINDEXEDDATA('ElgonServices','ElgonServices',(data)=>{
+
+        STYLED(loading,'display','none');
+
+        CREATEELEMENT(DataDiv,'Div','HomePostDiv',(ElEMENTS)=>{
+
+            YOUTUBEUD(data.Story,(Link)=>{
+
+                DISPLAY(ElEMENTS,`
+
+                    <h1 class='LeftText'>${data.Date}</h1>
+    
+                    <iframe class='IframeVideos' src='https://www.youtube.com/embed/${Link}'></iframe>
+    
+                `);
+
+            })
+
+        });
+
+        console.log(data)
+
+    });
 
 };
