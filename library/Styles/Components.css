@@ -137,3 +137,16 @@ audio::-webkit-media-controls-volume-slider,
 audio::-webkit-media-controls-timeline {
     background-color: transparent !important;
 }
+
+
+button{
+    width: 95%;
+    height: 50px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    color: #000000;
+    margin: auto;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}

@@ -1,0 +1,22 @@
+.AppName{
+    font-size: 25px;
+    margin-top: 5%;
+    margin-bottom: 2%;
+}
+
+.LoginButton{
+    background: forestgreen;
+    color: #ffffff;
+}
+
+.CreateButton{
+    background: teal;
+    color: #ffffff;
+}
+
+.AppLogo{
+    width: 95%;
+    height: 35%;
+    margin-top: 2%;
+    border-radius: 10px;
+}
