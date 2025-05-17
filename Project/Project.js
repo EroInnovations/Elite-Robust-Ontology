@@ -26,7 +26,7 @@ const HOMEPAGE=()=>{
 
                 <img class='LeftIcon' src='${WHITEMENUICON}'/>
 
-                <img class='RightIcon' src='${WHITEUSERICON}'/>
+                <img class='RightIcon' src='${WHITEUSERPROFILEICON}'/>
             
             </div>
 
@@ -45,8 +45,8 @@ const HOMEPAGE=()=>{
                 </div>
 
                 <div class='InineView'>
-                    <img id='CenterIcon' class='Icon' src='${WHITEPOSTICON}'/>
-                    <p>Visitpr</p>
+                    <img id='CenterIcon' class='Icon' src='${WHITEUSERICON}'/>
+                    <p>Visitor</p>
                 </div>
 
                 <div class='InineView'>
