@@ -16,8 +16,6 @@ const NOVASTART=()=>{
 
     DOWNLOADSAVEINDEX(API,'ElgonNews','ElgonNews',()=>{
 
-        HOMEPAGE();
-
     });
 
     DOWNLOADSAVEINDEX(API,'ElgonServices','ElgonServices',()=>{
@@ -128,6 +126,22 @@ const HOMEPAGE=()=>{
         </div>
 
     `);
+
+    DOWNLOADSAVEINDEX(API,'ElgonNews','ElgonNews',()=>{
+
+    });
+
+    DOWNLOADSAVEINDEX(API,'ElgonServices','ElgonServices',()=>{
+
+    });
+
+    DOWNLOADSAVEINDEX(API,'ElgonPosts','ElgonPosts',()=>{
+
+    });
+
+    DOWNLOADSAVEINDEX(API,'ElgonUsers','ElgonUsers',()=>{
+
+    });
 
 };
 

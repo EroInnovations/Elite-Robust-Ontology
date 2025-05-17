@@ -70,6 +70,22 @@ const HOMEPAGE=()=>{
 
     WEEKLYPOSTS();
 
+        DOWNLOADSAVEINDEX(API,'ElgonNews','ElgonNews',()=>{
+
+    });
+
+    DOWNLOADSAVEINDEX(API,'ElgonServices','ElgonServices',()=>{
+
+    });
+
+    DOWNLOADSAVEINDEX(API,'ElgonPosts','ElgonPosts',()=>{
+
+    });
+
+    DOWNLOADSAVEINDEX(API,'ElgonUsers','ElgonUsers',()=>{
+
+    });
+
 }
 
 const WEEKLYPOSTS=()=>{
