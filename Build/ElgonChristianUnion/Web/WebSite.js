@@ -2,6 +2,8 @@ const API='https://docs.google.com/spreadsheets/d/1CL2HWe9Pwj18F7O9RKny8oRQFAw5-
 
 const NOVASTART=()=>{
 
+    VISITOR(API,'ElgonUsers');
+
     ROUTE('',HOMEPAGE,'HOMEPAGE');
 
     DOWNLOADSAVEINDEX(API,'ElgonNews','ElgonNews',()=>{
@@ -36,7 +38,7 @@ const HOMEPAGE=()=>{
 
         <div class='HomeDiv'>
 
-            <img id='HomeSettingsIcon' class='Icon' src='${WHITESETTINGSICON}'/>
+            <img id='HomeSettingsIcon' class='Icon' src='${WHITENOTIFICATIONICON}'/>
 
             <img class='Logo' Src='https://eroinnovations.github.io/Elite-Robust-Ontology/library/Assets/Projects/ChristianUnion/Christian Union Logo.jpg'/>
         
@@ -48,13 +50,13 @@ const HOMEPAGE=()=>{
 
                 <h1 onclick='VIDEOPAGEROUTER()'>Videos</h1>
 
-                <h1>About Us</h1>
+                <h1 onclick='ABOUTUSROUTE()'>About Us</h1>
 
-                <h1>Contact Us</h1>
+                <h1 onclick='CONTACTUSROUTE()'>Contact Us</h1>
             
             </div>
 
-            <h1>Weekly Updates</h1>
+            <h1>Union Updates</h1>
 
             <div class='DataDiv'>
 
@@ -249,3 +251,81 @@ const VIDOESPAGE=()=>{
     });
 
 };
+
+const CONTACTUSROUTE=()=>{
+
+    ROUTE(' ',CONTACTUSPAGE,'HOMEPAGE');
+
+};
+
+const CONTACTUSPAGE=()=>{
+
+    DISPLAY('',`
+
+        <header>
+
+            <img onclick='HOMEPAGEROUTE()' class='LeftIcon' src='${WHITEBACKICON}'/>
+        
+            <p class='RightText'>Contact Us</p>
+
+        </header>
+
+        <div class='HeaderDiv'>
+
+            <h1>Christian Union </h1>
+
+            <button>Email</button>
+
+            <br><br>
+
+            <h1>Tech Support</h1>
+
+            <button onclick='WEB()'>Provider Company</button>
+
+            <br><br>
+
+            <p>Powdered by Elite Robust Ontology</p>
+        
+        </div>
+        
+    `);
+
+}
+
+const WEB=()=>{
+    WEBSITE('https://eroinnovations.site');
+};
+
+const ABOUTUSROUTE=()=>{
+
+    ROUTE(' ',ABOUTUSPAGE,'HOMEPAGE');
+
+};
+
+const ABOUTUSPAGE=()=>{
+
+    DISPLAY('',`
+
+        <header>
+
+            <img onclick='HOMEPAGEROUTE()' class='LeftIcon' src='${WHITEBACKICON}'/>
+        
+            <p class='RightText'>About Us</p>
+
+        </header>
+
+        <div class='HeaderDiv'>
+
+            <h1>Christian Union </h1>
+
+           <p>Mount Elgon Christian Union is a part of Mt.Elgon College of Health Science and we are dedicated to serve the lord and welcome every person in to the house of the lord.</p>
+
+           <br>
+
+           <p>Come Join Us Today at Mount Elgon College of Health Science and get a blessing in your life.</p>
+        
+        </div>
+        
+    `);
+
+}
