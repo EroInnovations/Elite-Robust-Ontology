@@ -2,21 +2,9 @@ const API='https://docs.google.com/spreadsheets/d/1CL2HWe9Pwj18F7O9RKny8oRQFAw5-
 
 const NOVASTART=()=>{
 
-    if (localStorage.getItem('User')) {
-
-        ADMINCONNECTION();
-        
-    }else{
-
-        DELETEDATA(' ','User');
-
-        DELETEDATA(' ','UserData');
-
-    };
+    ROUTE('',HOMEPAGE,'HOMEPAGE');
 
     DOWNLOADSAVEINDEX(API,'ElgonNews','ElgonNews',()=>{
-
-        HOMEPAGE();
 
     });
 
@@ -26,58 +14,20 @@ const NOVASTART=()=>{
 
     DOWNLOADSAVEINDEX(API,'ElgonPosts','ElgonPosts',()=>{
 
+        HOMEPAGE();
+
     });
 
     DOWNLOADSAVEINDEX(API,'ElgonUsers','ElgonUsers',()=>{
 
     });
 
-    if (localStorage.getItem('UserData')) {
-
-        ROUTE('',HOMEPAGE,'HOMEPAGE');
-        
-    } else {
-    
-        ROUTE('',LOGINPAGE,'LOGINPAGE');
-
-    };
-
 };
 
-const ADMINCONNECTION=()=>{
+const HOMEPAGEROUTE=()=>{
 
-    if (navigator.onLine) {
-        
-        GETDATA(API,'Users',(data)=>{
-
-            FINDER(data,'ID',localStorage.getItem('User'),(users)=>{
-
-                if (users.ID === localStorage.getItem('User') ) {
-
-                    JSONIFICATION(users,(MyDAta)=>{
-                        STOREDATA(' ','UserData',MyDAta);
-                    })
-                    
-                } else {
-                    
-                    DELETEDATA(' ','User');
-
-                    DELETEDATA(' ','UserData');
-
-                    NOVASTART();
-
-                }
-
-            });
-                        
-        });
-
-    } 
-
-};
-
-const HOMEPAGEROUTER=()=>{
     ROUTE('',HOMEPAGE,'HOMEPAGE');
+
 };
 
 const HOMEPAGE=()=>{
@@ -86,609 +36,119 @@ const HOMEPAGE=()=>{
 
         <div class='HomeDiv'>
 
+            <img id='HomeSettingsIcon' class='Icon' src='${WHITESETTINGSICON}'/>
+
+            <img class='Logo' Src='https://eroinnovations.github.io/Elite-Robust-Ontology/library/Assets/Projects/ChristianUnion/Christian Union Logo.jpg'/>
+        
+            <h1 class='AppName'>Mt.Elgon Christian Union</h1>
+
+            <p>Loving God,Loving People</p>
+
             <div class='TopNav'>
 
-                <h1 class='LeftText'>Christian Union</h1>
+                <h1>Videos</h1>
 
-                <img class='RightIcon' src='${WHITEUSERPROFILEICON}'/>
+                <h1>About Us</h1>
+
+                <h1>Contact Us</h1>
             
             </div>
 
-            <h1>Dash Board</h1>
+            <h1>Weekly Updates</h1>
 
-            <div class='ContentHolder'>
+            <div class='DataDiv'>
 
-                <div class='InineView' onclick='POSTSPAGEROUTER()'>
-                    <img id='CenterIcon' class='Icon' src='${WHITEPOSTICON}'/>
-                    <p>Posts</p>
-                </div>
-
-                <div class='InineView' >
-                    <img id='CenterIcon' class='Icon' src='${WHITEMOVIEICON}'/>
-                    <p>Video Posts</p>
-                </div>
-
-                <div class='InineView'>
-                    <img id='CenterIcon' class='Icon' src='${WHITEGROUPICON}'/>
-                    <p>Admins</p>
-                </div>
-
-                <div class='InineView'>
-                    <img id='CenterIcon' class='Icon' src='${WHITEUSERICON}'/>
-                    <p>Visitor</p>
-                </div>
-
-                <div class='InineView'>
-                    <img id='CenterIcon' class='Icon' src='${WHITESETTINGSICON}'/>
-                    <p>Settings</p>
-                </div>
-
+                <img class='loading' src='${WHITELOADINGICON}'/>
+            
             </div>
-        
-        </div>
-
-    `);
-
-};
-
-const LOGINPAGEROUTER=()=>{
-    ROUTE(' ',LOGINPAGE,'LOGINPAGE');
-};
-
-const LOGINPAGE=()=>{
-
-    DISPLAY('',`
-
-        <div class='HomeDiv'>
-
-            <img class='AppLogo' src='${MOUNTLOGO}'/>
-
-            <h1 class='AppName'>Mt Elgon Christian Union</h1>
-
-            <input id='Email' class='RoundInput' type='email'  Placeholder='Enter Email'/>
-
-            <input id='UserEmail' class='RoundInput' type='password'  Placeholder='Enter Password'/>
-        
-            <h1 class='ForgotPassword' onclick='FORGOTPASSWORDPAGEROUTER()'>ForgotPassword?</h1>
-
-            <button class='LoginButton'>LogIn</button>
-
-            <button onclick='CREATEACCOUNTROUTER()' class='CreateButton'>Create Account</button>
 
         </div>
-
+        
     `);
 
-    const LoginButton=document.querySelector('.LoginButton');
-    const Email=document.querySelector('#Email');
-    const UserEmail=document.querySelector('#UserEmail');
+    WEEKLYPOSTS();
 
-    LoginButton.addEventListener('click',()=>{
-
-        if (Email.value) {
-
-            if (UserEmail.value) {
-
-                if (navigator.onLine) {
-
-                    TOAST('Please Wait');
-
-                    GETDATA(API,'Users',(data)=>{
-
-                        FINDER(data,'UserEmail',Email.value,(users)=>{
-
-                            if (users.UserEmail === Email.value ) {
-
-                                if (users.UserPassword === UserEmail.value ) {
-                                
-                                    JSONIFICATION(users,(MyData)=>{
-
-                                        STOREDATA(' ','UserData',MyData);
-
-                                        STOREDATA(' ','User',users.ID);
-
-                                        STOREDATA(' ','AdminRights',MyData.Right);
-
-                                        NOVASTART();
-
-                                    });
-
-                                } else {
-                                TOAST('No Admin Found'); 
-                                }
-                                
-                            } else {
-                               TOAST('No Admin Found'); 
-                            }
-
-                        });
-                        
-                    });
-                    
-                } else {
-                    TOAST('Check Your Internet Connection');
-                };
-                
-            } else {
-                TOAST('Enter Password ');
-            };
- 
-        } else {
-            TOAST('Enter Email ');
-        };
-
-    });
-
-};
-
-const CREATEACCOUNTROUTER=()=>{
-    ROUTE(' ',CREATEACCOUNTPAGE,'LOGINPAGE');
-};
-
-const CREATEACCOUNTPAGE=()=>{
-
-    DISPLAY('',`
-
-        <div class='HomeDiv'>
-
-            <img class='AppLogo' src='${MOUNTLOGO}'/>
-
-            <h1 class='AppName'>Mt Elgon Christian Union</h1>
-
-            <input id='Name' class='RoundInput' type='text'  Placeholder='Enter Your Name'/>
-
-            <input id='Email' class='RoundInput' type='email'  Placeholder='Enter Email'/>
-
-            <input id='Password'  class='RoundInput' type='password'  Placeholder='Enter Password'/>
-        
-            <button class='LoginButton'>Create Account</button>
-
-            <button onclick='LOGINPAGEROUTER()' class='CreateButton'>LogIn</button>
-
-            <br><br>
-
-        </div>
-
-    `);
-
-    const LoginButton=document.querySelector('.LoginButton');
-    const Name=document.querySelector('#Name');
-    const Email=document.querySelector('#Email');
-    const Password=document.querySelector('#Password');
-
-    LoginButton.addEventListener('click',()=>{
-
-        if (Name.value) {
-
-            if (Email.value) {
-
-                if (Password.value) {
-
-                    if (navigator.onLine) {
-
-                        DEVICE((Deviced)=>{
-
-                            const HEADER=['UserName','UserEmail','UserPassword','UserDevice','Date','Rights','Approved'];
-
-                            const INFO=[Name.value,Email.value,Password.value,Deviced,new Date(),'','Approved'];
-
-                            GETDATA(API,'Users',(data)=>{
-
-                                FINDER(data,'UserEmail',Email.value,(data)=>{
-
-                                    if (data.UserEmail === Email.value ) {
-
-                                        TOAST('Admin With Email Found');
-                                        
-                                    } else {
-
-                                        const Message='Welcome to Mount ELgon Christian Union ,Your Now Approved Admin.'
-
-                                        EMAILSENDER(Email.value,'Account Created',Message,(datata)=>{
-
-                                            if (datata.message === 'Email sent successfully.' ) {
-                                                
-                                                INSERTDATA(API,'Users',HEADER,INFO,(ResBack)=>{
-
-                                                    STOREDATA(' ','User',ResBack.spreadsheetId);
-
-                                                    STOREDATA(' ','UserData',ResBack.spreadsheetId);
-
-                                                    NOVASTART();
-        
-                                                });
-                                            } else {
-                                            
-                                                TOAST('Email Doesnot Exit');
-
-                                            }
-
-                                        },()=>{
-
-                                            TOAST('Something Went Wrong,Try Again');
-
-                                        });
-
-                                    };
-
-                                });
-
-                            });
-
-                        });
-                            
-                    } else {
-                        TOAST('Check Your Internet');
-                    }
-            
-                } else {
-                    TOAST('Enter Your Password');
-                }
-
-            } else {
-                TOAST('Enter Your Email');
-            }
-
-            
-        } else {
-            TOAST('Enter Your Name');
-        }
-
-    });
-    
-};
-
-const FORGOTPASSWORDPAGEROUTER=()=>{
-   ROUTE(' ',FORGOTPASSWORDPAGE,'LOGINPAGE');  
 }
 
-const FORGOTPASSWORDPAGE=()=>{
+const WEEKLYPOSTS=()=>{
 
-    DISPLAY('',`
+    const loading=document.querySelector('.loading');
 
-        <div class='HomeDiv'>
+    const DataDiv=document.querySelector('.DataDiv');
 
-            <img class='AppLogo' src='${MOUNTLOGO}'/>
+    GETINDEXEDDATA('ElgonPosts','ElgonPosts',(data)=>{
 
-            <h1 class='AppName'>Mt Elgon Christian Union</h1>
+        STYLED(loading,'display','none');
 
-            <input class='RoundInput' type='email'  Placeholder='Enter Email'/>
+        CREATEELEMENT(DataDiv,'Div','HomePostDiv',(ElEMENTS)=>{
 
-            <button class='LoginButton'>Recover</button>
+            DISPLAY(ElEMENTS,`
 
-            <button onclick='LOGINPAGEROUTER()' class='CreateButton'>LogIn</button>
+                <img src='${data.CoverImage}'/>
 
-        </div>
-
-    `);
-
-};
-
-const POSTSPAGEROUTER=()=>{
-
-    ROUTE(' ',POSTSPAGE,'HOMEPAGE');
-
-};
-
-const POSTSPAGE=()=>{
-
-    DISPLAY('',`
-
-        <header>
-
-            <img onclick='HOMEPAGEROUTER()' class='LeftIcon' src='${WHITELEFTBACKICON}'/>
-
-            <h1 class='RightText'>Posts </h1>
-        
-        </header>
-
-        <div class='HeaderDiv'>
-
-            <div class='TopNav'>
-            
-                <P onclick='POSTSPAGE()'>ALL Posts</P>
-
-                <P onclick='CREATEPOSTPAGE()'>Create Post</P>
-
-                <P onclick='DELETEDLPOSTS()'>Deleted Posts</P>
-
-            </div>
-            
-            <div id='POstsDivs' class='RelativeDiv'></div>
-        
-        </div>
-        
-    `);
-
-    ALLPOSTS();
-
-};
-
-const ALLPOSTPAGE=()=>{
-
-    const POstsDivs=document.querySelector('#POstsDivs');
-
-};
-
-const CREATEPOSTPAGE=()=>{
-
-    DELETEDATA('','CoverImage');
-
-    DELETEDATA('','ImageOne');
-    DELETEDATA('','ImageTwo');
-    DELETEDATA('','ImageThree');
-
-    const POstsDivs=document.querySelector('#POstsDivs');
-
-    DISPLAY(POstsDivs,`
-
-        <input id='Name' class='RoundInput' type='text'  Placeholder='Enter Post Title'/>
-
-        <textarea id='Story' placeholder='Write Story'></textarea>
-
-        <p>Cover Post Image </p>
-
-        <img id='CoverImage' class='PostImage' src='${MOUNTLOGO}'/>
-
-        <p>Posts Image</p>
-
-        <img id='ImageOne'  class='PostImage' src='${MOUNTLOGO}'/>
-
-        <img id='ImageTwo' class='PostImage' src='${MOUNTLOGO}'/>
-
-        <img id='ImageThree' class='PostImage' src='${MOUNTLOGO}'/> 
-
-        <button class='LoginButton'>Create Post</button>
-
-    `);
-
-    const CoverImage=document.querySelector('#CoverImage');
-    const ImageOne=document.querySelector('#ImageOne');
-    const ImageTwo=document.querySelector('#ImageTwo');
-    const ImageThree=document.querySelector('#ImageThree');
-    const LoginButton=document.querySelector('.LoginButton');
-    const Name=document.querySelector('#Name');
-    const Story=document.querySelector('#Story');
-
-    CoverImage.addEventListener('click',()=>{
-
-        IMAGEPICKER(CoverImage,(data)=>{
-
-            STOREDATA('','CoverImage',data);
-
-        });
-
-    });
-
-    ImageOne.addEventListener('click',()=>{
-
-        IMAGEPICKER(ImageOne,(data)=>{
-
-            STOREDATA('','ImageOne',data);
-
-        });
-
-    });
-
-    ImageTwo.addEventListener('click',()=>{
-
-        IMAGEPICKER(ImageTwo,(data)=>{
-
-            STOREDATA('','ImageTwo',data);
-
-        });
-
-    });
-
-    ImageThree.addEventListener('click',()=>{
-
-        IMAGEPICKER(ImageThree,(data)=>{
-
-            STOREDATA('','ImageThree',data);
-
-        });
-
-    });
-
-    LoginButton.addEventListener('click',()=> {
-
-        if (Name.value) {
-
-            if (Story.value) {
+                <footer class='Footer'>
+                    <h1>${data.Name}</h1>
+                </footer>
                 
-                if (sessionStorage.getItem('CoverImage')) {
+            `);
 
-                    if (navigator.onLine) {
+            CLICK(ElEMENTS,()=>{
 
-                        DEVICE((devicedData)=>{
-                            
-                            const HEADERS=['Name','Story','CoverImage','ImageOne','ImageTwo','ImageThree','Date','PostedBy','Device'];
-                            
-                            const INFO=[Name.value,Story.value,sessionStorage.getItem('CoverImage'),sessionStorage.getItem('ImageOne'),sessionStorage.getItem('ImageTwo'),sessionStorage.getItem('Three'),new Date(),localStorage.getItem('User'),devicedData];
+                JSONIFICATION(data,(MyData)=>{
 
-                            INSERTDATA(API,'ElgonPosts',HEADERS,INFO,(resback)=>{
+                    STOREDATA('','CurrentPost',MyData);
 
-                                DOWNLOADSAVEINDEX(API,'ElgonPosts','ElgonPosts',()=>{
-
-                                });
-
-                                HIDER(2000,()=>{
-
-                                    POSTSPAGEROUTER();
-
-                                });
-
-                            },()=>{
-
-                                TOAST('Failed to Post,Try Again');
-
-                            })
-
-                        });
-                        
-                    } else {
-                        TOAST('Check Your Internet');
-                    }
-            
-                } else {
-                    TOAST('Add Cover Post Image');
-                }
-
-            } else {
-                TOAST('Enter Post Story');
-            }
-            
-        } else {
-            TOAST('Enter Post Title');
-        }
-
-    });
-
-};
-
-const ALLPOSTS=()=>{
-
-    const POstsDivs=document.querySelector('#POstsDivs');
-
-    DISPLAY(POstsDivs,'');
-    
-    GETINDEXEDDATA('ElgonPosts','ElgonPosts',(data)=>{
-
-        if (!data.Deleted) {
-
-            CREATEELEMENT(POstsDivs,'Div','InineView',(ELEMENT)=>{
-
-                DISPLAY(ELEMENT,`
-
-                    <img src='${data.CoverImage}'/>
-
-                `);
-
-                CREATEELEMENT(ELEMENT,'Footer','PostsFooter',(ELEMENTS)=>{
-
-                    CREATEELEMENT(ELEMENTS,'Img','Icon',(ELEMENTES)=>{
-
-                        ELEMENTES.src=WHITEPENCILICON;
-
-                        CLICK(ELEMENTES,()=>{
-
-                            if (condition) {
-                                
-                            } else {
-                                
-                            };
-
-                        });
-
-                    });
-
-                    CREATEELEMENT(ELEMENTS,'Img','Icon',(ELEMENTES)=>{
-
-                        ELEMENTES.src=WHITEDELETEICON;
-
-                            CLICK(ELEMENTES,()=>{
-
-                            if (navigator.onLine) {
-
-                                TOAST('PLease Wait');
-
-                                const HEADERS=[data.Name,data.Story,data.CoverImage,data.ImageOne,data.ImageTwo,data.ImageThree,data.Date,data.PostedBy,data.Device,'Deleted'];
-                            
-                                UPDATEDATA(API,'ElgonPosts',data.ID,HEADERS,(data)=>{
-
-                                    DOWNLOADSAVEINDEX(API,'ElgonPosts','ElgonPosts',()=>{
-
-                                    });
-
-                                    HIDER(3000,()=>{
-
-                                        POSTSPAGEROUTER();
-
-                                    });
-
-                                },()=>{
-                                    TOAST('Failed to Delete ,Please Try Again');
-                                })
-                                
-                            } else {
-                                TOAST('CHeck Your Internet');
-                            };
-
-                        });
-
-                    });
+                    FULLSTORYROUTER();
 
                 });
 
             });
 
-        };
+        });
+
+        console.log(data)
 
     });
 
 };
 
-const DELETEDLPOSTS=()=>{
+const FULLSTORYROUTER=()=>{
 
-    const POstsDivs=document.querySelector('#POstsDivs');
+    ROUTE(' ',FULLSTORY,'HOMEPAGE');
 
-    DISPLAY(POstsDivs,'');
-    
-    GETINDEXEDDATA('ElgonPosts','ElgonPosts',(data)=>{
+};
 
-        if (data.Deleted) {
+const FULLSTORY=()=>{
 
-            CREATEELEMENT(POstsDivs,'Div','InineView',(ELEMENT)=>{
+    SESSIONDEJSONDATA('CurrentPost',(Data)=>{
 
-                DISPLAY(ELEMENT,`
+        DISPLAY('',`
 
-                    <img src='${data.CoverImage}'/>
+            <header>
 
-                `);
+                <img onclick='HOMEPAGEROUTE()' class='LeftIcon' src='${WHITEBACKICON}'/>
 
-                CREATEELEMENT(ELEMENT,'Footer','PostsFooter',(ELEMENTS)=>{
+                <h1 class='RightText'>${Data.Name}</h1>
+            
+            </header>
 
-                    CREATEELEMENT(ELEMENTS,'Img','Icon',(ELEMENTES)=>{
+            <div class='HeaderDiv'>
 
-                        ELEMENTES.src=WHITECHECKICON;
+                <img class='CoverImage' src='${Data.CoverImage}'/>
 
-                            CLICK(ELEMENTES,()=>{
+                <p>${Data.Story}</p>
 
-                            if (navigator.onLine) {
+                <div class='TopNav'>
 
-                                TOAST('PLease Wait');
+                    <img class='Icon' src='${WHITELOCATIONICON}'/>
 
-                                const HEADERS=[data.Name,data.Story,data.CoverImage,data.ImageOne,data.ImageTwo,data.ImageThree,data.Date,data.PostedBy,data.Device,''];
-                            
-                                UPDATEDATA(API,'ElgonPosts',data.ID,HEADERS,(data)=>{
+                    <p class='LeftText'>${Data.Date}</p>
+                
+                </div>
+            
+            </div>
 
-                                    DOWNLOADSAVEINDEX(API,'ElgonPosts','ElgonPosts',()=>{
-
-                                    });
-
-                                    HIDER(3000,()=>{
-
-                                        POSTSPAGEROUTER();
-
-                                    });
-
-                                },()=>{
-                                    TOAST('Failed to Delete ,Please Try Again');
-                                })
-                                
-                            } else {
-                                TOAST('CHeck Your Internet');
-                            };
-
-                        });
-
-                    });
-
-                });
-
-            });
-
-        };
+        `);
 
     });
 

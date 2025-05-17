@@ -26,3 +26,23 @@
     background: transparent;
     overflow-y: auto;
 }
+
+.HomePostDiv{
+    position: relative;
+    width: 98%;
+    height: 300px;
+    background: red;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.Footer{
+    background: #000000;
+}
+
+.CoverImage{
+    width: 95%;
+    height: 300px;
+    margin-top: 2%;
+    border-radius: 10px;
+}

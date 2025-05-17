@@ -1,45 +1,48 @@
-.AppName{
-    font-size: 25px;
+.Logo{
+    height: 20%;
+    width: 50%;
     margin-top: 5%;
-    margin-bottom: 2%;
-}
-
-.LoginButton{
-    background: forestgreen;
-    color: #ffffff;
-}
-
-.CreateButton{
-    background: teal;
-    color: #ffffff;
-}
-
-.AppLogo{
-    width: 95%;
-    height: 35%;
-    margin-top: 2%;
     border-radius: 10px;
 }
 
-.ContentHolder{
-    position: relative;
-    background: transparent;
-    overflow-y: auto;
-    height: auto;
-}
-
-#CenterIcon{
-    margin-top: 45%;
-    margin-bottom: 35%;
-}
-
-.PostImage{
-    width: 95%;
-    height: 300px;
+.AppName{
+    font-size: 25px;
     margin-top: 2%;
     margin-bottom: 2%;
 }
 
-.PostsFooter{
+#HomeSettingsIcon{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 20px;
+    background: #333333;
+    border-radius: 50px;
+}
+
+.DataDiv{
+    position: relative;
+    height: auto;
+    background: transparent;
+    overflow-y: auto;
+}
+
+.HomePostDiv{
+    position: relative;
+    width: 98%;
+    height: 300px;
+    background: red;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.Footer{
     background: #000000;
+}
+
+.CoverImage{
+    width: 95%;
+    height: 300px;
+    margin-top: 2%;
+    border-radius: 10px;
 }
