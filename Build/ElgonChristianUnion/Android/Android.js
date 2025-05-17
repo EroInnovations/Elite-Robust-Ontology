@@ -103,7 +103,7 @@ const HOMEPAGE=()=>{
                     <p>Posts</p>
                 </div>
 
-                <div class='InineView' >
+                <div class='InineView' onclick='VIDEOPAGEROUTE()'>
                     <img id='CenterIcon' class='Icon' src='${WHITEMOVIEICON}'/>
                     <p>Video Posts</p>
                 </div>
@@ -682,6 +682,202 @@ const DELETEDLPOSTS=()=>{
 
                         });
 
+                    });
+
+                });
+
+            });
+
+        };
+
+    });
+
+};
+
+const VIDEOPAGEROUTE=()=>{
+
+    ROUTE(' ',VIDEOPAGE,'HOMEPAGE');
+
+};
+
+const VIDEOPAGE=()=>{
+
+    DISPLAY('',`
+
+        <header>
+
+            <img onclick='HOMEPAGEROUTER()' class='LeftIcon' src='${WHITELEFTBACKICON}'/>
+
+            <h1 class='RightText'>Videos</h1>
+        
+        </header>
+
+        <div class='HeaderDiv'>
+
+            <div class='TopNav'>
+            
+                <P onclick='VIDEOPAGE()'>ALL Posts</P>
+
+                <P onclick='CREATEVIDEOPAGE()'>Create Post</P>
+
+                <P onclick='DELETEDLPOSTS()'>Deleted Posts</P>
+
+            </div>
+            
+            <div id='POstsDivs' class='RelativeDiv'></div>
+        
+        </div>
+        
+    `);
+
+    ALLVIDEOS();
+
+};
+
+const CREATEVIDEOPAGE=()=>{
+
+    DELETEDATA('','Link');
+
+    const POstsDivs=document.querySelector('#POstsDivs');
+
+    DISPLAY(POstsDivs,`
+
+        <input id='Name' class='RoundInput' type='text'  Placeholder='Enter Post Title'/>
+
+        <input id='Story' class='RoundInput' type='text'  Placeholder='Enter Youtube Video Link'/>
+        
+        <button class='LoginButton'>Create Video Post</button>
+
+    `);
+
+    const Name=document.querySelector('#Name');
+    const Story=document.querySelector('#Story');
+    const LoginButton=document.querySelector('.LoginButton');
+
+    LoginButton.addEventListener('click',()=> {
+
+        if (Name.value) {
+
+            if (Story.value) {
+                
+                if (navigator.onLine) {
+
+                    DEVICE((devicedData)=>{
+                        
+                        const HEADERS=['Name','Story','Date','PostedBy','Device'];
+                        
+                        const INFO=[Name.value,Story.value,new Date(),localStorage.getItem('User'),devicedData];
+
+                        INSERTDATA(API,'ElgonServices',HEADERS,INFO,(resback)=>{
+
+                            DOWNLOADSAVEINDEX(API,'ElgonServices','ElgonServices',()=>{
+
+                            });
+
+                            HIDER(2000,()=>{
+
+                                VIDEOPAGE();
+
+                            });
+
+                        },()=>{
+
+                            TOAST('Failed to Post,Try Again');
+
+                        })
+
+                    });
+                    
+                } else {
+                    TOAST('Check Your Internet');
+                }
+
+            } else {
+                TOAST('Paste YouTube Link');
+            }
+            
+        } else {
+            TOAST('Enter Post Title');
+        }
+
+    });
+
+};
+
+const ALLVIDEOS=()=>{
+
+    const POstsDivs=document.querySelector('#POstsDivs');
+
+    DISPLAY(POstsDivs,'');
+    
+    GETINDEXEDDATA('ElgonServices','ElgonServices',(data)=>{
+
+        if (!data.Deleted) {
+
+            CREATEELEMENT(POstsDivs,'Div','InineView',(ELEMENT)=>{
+
+                YOUTUBEUD(data.Story,(linked)=>{
+                    
+                    DISPLAY(ELEMENT,`
+    
+                        <iframe class='SmallIframe' src='https://www.youtube.com/embed/${linked}'/><iframe>
+    
+                    `);
+    
+                    CREATEELEMENT(ELEMENT,'Footer','PostsFooter',(ELEMENTS)=>{
+    
+                        CREATEELEMENT(ELEMENTS,'Img','Icon',(ELEMENTES)=>{
+    
+                            ELEMENTES.src=WHITEPENCILICON;
+    
+                            CLICK(ELEMENTES,()=>{
+    
+                                if (condition) {
+                                    
+                                } else {
+                                    
+                                };
+    
+                            });
+    
+                        });
+    
+                        CREATEELEMENT(ELEMENTS,'Img','Icon',(ELEMENTES)=>{
+    
+                            ELEMENTES.src=WHITEDELETEICON;
+    
+                                CLICK(ELEMENTES,()=>{
+    
+                                if (navigator.onLine) {
+    
+                                    TOAST('PLease Wait');
+    
+                                    const HEADERS=[data.Name,data.Story,data.Date,data.PostedBy,data.Device,'Deleted'];
+                                
+                                    UPDATEDATA(API,'ElgonServices',data.ID,HEADERS,(data)=>{
+    
+                                        DOWNLOADSAVEINDEX(API,'ElgonServices','ElgonServices',()=>{
+    
+                                        });
+    
+                                        HIDER(3000,()=>{
+    
+                                            VIDEOPAGE();
+    
+                                        });
+    
+                                    },()=>{
+                                        TOAST('Failed to Delete ,Please Try Again');
+                                    })
+                                    
+                                } else {
+                                    TOAST('CHeck Your Internet');
+                                };
+    
+                            });
+    
+                        });
+    
                     });
 
                 });

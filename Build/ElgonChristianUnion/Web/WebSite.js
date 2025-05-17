@@ -153,3 +153,13 @@ const FULLSTORY=()=>{
     });
 
 };
+
+const VIDEOPAGEROUTER=()=>{
+
+    ROUTE(' ',VIDOESPAGE,'HOMEPAGE');
+
+};
+
+const VIDOESPAGE=()=>{
+
+};
