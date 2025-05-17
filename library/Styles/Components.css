@@ -150,3 +150,16 @@ button{
     margin-top: 2%;
     margin-bottom: 2%;
 }
+
+textarea{
+    position: relative;
+    margin: auto;
+    width: 95%;
+    background: transparent;
+    color: #ffffff;
+    height: 300px;
+    border: 1px solid #cdcdcd;
+    outline: none;
+    margin: auto;
+    border-radius: 5px;
+}

@@ -48,13 +48,13 @@
 .LeftIcon{
     width: 20px;
     height: 20px;
-    margin-left: 1rem;
+    margin-left: 0.5rem;
 }
 
 .RightIcon{
     width: 20px;
     height: 20px;
-    margin-right: 1rem;
+    margin-right: 0.5rem;
 }
 
 .InineView{
@@ -65,4 +65,26 @@
     display: inline-table;
     margin: 2%;
     border-radius: 10px;
+}
+
+.LeftText{
+    margin-left: 0.5rem;
+}
+
+.RightText{
+    margin-right: 0.5rem;
+}
+
+.HeaderDiv{
+    top: 50px;
+    height: auto;
+    bottom: 0;
+    overflow-y: auto;
+    background-color: transparent;
+}
+
+.RelativeDiv{
+    position: relative;
+    overflow-y: auto;
+    height: auto;
 }
