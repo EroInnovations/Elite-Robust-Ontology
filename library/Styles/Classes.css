@@ -44,3 +44,15 @@
     margin-right: 2%;
     padding: 2%;
 }
+
+.LeftIcon{
+    width: 20px;
+    height: 20px;
+    margin-left: 1rem;
+}
+
+.RightIcon{
+    width: 20px;
+    height: 20px;
+    margin-right: 1rem;
+}
