@@ -2,6 +2,18 @@ const API='https://docs.google.com/spreadsheets/d/1CL2HWe9Pwj18F7O9RKny8oRQFAw5-
 
 const NOVASTART=()=>{
 
+    if (localStorage.getItem('User')) {
+
+        ADMINCONNECTION();
+        
+    }else{
+
+        DELETEDATA(' ','User');
+
+        DELETEDATA(' ','UserData');
+
+    };
+
     DOWNLOADSAVEINDEX(API,'ElgonNews','ElgonNews',()=>{
 
         HOMEPAGE();
@@ -32,6 +44,38 @@ const NOVASTART=()=>{
 
 };
 
+const ADMINCONNECTION=()=>{
+
+    if (navigator.onLine) {
+        
+        GETDATA(API,'Users',(data)=>{
+
+            FINDER(data,'ID',localStorage.getItem('User'),(users)=>{
+
+                if (users.ID === localStorage.getItem('User') ) {
+
+                    JSONIFICATION(users,(MyDAta)=>{
+                        STOREDATA(' ','UserData',MyDAta);
+                    })
+                    
+                } else {
+                    
+                    DELETEDATA(' ','User');
+
+                    DELETEDATA(' ','UserData');
+
+                    NOVASTART();
+
+                }
+
+            });
+                        
+        });
+
+    } 
+
+};
+
 const HOMEPAGEROUTER=()=>{
     ROUTE('',HOMEPAGE,'HOMEPAGE');
 };
@@ -44,7 +88,7 @@ const HOMEPAGE=()=>{
 
             <div class='TopNav'>
 
-                <img class='LeftIcon' src='${WHITEMENUICON}'/>
+                <h1 class='LeftText'>Christian Union</h1>
 
                 <img class='RightIcon' src='${WHITEUSERPROFILEICON}'/>
             
@@ -140,6 +184,8 @@ const LOGINPAGE=()=>{
                                     JSONIFICATION(users,(MyData)=>{
 
                                         STOREDATA(' ','UserData',MyData);
+
+                                        STOREDATA(' ','User',users.ID);
 
                                         STOREDATA(' ','AdminRights',MyData.Right);
 
