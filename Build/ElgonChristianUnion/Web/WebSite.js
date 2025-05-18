@@ -38,7 +38,7 @@ const HOMEPAGE=()=>{
 
         <div class='HomeDiv'>
 
-            <img id='HomeSettingsIcon' class='Icon' src='${WHITENOTIFICATIONICON}'/>
+            <img onclick='SETTINGSPAGEROUTE()' id='HomeSettingsIcon' class='Icon' src='${WHITESETTINGSICON}'/>
 
             <img class='Logo' Src='https://eroinnovations.github.io/Elite-Robust-Ontology/library/Assets/Projects/ChristianUnion/Christian Union Logo.jpg'/>
         
@@ -123,8 +123,6 @@ const WEEKLYPOSTS=()=>{
             });
 
         });
-
-        console.log(data)
 
     });
 
@@ -261,8 +259,6 @@ const VIDOESPAGE=()=>{
             });
 
         });
-        
-        console.log(data)
 
     });
 
@@ -290,13 +286,13 @@ const CONTACTUSPAGE=()=>{
 
             <h1>Christian Union </h1>
 
-            <button>Email</button>
+            <button class='Buttons'>Email</button>
 
             <br><br>
 
             <h1>Tech Support</h1>
 
-            <button onclick='WEB()'>Provider Company</button>
+            <button class='Buttons' onclick='WEB()'>Provider Company</button>
 
             <br><br>
 
@@ -344,4 +340,34 @@ const ABOUTUSPAGE=()=>{
         
     `);
 
-}
+};
+
+const SETTINGSPAGEROUTE=()=>{
+
+    ROUTE(' ',SETTINGSPAGE,'HOMEPAGE');
+
+};
+
+const SETTINGSPAGE=()=>{
+
+    DISPLAY('',`
+
+        <header>
+
+            <img onclick='HOMEPAGEROUTE()' class='LeftIcon' src='${WHITEBACKICON}'/>
+        
+            <p class='RightText'>Preferences</p>
+
+        </header>
+
+        <div class='HeaderDiv'>
+
+            <br><br><br><br>
+
+            <p>Under Development</p>
+        
+        </div>
+        
+    `);
+
+};
