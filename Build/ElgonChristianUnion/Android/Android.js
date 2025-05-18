@@ -111,7 +111,7 @@ const HOMEPAGE=()=>{
                     <p>Admins</p>
                 </div>
 
-                <div class='InineView'>
+                <div class='InineView' onclick='VISITORPAGEROUTE()' >
                     <img id='CenterIcon' class='Icon' src='${WHITEUSERICON}'/>
                     <p>Visitor</p>
                 </div>
@@ -975,5 +975,71 @@ const DELETEDVLPOSTS=()=>{
         };
 
     });
+
+};
+
+const VISITORPAGEROUTE=()=>{
+
+    ROUTE(' ',VISITORSPAGE,'HOMEPAGE');
+
+};
+
+const VISITORSPAGE=()=>{
+
+    DISPLAY('',`
+
+        <header>
+
+            <img onclick='HOMEPAGEROUTER()' class='LeftIcon' src='${WHITELEFTBACKICON}'/>
+
+            <h1 class='RightText'>Vistors</h1>
+        
+        </header>
+
+        <div class='HeaderDiv'>
+
+            <img class='loading' src='${WHITELOADINGICON}'/>
+        
+        </div>
+        
+    `);
+
+    const HeaderDiv=document.querySelector('.HeaderDiv');
+
+    const loading=document.querySelector('.loading');
+
+    if (navigator.onLine) {
+
+        GETDATA(API,'ElgonUsers',(data)=>{
+
+            STYLED(loading,'display','none');
+
+            DISPLAY(HeaderDiv,`
+
+                <br><br>
+
+                <h1>Website Visitor</h1>
+
+                <br>
+                
+                <p>${data.length} Visitors</p>
+
+            `);
+
+        });
+        
+    } else {
+
+        STYLED(loading,'display','none');
+
+        DISPLAY(HeaderDiv,`
+
+            <br><br>
+
+            <p>Your Offline,Real Time Data</p>
+            
+        `);
+        
+    };
 
 };
