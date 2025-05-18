@@ -514,6 +514,8 @@ const CREATEPOSTPAGE=()=>{
 
                     if (navigator.onLine) {
 
+                        TOAST('PLease Wait');
+
                         DEVICE((devicedData)=>{
                             
                             const HEADERS=['Name','Story','CoverImage','ImageOne','ImageTwo','ImageThree','Date','PostedBy','Device'];
@@ -734,7 +736,7 @@ const VIDEOPAGE=()=>{
 
                 <P onclick='CREATEVIDEOPAGE()'>Create Post</P>
 
-                <P onclick='DELETEDLPOSTS()'>Deleted Posts</P>
+                <P onclick='DELETEDVLPOSTS()'>Deleted Posts</P>
 
             </div>
             
@@ -775,6 +777,8 @@ const CREATEVIDEOPAGE=()=>{
             if (Story.value) {
                 
                 if (navigator.onLine) {
+
+                    TOAST('PLease Wait');
 
                     DEVICE((devicedData)=>{
                         
@@ -867,6 +871,76 @@ const ALLVIDEOS=()=>{
                                     TOAST('PLease Wait');
     
                                     const HEADERS=[data.Name,data.Story,data.Date,data.PostedBy,data.Device,'Deleted'];
+                                
+                                    UPDATEDATA(API,'ElgonServices',data.ID,HEADERS,(data)=>{
+    
+                                        DOWNLOADSAVEINDEX(API,'ElgonServices','ElgonServices',()=>{
+    
+                                        });
+    
+                                        HIDER(3000,()=>{
+    
+                                            VIDEOPAGE();
+    
+                                        });
+    
+                                    },()=>{
+                                        TOAST('Failed to Delete ,Please Try Again');
+                                    })
+                                    
+                                } else {
+                                    TOAST('CHeck Your Internet');
+                                };
+    
+                            });
+    
+                        });
+    
+                    });
+
+                });
+
+            });
+
+        };
+
+    });
+
+};
+
+const DELETEDVLPOSTS=()=>{
+
+      const POstsDivs=document.querySelector('#POstsDivs');
+
+    DISPLAY(POstsDivs,'');
+    
+    GETINDEXEDDATA('ElgonServices','ElgonServices',(data)=>{
+
+        if (data.Deleted) {
+
+            CREATEELEMENT(POstsDivs,'Div','InineView',(ELEMENT)=>{
+
+                YOUTUBEUD(data.Story,(linked)=>{
+                    
+                    DISPLAY(ELEMENT,`
+    
+                        <iframe class='SmallIframe' src='https://www.youtube.com/embed/${linked}'/><iframe>
+    
+                    `);
+    
+                    CREATEELEMENT(ELEMENT,'Footer','PostsFooter',(ELEMENTS)=>{
+    
+                        CREATEELEMENT(ELEMENTS,'Img','Icon',(ELEMENTES)=>{
+    
+                            ELEMENTES.src=WHITECHECKICON;
+    
+                                CLICK(ELEMENTES,()=>{
+    
+                                if (navigator.onLine) {
+    
+                                    TOAST('PLease Wait');
+    
+                                    const HEADERS=[data.Name,data.Story,data.Date,data.PostedBy,data.Device,''];
                                 
                                     UPDATEDATA(API,'ElgonServices',data.ID,HEADERS,(data)=>{
     
