@@ -86,7 +86,7 @@ const HOMEPAGE=()=>{
 
     });
 
-}
+};
 
 const WEEKLYPOSTS=()=>{
 
@@ -98,31 +98,35 @@ const WEEKLYPOSTS=()=>{
 
         STYLED(loading,'display','none');
 
-        CREATEELEMENT(DataDiv,'Div','HomePostDiv',(ElEMENTS)=>{
-
-            DISPLAY(ElEMENTS,`
-
-                <img src='${data.CoverImage}'/>
-
-                <footer class='Footer'>
-                    <h1>${data.Name}</h1>
-                </footer>
-                
-            `);
-
-            CLICK(ElEMENTS,()=>{
-
-                JSONIFICATION(data,(MyData)=>{
-
-                    STOREDATA('','CurrentPost',MyData);
-
-                    FULLSTORYROUTER();
-
+        if (!data.Deleted) {
+            
+            CREATEELEMENT(DataDiv,'Div','HomePostDiv',(ElEMENTS)=>{
+    
+                DISPLAY(ElEMENTS,`
+    
+                    <img src='${data.CoverImage}'/>
+    
+                    <footer class='Footer'>
+                        <h1>${data.Name}</h1>
+                    </footer>
+                    
+                `);
+    
+                CLICK(ElEMENTS,()=>{
+    
+                    JSONIFICATION(data,(MyData)=>{
+    
+                        STOREDATA('','CurrentPost',MyData);
+    
+                        FULLSTORYROUTER();
+    
+                    });
+    
                 });
-
+    
             });
 
-        });
+        }; 
 
     });
 
@@ -208,57 +212,61 @@ const VIDOESPAGE=()=>{
 
     GETINDEXEDDATA('ElgonServices','ElgonServices',(data)=>{
 
-        MONTHTIME(data.Date,(Data)=>{
-
-            if (Data === true ) {
-
-                YOUTUBEUD(data.Story,(Link)=>{
-
-                    IframeVideos.src='https://www.youtube.com/embed/'+Link;
-
-                });
-
-            } else {
-
-                YOUTUBEUD(data.Story,(Link)=>{
-
-                    IframeVideos.src='https://www.youtube.com/embed/'+Link;
-
-                });
-                
-            }
-
-        });
-
-        CREATEELEMENT(RelativeDiv,'Div','InineViewer',(ELEMENT)=>{
-
-            YOUTUBEUD(data.Story,(Link)=>{
-
-                DISPLAY(ELEMENT,`
-
-                    <iframe class='SmallIframe' src='https://www.youtube.com/embed/${Link}'></iframe>
+        if (!data.Deleted) {
+            
+            MONTHTIME(data.Date,(Data)=>{
     
-                `);
-
-            });
-
-            CREATEELEMENT(ELEMENT,'p','bottomText',(ElEMENTS)=>{
-
-                ElEMENTS.innerText='Watch';
-
-                CLICK(ElEMENTS,()=>{
-
+                if (Data === true ) {
+    
                     YOUTUBEUD(data.Story,(Link)=>{
-
+    
                         IframeVideos.src='https://www.youtube.com/embed/'+Link;
-
-                    }); 
-
+    
+                    });
+    
+                } else {
+    
+                    YOUTUBEUD(data.Story,(Link)=>{
+    
+                        IframeVideos.src='https://www.youtube.com/embed/'+Link;
+    
+                    });
+                    
+                }
+    
+            });
+    
+            CREATEELEMENT(RelativeDiv,'Div','InineViewer',(ELEMENT)=>{
+    
+                YOUTUBEUD(data.Story,(Link)=>{
+    
+                    DISPLAY(ELEMENT,`
+    
+                        <iframe class='SmallIframe' src='https://www.youtube.com/embed/${Link}'></iframe>
+        
+                    `);
+    
                 });
-
+    
+                CREATEELEMENT(ELEMENT,'p','bottomText',(ElEMENTS)=>{
+    
+                    ElEMENTS.innerText='Watch';
+    
+                    CLICK(ElEMENTS,()=>{
+    
+                        YOUTUBEUD(data.Story,(Link)=>{
+    
+                            IframeVideos.src='https://www.youtube.com/embed/'+Link;
+    
+                        }); 
+    
+                    });
+    
+                });
+    
             });
 
-        });
+        };
 
     });
 
