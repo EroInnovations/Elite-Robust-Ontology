@@ -121,6 +121,11 @@ const HOMEPAGE=()=>{
                     <p>Settings</p>
                 </div>
 
+                <div class='InineView' onclick='RELOAD()' >
+                    <img id='CenterIcon' class='Icon' src='${WHITERETRYICON}'/>
+                    <p>Reload</p>
+                </div>
+
             </div>
         
         </div>
