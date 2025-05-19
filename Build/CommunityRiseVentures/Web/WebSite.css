@@ -10,3 +10,10 @@
     padding: 2%;
     font-size: 18px;
 }
+
+.ProjectDIv{
+    position: relative;
+    width: 90%;
+    height: auto;
+    min-height: 300px;
+}
