@@ -1,90 +1,13 @@
-.Icon{
-    width: 20px;
-    height: 20px;
-}
-
-.HomeDiv{
-    overflow-y: auto;
-}
-
-.TopNav{
-    position: relative;
-    width: 100%;
-    height: 50px;
-    display: inline-flex;
-    background: transparent;
-}
-
-.loading {
-  position: relative;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  display: inline-block;
-  margin-top: 5%;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.RoundInput{
-    border: 1px solid #cdcdcd;
-    width: 90%;
-    border-radius: 10px;
-    padding: 2%;
-    margin-top: 2%;
-    margin-bottom: 2%;
-}
-
-.ForgotPassword{
-    text-align: right;
-    margin-right: 2%;
-    padding: 2%;
-}
-
-.LeftIcon{
-    width: 20px;
-    height: 20px;
-    margin-left: 0.5rem;
-}
-
-.RightIcon{
-    width: 20px;
-    height: 20px;
-    margin-right: 0.5rem;
-}
-
-.InineView{
-    position: relative;
-    width: 40%;
-    height: 200px;
-    background: transparent;
-    display: inline-table;
-    margin: 2%;
-    border-radius: 10px;
-}
-
-.LeftText{
-    margin-left: 0.5rem;
-}
-
-.RightText{
-    margin-right: 0.5rem;
-}
-
-.HeaderDiv{
-    top: 50px;
-    height: auto;
-    bottom: 0;
-    overflow-y: auto;
-    background-color: transparent;
-}
-
-.RelativeDiv{
-    position: relative;
-    overflow-y: auto;
-    height: auto;
-}
+.Icon{width: 20px;height: 20px;}
+.HomeDiv{overflow-y: auto;}
+.TopNav{position: relative;width: 100%;height: 50px;display: inline-flex;background: transparent;}
+.loading {position: relative;width: 30px;height: 30px;border-radius: 50%;animation: spin 1s linear infinite;display: inline-block;margin-top: 5%;} @keyframes spin {0% { transform: rotate(0deg); }100% { transform: rotate(360deg);}}
+.RoundInput{border: 1px solid #cdcdcd;width: 90%;border-radius: 10px;padding: 2%;margin-top: 2%;margin-bottom: 2%;}
+.ForgotPassword{text-align: right;margin-right: 2%;padding: 2%;}
+.LeftIcon{width: 20px;height: 20px;margin-left: 0.5rem;}
+.RightIcon{width: 20px;height: 20px;margin-right: 0.5rem;}
+.InineView{position: relative;width: 40%;height: 200px;background: transparent;display: inline-table;margin: 2%;border-radius: 10px;}
+.LeftText{margin-left: 0.5rem;}
+.RightText{margin-right: 0.5rem;}
+.HeaderDiv{top: 50px;height: auto;bottom: 0;overflow-y: auto;background-color: transparent;}
+.RelativeDiv{position: relative;overflow-y: auto;height: auto;}
