@@ -1,5 +1,5 @@
 header{position: absolute;width: 100%;height: 50px;top: 0;display: inline-flex;overflow: hidden;background: #cdcdcd20;left: 0;}
-div{position: absolute;width: 100%;height: 100%;top: 0;bottom: 0;left: 0;right: 0;background: #cdcdcd20;display: block;overflow: hidden;margin: auto;}
+div{position: absolute;width: 100%;height: 100%;top: 0;bottom: 0;left: 0;right: 0;background: transparent;display: block;overflow: hidden;margin: auto;}
 img{position: relative;width: 100%;height: 100%;margin: auto;object-fit: cover;border: none;}
 footer{position: absolute;width: 100%;height: 50px;bottom: 0;display: inline-flex;overflow: hidden;background: #cdcdcd20;left: 0;}
 h1{font-size: 20px;margin: auto; }
