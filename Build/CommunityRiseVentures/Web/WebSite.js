@@ -2,11 +2,23 @@ const API='https://docs.google.com/spreadsheets/d/15BPlgHpUmm65nUNSLRwlRzaWv1hPe
 
 const NOVASTART=()=>{
 
+    VISITOR(API,'Visitors');
+
     ROUTE('',HOMEPAGE,'HOMEPAGE');
+
+    DOWNLOADSAVEINDEX(API,'News','News',()=>{
+
+        ROUTE('',HOMEPAGE,'HOMEPAGE');
+
+    });
 
 };
 
 const HOMEPAGEROUTE=()=>{
+
+    DOWNLOADSAVEINDEX(API,'News','News',()=>{
+
+    });
 
     ROUTE('',HOMEPAGE,'HOMEPAGE');
 
@@ -48,6 +60,40 @@ const HOMEPAGE=()=>{
 
         </div>
     `);
+
+    const ProjectDIv=document.querySelector('.ProjectDIv');
+
+    GETINDEXEDDATA('News','News',(data)=>{
+
+        CREATEELEMENT(ProjectDIv,'div','ProjectedDiv',(ELEMENT)=>{
+
+            DISPLAY(ELEMENT,`
+
+                <img class='ProjectedImage' src='${data.ImageOne}'/>
+
+                <footer class='ProjectedFooter'>
+
+                    <h1 class='ProjectedTitle'>${data.Name}</h1>
+                
+                </footer>
+                
+            `);
+
+            CLICK(ELEMENT,()=>{
+
+                JSONIFICATION(data,(MyData)=>{
+
+                    STOREDATA('','MyPosts',MyData);
+
+                    STORYPAGEROUTE();
+
+                });
+
+            });
+
+        });
+
+    });
 
 };
 
@@ -160,4 +206,52 @@ const CONTACTPAGE=()=>{
         </div>
 
     `);
+};
+
+const STORYPAGEROUTE=()=>{
+   
+    ROUTE(' ',STORYPAGE,'HOMEPAGE');
+    
+};
+
+const STORYPAGE=()=>{
+
+    SESSIONDEJSONDATA('MyPosts',(data)=>{
+
+        console.log(data)
+
+        DISPLAY('',`
+    
+            <div class='HomeDiv'>
+    
+                <img class='Logo' src='${data.ImageOne}'/>
+    
+                <div class='TopNav'>
+    
+                    <img onclick='HOMEPAGEROUTE()' class='LeftIcon' src='${WHITELEFTBACKICON}'/>
+    
+                    <h3 class='RightText'>${data.Name}</h3>
+                
+                </div>
+
+                <p class='BriefIntro'>${data.Story}</p>
+
+                <div class='ImagesHolders'>
+
+                    <img class='StoryImage' src='${data.ImageOne||COMMUNITYRISELOGO}'/>
+
+                    <img class='StoryImage'  src='${data.ImageTwo||COMMUNITYRISELOGO}'/>
+
+                    <img class='StoryImage' src='${data.ImageThree||COMMUNITYRISELOGO}'/>
+                
+                </div>
+
+                <br><br>
+    
+            </div>
+    
+        `);
+
+    });
+
 };
