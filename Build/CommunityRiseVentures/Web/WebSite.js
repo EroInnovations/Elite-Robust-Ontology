@@ -61,16 +61,20 @@ const DONATEPAGE=()=>{
 
     DISPLAY('',`
 
-        <header>
+        <div class='HomeDiv'>
 
-            <img onclick='HOMEPAGEROUTE()' class='LeftIcon' src='${WHITELEFTBACKICON}'/>
-        
-            <h1 class='RightText'>Donate</h1>
+            <img class='Logo' src='${COMMUNITYRISELOGO}'/>
 
-        </header>
+            <div class='TopNav'>
 
-        <div class='HeaderDiv'></div>
-        
+                <img onclick='HOMEPAGEROUTE()' class='LeftIcon' src='${WHITELEFTBACKICON}'/>
+
+                <h3 class='RightText'>Donate</h3>
+            
+            </div>
+
+        </div>
+
     `);
 
 };
@@ -85,16 +89,20 @@ const SERVICESPAGE=()=>{
 
     DISPLAY('',`
 
-        <header>
+        <div class='HomeDiv'>
 
-            <img onclick='HOMEPAGEROUTE()' class='LeftIcon' src='${WHITELEFTBACKICON}'/>
-        
-            <h1 class='RightText'>Services</h1>
+            <img class='Logo' src='${COMMUNITYRISELOGO}'/>
 
-        </header>
+            <div class='TopNav'>
 
-        <div class='HeaderDiv'></div>
-        
+                <img onclick='HOMEPAGEROUTE()' class='LeftIcon' src='${WHITELEFTBACKICON}'/>
+
+                <h3 class='RightText'>Services</h3>
+            
+            </div>
+
+        </div>
+
     `);
 
 };
@@ -109,16 +117,20 @@ const ABOUTPAGE=()=>{
 
     DISPLAY('',`
 
-        <header>
+        <div class='HomeDiv'>
 
-            <img onclick='HOMEPAGEROUTE()' class='LeftIcon' src='${WHITELEFTBACKICON}'/>
-        
-            <h1 class='RightText'>About</h1>
+            <img class='Logo' src='${COMMUNITYRISELOGO}'/>
 
-        </header>
+            <div class='TopNav'>
 
-        <div class='HeaderDiv'></div>
-        
+                <img onclick='HOMEPAGEROUTE()' class='LeftIcon' src='${WHITELEFTBACKICON}'/>
+
+                <h3 class='RightText'>About Us</h3>
+            
+            </div>
+
+        </div>
+
     `);
 
 };
@@ -133,16 +145,19 @@ const CONTACTPAGE=()=>{
 
     DISPLAY('',`
 
-        <header>
+        <div class='HomeDiv'>
 
-            <img onclick='HOMEPAGEROUTE()' class='LeftIcon' src='${WHITELEFTBACKICON}'/>
-        
-            <h1 class='RightText'>Contact</h1>
+            <img class='Logo' src='${COMMUNITYRISELOGO}'/>
 
-        </header>
+            <div class='TopNav'>
 
-        <div class='HeaderDiv'></div>
-        
+                <img onclick='HOMEPAGEROUTE()' class='LeftIcon' src='${WHITELEFTBACKICON}'/>
+
+                <h3 class='RightText'>Contact Us</h3>
+            
+            </div>
+
+        </div>
+
     `);
-
 };
