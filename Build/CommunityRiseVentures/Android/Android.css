@@ -5,6 +5,11 @@
     overflow-y: auto;
 }
 
+img{
+    width: 20px;
+    height: 20px;
+}
+
 #Now{
     top: 0;
     bottom: 50px;
