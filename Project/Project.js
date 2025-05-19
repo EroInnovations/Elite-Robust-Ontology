@@ -22,13 +22,13 @@ const HOMEPAGE=()=>{
             
             <div class='TopNav'>
             
-                <p>Services</p>
+                <p onclick='SERVICESPAGEROUTE()'>Services</p>
 
-                <p>About</p>
+                <p onclick='ABOUTPAGEROUTE()'>About</p>
 
                 <p onclick='DONATEPAGEROUTE()' >Donate</p>
 
-                <p>Contact</p>
+                <p onclick='CONTACTUSPAGEROUTE()'>Contact</p>
             
             </div>
         
@@ -52,6 +52,78 @@ const DONATEPAGE=()=>{
             <img onclick='HOMEPAGEROUTE()' class='LeftIcon' src='${WHITELEFTBACKICON}'/>
         
             <h1 class='RightText'>Donate</h1>
+
+        </header>
+
+        <div class='HeaderDiv'></div>
+        
+    `);
+
+};
+
+const SERVICESPAGEROUTE=()=>{
+   
+    ROUTE(' ',SERVICESPAGE,'HOMEPAGE');
+    
+};
+
+const SERVICESPAGE=()=>{
+
+    DISPLAY('',`
+
+        <header>
+
+            <img onclick='HOMEPAGEROUTE()' class='LeftIcon' src='${WHITELEFTBACKICON}'/>
+        
+            <h1 class='RightText'>Services</h1>
+
+        </header>
+
+        <div class='HeaderDiv'></div>
+        
+    `);
+
+};
+
+const ABOUTPAGEROUTE=()=>{
+   
+    ROUTE(' ',ABOUTPAGE,'HOMEPAGE');
+    
+};
+
+const ABOUTPAGE=()=>{
+
+    DISPLAY('',`
+
+        <header>
+
+            <img onclick='HOMEPAGEROUTE()' class='LeftIcon' src='${WHITELEFTBACKICON}'/>
+        
+            <h1 class='RightText'>About</h1>
+
+        </header>
+
+        <div class='HeaderDiv'></div>
+        
+    `);
+
+};
+
+const CONTACTUSPAGEROUTE=()=>{
+   
+    ROUTE(' ',CONTACTPAGE,'HOMEPAGE');
+    
+};
+
+const CONTACTPAGE=()=>{
+
+    DISPLAY('',`
+
+        <header>
+
+            <img onclick='HOMEPAGEROUTE()' class='LeftIcon' src='${WHITELEFTBACKICON}'/>
+        
+            <h1 class='RightText'>Contact</h1>
 
         </header>
 
