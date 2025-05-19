@@ -6,6 +6,11 @@ header{
     background: transparent;
 }
 
+img{
+    width: 20px ;
+    height: 20px ;
+}
+
 .ImageTextHolder{
     position: relative;
     width: 100px;
@@ -396,3 +401,4 @@ input::placeholder{
     display: flex;
     background: transparent;
 }
+
