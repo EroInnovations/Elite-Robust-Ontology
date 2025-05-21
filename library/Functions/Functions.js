@@ -104,42 +104,59 @@ const ELITEPAY=(NAME,EMAIL,AMOUNT,DESCRIPTION,LINK,USERID,RETURNLINK,Callback)=>
         .then(res => res.json())
         .then(datata =>{
 
-            fetch('https://script.google.com/macros/s/AKfycbxcjfDVJ11W5N2_QOV_djJBu3iLFwTubtwELxSX_ib7Jb3vTAqCSGFjyEfmDYEaSmfb7A/exec',{
-                method:'Post',
-                body:JSON.stringify(
-                    {
-                        "token": data.token,
-                        "id": new Date(),
-                        "amount": AMOUNT,
-                        "currency":"UGX",
-                        "description":DESCRIPTION||"Payment On Elite Pay",
-                        "callback_url":"https://eroinnovations.site/AfterPay.html?"+'Name='+NAME+'&'+'Amount='+AMOUNT+'&'+'Email='+EMAIL+'&'+'Details='+DESCRIPTION+'&'+'ReturnLink='+LINK+'&'+'PayeeId='+new Date()+'&'+'UserId='+USERID+'&'+'Redirected='+RETURNLINK,
-                        "notification_id": datata.ipn_id,
-                        "billing_address": {
-                          "email_address":EMAIL,
-                          "phone_number": "",
-                          "country_code": "",
-                          "first_name": NAME||EMAIL,
-                          "middle_name": "",
-                          "last_name": "",
-                          "line_1": "",
-                          "line_2": "",
-                          "city": "",
-                          "state": "",
-                          "postal_code": "",
-                          "zip_code": ""
-                        }
-                    }
-                      
-                )
-            })
-            .then(res => res.json())
-            .then(datate =>{
+            const APII='https://docs.google.com/spreadsheets/d/1wez9KwMHDo9WVgofpMJL4CqB9gJSaoJGIk6M02eKjPQ/edit?usp=sharing';
 
-                Callback(datate.redirect_url);
+            const LINKER="https://eroinnovations.site/AfterPay.html?"+'Name='+NAME+'&'+'Amount='+AMOUNT+'&'+'Email='+EMAIL+'&'+'Details='+DESCRIPTION+'&'+'ReturnLink='+LINK+'&'+'PayeeId='+new Date()+'&'+'UserId='+USERID+'&'+'Redirected='+RETURNLINK;
+
+            const HEADERS=['UserKey','Date'];
+
+            const INFO=[LINKER,new Date()];
+
+            INSERTDATA(APII,'CloudToken',HEADERS,INFO,(datate)=>{
+
+                fetch('https://script.google.com/macros/s/AKfycbxcjfDVJ11W5N2_QOV_djJBu3iLFwTubtwELxSX_ib7Jb3vTAqCSGFjyEfmDYEaSmfb7A/exec',{
+                    method:'Post',
+                    body:JSON.stringify(
+                        {
+                            "token": data.token,
+                            "id": new Date(),
+                            "amount": AMOUNT,
+                            "currency":"UGX",
+                            "description":DESCRIPTION||"Payment On Elite Pay",
+                            "callback_url":"https://eroinnovations.site/AfterPay.html?"+'ID='+datate.spreadsheetId,
+                            "notification_id": datata.ipn_id,
+                            "billing_address": {
+                              "email_address":EMAIL,
+                              "phone_number": "",
+                              "country_code": "",
+                              "first_name": NAME||EMAIL,
+                              "middle_name": "",
+                              "last_name": "",
+                              "line_1": "",
+                              "line_2": "",
+                              "city": "",
+                              "state": "",
+                              "postal_code": "",
+                              "zip_code": ""
+                            }
+                        }
+                          
+                    )
+                })
+                .then(res => res.json())
+                .then(datate =>{
     
-            })
-            .catch(error =>console.log(error))
+                    Callback(datate.redirect_url);
+        
+                })
+                .catch(error =>console.log(error))
+
+            },()=>{
+
+                TOAST('Failed to Process Payment')
+
+            });
+
 
         })
         .catch(error =>console.log(error))
