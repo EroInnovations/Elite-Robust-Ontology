@@ -250,6 +250,21 @@ const ABOUTPAGE=()=>{
             
             </div>
 
+            <h1>Who We are?</h1>
+
+            <p class='BriefIntro'>Community Rise Ventures is a non government Funded Organisation that is aimed at creating Smiles on the Faces of the Community we venture to help those in need by creating long term solutions without interfering in government projects and we venture in service delivery as shown in services section of this site.</p>
+
+
+            <h1>Where are We?</h1>
+
+            <p class='BriefIntro'>We are located in kasanvu in Mbale City near Mbale College.</p>
+
+            <h1>Our Mission</h1>
+
+            <p class='BriefIntro'>Our Mission is to Create a smile on everyones face who is inndeed needy by solving the challenges with the aid of those willing to support.</p>
+
+            <br><br>
+
         </div>
 
     `);
