@@ -2,9 +2,9 @@ const NOVASTART=()=>{
 
     ROUTE('',HOMEPAGE,'HOMEPAGE');
 
-    ELITEPAY('Me','Me','2000','Test','None','dd','Hello',(daily)=>{
+    ELITEPAY('Ero','eroinnovations9@gmail.com','500','PaySafe','None','dd','Hello',(daily)=>{
 
-        console.log(daily)
+        open(daily)
 
     })
 
