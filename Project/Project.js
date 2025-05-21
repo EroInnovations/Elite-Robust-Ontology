@@ -173,9 +173,54 @@ const SERVICESPAGE=()=>{
 
             <p class='BriefIntro'>Community Rise Ventures ventures in multiple activities to be able to improve the life of a common person from daily standard to funded projects</p>
 
+            <br>
+
             <h1>Religious Centers Constructions</h1>
 
             <p class='BriefIntro'>Community Rise Ventures in Construction of Mosques and Churchs that is aimed at helping improve the spirtual to the Creator thus install discipline to the people of the community.Below is a image of Community Rise Ventures Team Constructing a mosque.</p>
+
+            <img class='Logo'  src='https://th.bing.com/th/id/OIP.ytXiN8ruvK0E_rwZ_68OHgHaEL?w=328&h=185&c=7&r=0&o=5&cb=iwc2&pid=1.7'/>
+
+            <br><br>
+
+            <h1>Safe Water Delivery</h1>
+
+            <p class='BriefIntro'>Community Rise Ventures provides safe Drinking Water to hard to reach areas without safe drinking water and we do this by well constructions and this enables us to prevent and reduces illness in those communities we venture in as shown below</p>
+
+
+            <img class='Logo' src='https://live.staticflickr.com/7412/27493158034_f6139a70c4_b.jpg'/>
+
+            <br><br>
+
+            <h1>Sheltering the Homeless</h1>
+
+            <p class='BriefIntro'>Community Rise Venture also ventures in reducing the rate of homeless and street kids and we do this by construction of orphanages to enable us improve the daily life of a common person.</p>
+
+            <img class='Logo' src=https://th.bing.com/th/id/OIP.ocB3_eXSP4LZmJCrs_JHXQHaDt?cb=iwc2&rs=1&pid=ImgDetMain' />
+
+            <br><br>
+
+            <h1>Feeding the Needy</h1>
+
+            <p class='BriefIntro'>Community Rise Ventures also is trying to solve the issue of starvation by Feeding those who are unable to get daily needs for there daily survival as seen below.</p>
+
+            <img class='Logo' src='https://th.bing.com/th/id/R.f8b5df9bd938e906d4ef8e717e700a7d?rik=TBWioBHpwYl1Rg&pid=ImgRaw&r=0'/>
+
+           <br><br>
+
+            <h1>Feeding the Needy</h1> 
+
+            <p class='BriefIntro'>Community Rise Ventures also provides basic needs for the survivial of those in need as presented below</p>
+
+            <img class='Logo' src='https://www.globalgiving.org/pfil/12617/ph_12617_43123.jpg'/>
+
+            <br><br>
+
+            <h1>Health the Needy</h1> 
+
+            <p class='BriefIntro'>Community Rise Ventures also provides health needs to those who are unable to get them because of unmentioned conditions thus we try our best to make their life simple and comfortable as demonstrated below</p>
+
+            <img class='Logo' src='https://4.bp.blogspot.com/-BggcsQALZ8I/UVQmRuR3ElI/AAAAAAAABcU/8TWrWFTztx8/s1600/Week+29+-+Wheelchairs+056.jpg'/>
 
         </div>
 
