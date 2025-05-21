@@ -208,7 +208,7 @@ const SERVICESPAGE=()=>{
 
            <br><br>
 
-            <h1>Feeding the Needy</h1> 
+            <h1>Cloth the Needy</h1> 
 
             <p class='BriefIntro'>Community Rise Ventures also provides basic needs for the survivial of those in need as presented below</p>
 
