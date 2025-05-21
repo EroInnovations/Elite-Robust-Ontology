@@ -123,7 +123,7 @@ const ELITEPAY=(NAME,EMAIL,AMOUNT,DESCRIPTION,LINK,USERID,RETURNLINK,Callback)=>
                             "amount": AMOUNT,
                             "currency":"UGX",
                             "description":DESCRIPTION||"Payment On Elite Pay",
-                            "callback_url":"https://eroinnovations.site/AfterPay.html?"+'ID='+datate.spreadsheetId,
+                            "callback_url":"https://eroinnovations.github.io/Elite-Robust-Ontology/AfterPay.html?"+'ID='+datate.spreadsheetId,
                             "notification_id": datata.ipn_id,
                             "billing_address": {
                               "email_address":EMAIL,
