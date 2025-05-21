@@ -293,10 +293,67 @@ const CONTACTPAGE=()=>{
             
             </div>
 
+            <h3>Reach Us Today</h3>
+
+            <button onclick='INSTAGRAMED()'>Instagram</button>
+
+            <button onclick='WHATED()'>WhatsApp</button>
+
+            <button onclick='FACED()'>Facebook</button>
+
+            <button onclick='TIK()'>TikTok</button>
+
+            <button onclick='EMAILED()' >Email</button>
+
+            <button onclick='ED()' >X</button>
+
+            <h1>Tech Support</h1>
+
+            <button onclick='WEBSITED()'>Site</button>
+
+            <br><br>
+
+            <p>Powered By Elite Robust Ontology.</p>
+
+            <br><br>
+
         </div>
 
     `);
 };
+
+const WEBSITED=()=>{
+
+    WEBSITE('https://eroinnovations.site');
+
+};
+
+const INSTAGRAMED=()=>{
+
+    INSTAGRAM('community_rise_ventures');
+
+};
+
+const WHATED=()=>{
+    WHATSAPP('0779332496');
+};
+
+const FACED=()=>{
+    WEBSITE('https://www.facebook.com/share/gGoc7h3UY95qyPvU/?mibextid=wwXIfr');
+};
+
+const TIK=()=>{
+    WEBSITE('https://www.tiktok.com/@communityriseventures?_t=8sJKl4UAph2&_r=1');
+};
+
+const ED=()=>{
+    WEBSITE('https://x.com/communityriseve?s=11');
+};
+
+
+const EMAILED=()=>{
+    GMAIL('Communityriseventures@gmail.com');
+}
 
 const STORYPAGEROUTE=()=>{
    
