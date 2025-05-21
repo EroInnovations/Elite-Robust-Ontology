@@ -119,6 +119,30 @@ const DONATEPAGE=()=>{
             
             </div>
 
+            <h1>FundRaising</h1>
+
+            <p class='BriefIntro'>Community Rise Ventures Being a Non Government Funded Organisation,We There Operate Our Projects Using the Donation Funds Provided by The good well to keep the Community Projects Runnings.<br><br> Those interested in being a good cause for the needy please donate to the Following Account Below.</p>
+
+            <h1>Account Details</h1>
+            
+            <div class='TopNav'>
+
+                <h1 class='LeftText'>Account Number</h1>
+
+                <h1 class='RightText'>60080462400</h1>
+            
+            </div>
+
+            <div class='TopNav'>
+
+                <h1 class='LeftText'>Bank Name</h1>
+
+                <h1 class='RightText'>Absa</h1>
+            
+            </div>
+
+            <br><br>
+
         </div>
 
     `);
@@ -146,6 +170,12 @@ const SERVICESPAGE=()=>{
                 <h3 class='RightText'>Services</h3>
             
             </div>
+
+            <p class='BriefIntro'>Community Rise Ventures ventures in multiple activities to be able to improve the life of a common person from daily standard to funded projects</p>
+
+            <h1>Religious Centers Constructions</h1>
+
+            <p class='BriefIntro'>Community Rise Ventures in Construction of Mosques and Churchs that is aimed at helping improve the spirtual to the Creator thus install discipline to the people of the community.Below is a image of Community Rise Ventures Team Constructing a mosque.</p>
 
         </div>
 
