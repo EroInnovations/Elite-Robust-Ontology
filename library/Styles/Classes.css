@@ -11,3 +11,4 @@
 .RightText{margin-right: 0.5rem;}
 .HeaderDiv{top: 50px;height: auto;bottom: 0;overflow-y: auto;background-color: transparent;}
 .RelativeDiv{position: relative;overflow-y: auto;height: auto;}
+.RoundFooter{border-radius: 50px;width: 95%;margin: 2%;}
