@@ -16,11 +16,11 @@ const HOMEPAGE=()=>{
 
             <div class='TopNav'>
 
-                <p>Store</p>
+                <p class='BorderText'>Store</p>
 
-                <p>Developers</p>
+                <p class='BorderText'>Developers</p>
 
-                <p>Contact</p>
+                <p class='BorderText'>Contact</p>
             
             </div>
 
