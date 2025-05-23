@@ -14,6 +14,8 @@ const HOMEPAGE=()=>{
         
             <h1 class='AppName'>Elite Robust Ontology</h1>
 
+            <br>
+
             <div class='TopNav'>
 
                 <p class='BorderText'>Store</p>
@@ -23,6 +25,8 @@ const HOMEPAGE=()=>{
                 <p class='BorderText'>Contact</p>
             
             </div>
+
+            <br><br>
 
             <p class='LeftText'>Elite Robust Ontology is a Cloud Native Based Company in Uganda ,Mbale.</p>
         
