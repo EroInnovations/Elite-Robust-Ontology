@@ -6,9 +6,10 @@
 .ForgotPassword{text-align: right;margin-right: 2%;padding: 2%;}
 .LeftIcon{width: 20px;height: 20px;margin-left: 0.5rem;}
 .RightIcon{width: 20px;height: 20px;margin-right: 0.5rem;}
-.InineView{position: relative;width: 40%;height: 200px;background: transparent;display: inline-table;margin: 2%;border-radius: 10px;}
-.LeftText{margin-left: 0.5rem;}
-.RightText{margin-right: 0.5rem;}
+.InineView{position: relative;width: 40%;height: 95%;background: transparent;display: inline-flex;margin: auto;border-radius: 10px;}
+.LeftText{margin-left: 0.5rem;text-align: left;}
+.RightText{margin-right: 0.5rem;text-align: right;}
 .HeaderDiv{top: 50px;height: auto;bottom: 0;overflow-y: auto;background-color: transparent;}
 .RelativeDiv{position: relative;overflow-y: auto;height: auto;}
 .RoundFooter{border-radius: 50px;width: 95%;margin: 2%;}
+.TableView{position: relative;width: 40%;height: 200px;background: transparent;display: inline-table;margin: 2%;border-radius: 10px;}
