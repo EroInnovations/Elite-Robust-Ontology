@@ -4,6 +4,12 @@ const NOVASTART=()=>{
 
 };
 
+const HOMEPAGEROUTE=()=>{
+
+    ROUTE('',HOMEPAGE,'HOMEPAGE');
+
+};
+
 const HOMEPAGE=()=>{
 
     DISPLAY('',`
@@ -18,11 +24,11 @@ const HOMEPAGE=()=>{
 
             <div class='TopNav'>
 
-                <p class='BorderText'>Store</p>
+                <p class='BorderText' onclick='STOREPAGEROUTE()'>Store</p>
 
-                <p class='BorderText'>Developers</p>
+                <p class='BorderText' onclick='DEVELOPERPAGEROUTE()'>Developers</p>
 
-                <p class='BorderText'>Contact</p>
+                <p class='BorderText' onclick='CONTACTPAGEROUTE()'>Contact</p>
             
             </div>
 
@@ -90,4 +96,94 @@ const HOMEPAGE=()=>{
         
     `);
 
+};
+
+const STOREPAGEROUTE=()=>{
+
+    ROUTE(' ',STOREPAGE,'HOMEPAGE');
+
+};
+
+const STOREPAGE=()=>{
+
+    DISPLAY('',`
+
+        <header>
+        
+            <img class='LeftIcon' onclick='HOMEPAGEROUTE()' src='${WHITEBACKICON}'/>
+
+            <h3 class='RightText' >Store</h3>
+
+        </header>
+
+        <div class='HeaderDiv'></div>
+        
+    `);
+    
+};
+
+const DEVELOPERPAGEROUTE=()=>{
+
+    ROUTE(' ',DEVELOPERPAGE,'HOMEPAGE');
+
+};
+
+const DEVELOPERPAGE=()=>{
+
+    DISPLAY('',`
+
+        <header>
+        
+            <img class='LeftIcon' onclick='HOMEPAGEROUTE()' src='${WHITEBACKICON}'/>
+
+            <h3 class='RightText'>Developer</h3>
+
+        </header>
+        
+        <div class='HeaderDiv'></div>
+
+    `);
+    
+};
+
+const CONTACTPAGEROUTE=()=>{
+
+    ROUTE(' ',CONTACTPAGE,'HOMEPAGE');
+
+};
+
+const CONTACTPAGE=()=>{
+
+    DISPLAY('',`
+
+        <header>
+        
+            <img class='LeftIcon' onclick='HOMEPAGEROUTE()' src='${WHITEBACKICON}'/>
+
+            <h3 class='RightText'>Contact</h3>
+
+        </header>
+
+        <div class='HeaderDiv'>
+
+            <button class='InlineButton'>
+
+                <p class='LeftText'>Instagram</p>
+
+                <img class='RightIcon' src='${WHITEINSTAGRAMICON}'/>
+            
+            </button>
+
+            <button class='InlineButton'>
+
+                <p class='LeftText'>Gmail</p>
+
+                <img class='RightIcon' src='${WHITEGMAILICON}'/>
+            
+            </button>
+        
+        </div>
+        
+    `);
+    
 };

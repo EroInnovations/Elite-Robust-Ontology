@@ -13,3 +13,4 @@
 .RelativeDiv{position: relative;overflow-y: auto;height: auto;}
 .RoundFooter{border-radius: 50px;width: 95%;margin: 2%;}
 .TableView{position: relative;width: 40%;height: 200px;background: transparent;display: inline-table;margin: 2%;border-radius: 10px;}
+.InlineButton{display: inline-flex;}

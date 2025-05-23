@@ -34,3 +34,7 @@ footer{
     border-radius: 5px;
     background: #5b7a5b;
 }
+
+header{
+    background: transparent;
+}
