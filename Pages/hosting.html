@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mt.Elgon Christian Union</title>
+  <title>Hosting</title>
 </head>
-<link rel="shortcut icon" href="https://eroinnovations.github.io/Elite-Robust-Ontology/library/Assets/Projects/ChristianUnion/Christian%20Union%20Logo.jpg" type="image/x-icon">
+<link rel="shortcut icon" href="https://eroinnovations.github.io/Elite-Robust-Ontology/library/Assets/Logos/CommunityRise/Logo.jpg" type="image/x-icon">
 <style>
   *{
     margin: 0;
@@ -18,7 +18,7 @@
     position: fixed;
     height: 100%;
     width: 100%;
-    background:navy;
+    background:purple;
     overflow: hidden;
     display: block;
   }
@@ -76,7 +76,7 @@
 </body>
 <script>
   localStorage.setItem('Environment', 'Web');
-  localStorage.setItem('NAME', '8e66d79d-84b7-4ba0-9d60-0e74189675b6');
+  localStorage.setItem('NAME', 'd8c2c6df-f989-44b3-9c81-d95c31892e28');
   const ROUTEJS=(DATA)=>{ const styleElement = document.createElement("script"); styleElement.textContent = DATA; document.head.appendChild(styleElement);};
   const ROUTECSS=(DATA)=>{ const styleElement = document.createElement("style"); styleElement.textContent = DATA; document.head.appendChild(styleElement);};
   ROUTEJS(localStorage.getItem('NOVA'));
@@ -99,5 +99,60 @@
     } else {
       CloudShipping();
   };
+  const REALINSPECTION=() => {
+
+        if (localStorage.getItem("Environment") === 'Development') {
+
+            
+        } else {
+
+            document.addEventListener('contextmenu', function (e) {
+
+                e.preventDefault();
+                
+            });
+
+            document.addEventListener('keydown', function (e) {
+
+                if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J'))) {
+                    
+                    e.preventDefault();
+
+                };
+
+            });
+
+            document.addEventListener('keydown', function (e) {
+
+                if (e.ctrlKey && e.key === 'u') {
+
+                    e.preventDefault();
+
+                };
+
+            });
+
+            const detectDevTools = () => {
+
+                const threshold = 160; 
+
+                const devToolsOpen = window.outerWidth - window.innerWidth > threshold || window.outerHeight - window.innerHeight > threshold;
+                
+                if (devToolsOpen) {
+
+                    window.resizeTo(window.outerWidth - 1, window.outerHeight - 1);  
+                
+                    window.resizeTo(window.outerWidth + 1, window.outerHeight + 1);  
+            
+                };
+
+            };
+
+            setInterval(detectDevTools, 100);
+
+        };
+    
+    };
+    REALINSPECTION();
 </script>
 </html>
