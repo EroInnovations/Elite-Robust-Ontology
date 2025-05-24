@@ -166,24 +166,65 @@ const CONTACTPAGE=()=>{
 
         <div class='HeaderDiv'>
 
+            <h1>Fill The Form Below</h1>
+
+            <input id='Name' class='RoundInput' type='text' placeholder='Enter Your Name'/>
+
+            <input id='Email' class='RoundInput' type='email' placeholder='Enter Your Email'/>
+
+            <input id='Subject' class='RoundInput' type='text' placeholder='Enter Your Subject'/>
+
+            <textarea id='Message' placeholder='Compose Your Message'></textarea>
+
             <button class='InlineButton'>
 
-                <p class='LeftText'>Instagram</p>
+                <h1 class='LeftText'>Send</h1>
 
-                <img class='RightIcon' src='${WHITEINSTAGRAMICON}'/>
-            
-            </button>
-
-            <button class='InlineButton'>
-
-                <p class='LeftText'>Gmail</p>
-
-                <img class='RightIcon' src='${WHITEGMAILICON}'/>
+                <img class='RightIcon' src='${WHITESENDICON}'/>
             
             </button>
         
         </div>
         
     `);
+
+    const INLINEBUTTON = NAMING('.InlineButton');
+    const NAMER=NAMING('#Name');
+    const EMAILER=NAMING('#Email');
+    const SUBJECT=NAMING('#Subject');
+    const MESSAGE=NAMING('#Message');
+
+    CLICK(INLINEBUTTON,()=>{
+
+        CONDITION(NAMER.value,()=>{
+
+            CONDITION(EMAILER.value,()=>{
+
+                CONDITION(SUBJECT.value,()=>{
+
+                   CONDITION(MESSAGE.value,()=>{
     
+                    },()=>{
+        
+                        TOAST('Compose a Message');
+                    }); 
+        
+                },()=>{
+    
+                    TOAST('Enter Your Subject');
+                });
+    
+            },()=>{
+
+                TOAST('Enter Your Email');
+            });
+
+        },()=>{
+
+            TOAST('Enter Your Name');
+
+        });
+
+    });
+
 };
