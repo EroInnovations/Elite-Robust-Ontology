@@ -61,7 +61,7 @@ const SCROLL=(ELEMENT,callback)=>{ELEMENT.addEventListener("scroll",()=>{callbac
 const BACKPAGE=(NAME)=>{setTimeout(() => {sessionStorage.setItem('PreviousPage',NAME);},100);};
 const COPY=function COPY(text, onSuccess) {navigator.clipboard.writeText(text).then(()=>{if(onSuccess){onSuccess();}}).catch(err => {console.error('Failed to copy text: ', err);});};
 const DRIVEID=(url)=>{const regex = /(?:drive|docs)\/d\/([a-zA-Z0-9_-]+)/;const match = url.match(regex);if(match){return match[1];}else{throw new Error('Invalid Google Drive URL');}};
-const TOAST=(Message)=>{if(localStorage.getItem('State')==='Web'){alert(Message);}else{if(localStorage.getItem('Environment')==='Production'){Android.showToast(Message);}else{console.log(Message);};};};
+const TOAST = (Message) => {if(localStorage.getItem('Environment') === 'Production') {Android.showToast(Message);}else{CREATEELEMENT('','div','MessageDiv',(ELEMENT)=>{DISPLAY(ELEMENT,`<p>${Message}</p>`);HIDER(2000,()=>{STYLED(ELEMENT,'display','none');});});};};
 const DOLLAREXCHANGE = (CONVERSION, AMOUNT, callback)=>{let Amount;if(CONVERSION === 'USD'){Amount = AMOUNT / 3668.62;}else{Amount = AMOUNT * 3666;}const roundedAmount = Math.round(Amount * 100) / 100;callback(roundedAmount);};
 const SITECLOSE=()=>{if (localStorage.getItem('Environment') === 'Production'||localStorage.getItem('OperatingSystem') === 'Android' ){Android.reloadApp();}else{window.close();};};
 const SESSIONDEJSONDATA=(MYDATA,callback)=>{const DATA=sessionStorage.getItem(MYDATA);const MYDATATA=JSON.parse(DATA);callback(MYDATATA);};

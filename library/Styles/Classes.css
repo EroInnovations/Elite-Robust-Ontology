@@ -14,3 +14,4 @@
 .RoundFooter{border-radius: 50px;width: 95%;margin: 2%;}
 .TableView{position: relative;width: 40%;height: 200px;background: transparent;display: inline-table;margin: 2%;border-radius: 10px;}
 .InlineButton{display: inline-flex;}
+.MessageDiv{position: absolute;bottom: 10px;height: 50px;top: auto;background: #000000;color: #ffffff;display: inline-flex;width: 95%;border-radius: 10px;}
