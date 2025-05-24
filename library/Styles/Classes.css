@@ -1,7 +1,7 @@
 .Icon{width: 20px;height: 20px;}
 .HomeDiv{overflow-y: auto;}
 .TopNav{position: relative;width: 100%;height: 50px;display: inline-flex;background: transparent;}
-.loading {position: relative;width: 30px;height: 30px;border-radius: 50%;animation: spin 1s linear infinite;display: inline-block;margin-top: 5%;} @keyframes spin {0% { transform: rotate(0deg); }100% { transform: rotate(360deg);}}
+.loading {position: relative;width: 30px;height: 30px;border-radius: 50%;animation: spin 1s linear infinite;display: inline-block;margin:auto;} @keyframes spin {0% { transform: rotate(0deg); }100% { transform: rotate(360deg);}}
 .RoundInput{border: 1px solid #cdcdcd;width: 90%;border-radius: 10px;padding: 2%;margin-top: 2%;margin-bottom: 2%;}
 .ForgotPassword{text-align: right;margin-right: 2%;padding: 2%;}
 .LeftIcon{width: 20px;height: 20px;margin-left: 0.5rem;}

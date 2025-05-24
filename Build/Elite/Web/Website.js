@@ -1,4 +1,8 @@
+const API='https://docs.google.com/spreadsheets/d/1QrPMVra0WEB1L_JWpZyvm1WRoVaSlJk7KFiJiCOgYOQ/edit?usp=sharing';
+
 const NOVASTART=()=>{
+
+    VISITOR(API,'Visitors');
 
     ROUTE('',HOMEPAGE,'HOMEPAGE');
 
@@ -203,6 +207,51 @@ const CONTACTPAGE=()=>{
                 CONDITION(SUBJECT.value,()=>{
 
                    CONDITION(MESSAGE.value,()=>{
+
+                        CONDITION(navigator.onLine,()=>{
+
+                            DISPLAY(INLINEBUTTON,`
+
+                                <img class='loading' src='${WHITELOADINGICON}'/>
+                            
+                            `);
+
+                            DEVICE((data)=>{
+
+                                const HEADERS=['Name','Email','Subject','Message','Device','Time'];
+    
+                                const INFO=[NAMER.value,EMAILER.value,SUBJECT.value,MESSAGE.value,data,new Date()]
+                            
+                                INSERTDATA(API,'Contacts',HEADERS,INFO,(data)=>{
+
+                                    TOAST('Our Team Member Will be In touch With You.');
+
+                                    HIDER(2000,()=>{
+
+                                        HOMEPAGEROUTE();
+
+                                    });
+
+                                },()=>{
+
+                                    TOAST('Failed to Contact Team,Try Again');
+
+                                    DISPLAY(INLINEBUTTON,`
+
+                                        <h1 class='LeftText'>Send</h1>
+
+                                        <img class='RightIcon' src='${WHITESENDICON}'/>
+                            
+                                    `);
+
+                                });
+
+                            });
+        
+                        },()=>{
+            
+                            TOAST('Check Your Internet Connection');
+                        }); 
     
                     },()=>{
         
