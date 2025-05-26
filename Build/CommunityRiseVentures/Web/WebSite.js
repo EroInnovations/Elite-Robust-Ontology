@@ -38,7 +38,7 @@ const HOMEPAGE=()=>{
 
                 <p onclick='ABOUTPAGEROUTE()'>About</p>
 
-                <p onclick='DONATEPAGEROUTE()' >Donate</p>
+                <p onclick='DONATEPAGEROUTE()'>Donate</p>
 
                 <p onclick='CONTACTUSPAGEROUTE()'>Contact</p>
             
