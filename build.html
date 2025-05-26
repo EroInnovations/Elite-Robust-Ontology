@@ -6,6 +6,7 @@
   <title>Elite</title>
 </head>
 <style>
+
   *{
     margin: 0;
     padding: 0;
@@ -13,6 +14,7 @@
     text-align: center;
     font-size: 20px;
   }
+
   body{
     position: fixed;
     height: 100%;
@@ -21,6 +23,7 @@
     overflow: hidden;
     display: block;
   }
+
   .loader {
     display: flex;
     justify-content: center;
@@ -63,6 +66,7 @@
     .Loading {
       font-size: 20px;
   }
+  
 </style>
 <body>
   <div class="loader">
@@ -98,5 +102,24 @@
     } else {
       CloudShipping();
   };
+
+  const SENDERDATA={
+    "consumer_key": "your-key-here",
+    "consumer_secret": "your-secret-here"
+  }
+
+  const OPENPAYMENT=()=>{
+
+    fetch('https://script.google.com/macros/s/AKfycbzaYqQj80iEK755NplTwIvJMJKeM9yGqvJooRGQ6xh1vBxpPcE93cSUVKl-ctHmM4KT/exec',
+      {
+        method:'Post',
+        mode:'no-cors',
+        body:JSON.stringify(SENDERDATA)
+      }
+    )
+    .then(rs =>{})
+
+  }
+
 </script>
 </html>
