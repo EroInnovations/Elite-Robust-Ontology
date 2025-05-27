@@ -20,7 +20,7 @@ const HOMEPAGE=()=>{
 
             <div class='IconTextHolder'>
 
-                <img class='Icon' src='${WHITEPOSTICON}'/>
+                <img class='Icon' src='${WHITESUBSCRIPTIONICON}'/>
 
                 <p class='BottomText'>Services</p>
 
@@ -30,7 +30,7 @@ const HOMEPAGE=()=>{
 
                 <img class='Icon' src='${WHITEUSERPROFILEICON}'/>
 
-                <p class='BottomText'>My Account</p>
+                <p class='BottomText'>Account</p>
 
             </div>
         
