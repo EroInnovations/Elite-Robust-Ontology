@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Community Rise Ventures</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Rise Ventures</title>
+    <link rel="shortcut icon" href="" type="image/x-icon">
 </head>
-<link rel="shortcut icon" href="https://eroinnovations.github.io/Elite-Robust-Ontology/library/Assets/Logos/CommunityRise/Logo.jpg" type="image/x-icon">
 <style>
   *{
     margin: 0;
@@ -65,6 +65,12 @@
       font-size: 20px;
   }
 </style>
+<link rel="stylesheet" href="https://eroinnovations.github.io/Elite-Robust-Ontology/library/Styles/Components.css">
+<link rel="stylesheet" href="https://eroinnovations.github.io/Elite-Robust-Ontology/library/Styles/Styles.css">
+<link rel="stylesheet" href="https://eroinnovations.github.io/Elite-Robust-Ontology/library/Styles/Classes.css">
+<script src="https://eroinnovations.github.io/Elite-Robust-Ontology/library/Functions/Functions.js"></script>
+<script src="https://eroinnovations.github.io/Elite-Robust-Ontology/library/Functions/Assets.js"></script>
+<link rel="stylesheet" href="https://eroinnovations.github.io/Elite-Robust-Ontology/Build/CommunityRiseVentures/Web/WebSite.css">
 <body>
   <div class="loader">
     <div class="dot"></div>
@@ -74,85 +80,11 @@
   <br>
   <p class="Loading">Please Wait</p>
 </body>
+<script src="https://eroinnovations.github.io/Elite-Robust-Ontology/Build/CommunityRiseVentures/Web/WebSite.js"></script>
 <script>
-  localStorage.setItem('Environment', 'Web');
-  localStorage.setItem('NAME', 'd8c2c6df-f989-44b3-9c81-d95c31892e28');
-  const ROUTEJS=(DATA)=>{ const styleElement = document.createElement("script"); styleElement.textContent = DATA; document.head.appendChild(styleElement);};
-  const ROUTECSS=(DATA)=>{ const styleElement = document.createElement("style"); styleElement.textContent = DATA; document.head.appendChild(styleElement);};
-  ROUTEJS(localStorage.getItem('NOVA'));
-  ROUTECSS(localStorage.getItem('NOVASTYLES'));
-  const CloudShipping = () => {
-      import('https://eroinnovations.github.io/Elite-Robust-Ontology/Start/Start.js')
-        .then(module => {
-          if (typeof module.START === 'function') {
-            module.START();
-          } else {
-            console.error('START is not defined in the module');
-          }
-        })
-        .catch(error => {
-          console.error('Error loading the module:', error);
-        });
-  };
-  if (localStorage.getItem('Updates')) {
-      NOVASTART();
-    } else {
-      CloudShipping();
-  };
-  const REALINSPECTION=() => {
-
-        if (localStorage.getItem("Environment") === 'Development') {
-
-            
-        } else {
-
-            document.addEventListener('contextmenu', function (e) {
-
-                e.preventDefault();
-                
-            });
-
-            document.addEventListener('keydown', function (e) {
-
-                if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J'))) {
-                    
-                    e.preventDefault();
-
-                };
-
-            });
-
-            document.addEventListener('keydown', function (e) {
-
-                if (e.ctrlKey && e.key === 'u') {
-
-                    e.preventDefault();
-
-                };
-
-            });
-
-            const detectDevTools = () => {
-
-                const threshold = 160; 
-
-                const devToolsOpen = window.outerWidth - window.innerWidth > threshold || window.outerHeight - window.innerHeight > threshold;
-                
-                if (devToolsOpen) {
-
-                    window.resizeTo(window.outerWidth - 1, window.outerHeight - 1);  
-                
-                    window.resizeTo(window.outerWidth + 1, window.outerHeight + 1);  
-            
-                };
-
-            };
-
-            setInterval(detectDevTools, 100);
-
-        };
-    
-    };
-    REALINSPECTION();
+    ZOOM();
+    NOVASTART();
+    STOREDATA(' ','Environment','Web');
+    INSPECTION();
 </script>
 </html>
