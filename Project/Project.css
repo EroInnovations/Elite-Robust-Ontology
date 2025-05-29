@@ -1,9 +1,44 @@
-.IconTextHolder{
-    position: relative;
+.Logo{
+    width: 95%;
+    height: 40%;
+    margin: 2%;
+    border-radius: 10px;
+}
+
+#ParthnerHolder{
     background: transparent;
-    width: auto;
-    height: 95%;
-    display: inline-block;
-    padding: 1%;
-    margin: auto;
+    width: 95%;
+    height: 200px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+.InineView{
+    background: green;
+    flex-shrink: 0;
+    border-radius: 5px;
+    margin: auto 2%;
+}
+
+.AppName{
+    font-size: 25px;
+}
+
+footer{
+    background: #000000;
+}
+
+.BorderText{
+    border: 1px solid #cdcdcd20;
+    padding: 2%;
+    border-radius: 5px;
+    background: #5b7a5b;
+}
+
+header{
+    background: transparent;
+}
+
+.InlineButton{
+    background: forestgreen;
 }
