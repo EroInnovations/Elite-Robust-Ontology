@@ -92,6 +92,18 @@ const HOMEPAGE=()=>{
                 
                 </div>
 
+                <div class='InineView'>
+
+                    <img src='https://ibrah9856.github.io/Ashshakurcharity/Assets/logo.jpg'/>
+
+                    <footer>
+
+                        <h3>Ash Shakur Charity and Orphanage Aid</h3>
+                    
+                    </footer>
+                
+                </div>
+
             </div>
 
             <br><br>
