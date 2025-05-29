@@ -181,8 +181,12 @@ const CONTACTPAGE=()=>{
         </header>
 
         <div class='HeaderDiv'>
+            
+            <br>
 
             <h1>Fill The Form Below</h1>
+
+            <br>
 
             <input id='Name' class='RoundInput' type='text' placeholder='Enter Your Name'/>
 
